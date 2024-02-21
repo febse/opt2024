@@ -1,11 +1,12 @@
 project:
-  type: book
+  type: book  
 
 lang: bg
 book:
   title: "Въведение в математическата оптимизация"
   author: "Бойко Амаров"
   date: "4/02/2024"
+
   chapters:
     - index.qmd
     # - part: 01-Python/index.qmd
@@ -32,5 +33,7 @@ format:
   html:
     theme: cosmo
     html-math-method: katex
+    code-fold: true
+    code-summary: "Покажи кода"
 
 editor: visual
