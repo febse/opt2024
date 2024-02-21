@@ -290,25 +290,96 @@ window.Quarto = {
 </section>
 <section id="математически-модел" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="математически-модел"><span class="header-section-number">1.4</span> Математически модел</h2>
-<ul>
-<li>Избор на променливи</li>
-</ul>
-<p>:::{.callout .info .collapsed=“true”} <span class="math display">
-\begin{align}
-x_1: \text{ брой американски самолети}\\
-x_2: \text{ брой британски самолети}
-\end{align}
-</span> :::</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Избор на променливи
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p><span class="math display">
 \begin{align*}
-\max z(x_1, x_2) = 3 x_1 + 2 x_2 \text{ (общ товар, целева функция, objective)} \\
-x_1 + x_2 \leq 48 \text{ (инфраструктура)} \\
-  16 x_1 + 8 x_2 \leq 512 \text{ (персонал)} \\
-  9 x_1 + 5 x_2 \leq 300 \text{ (бюджет)} \\
-  x_1  \geq 0 \text{ (брой американски самолети)} \\
-  x_2 \geq 0 \text{ (брой британски самолети)}
+&amp; x_1: \text{ брой американски самолети}\\
+&amp; x_2: \text{ брой британски самолети}
 \end{align*}
 </span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Целева функция
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Общ товар, който <span class="math inline">x_1</span> американски самолети и <span class="math inline">x_2</span> британски самолети могат да доставят:</p>
+<p><span class="math display">
+z(x_1, x_2) = 3 x_1 + 2 x_2
+</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ограничения
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">
+\begin{align*}
+&amp; x_1 + x_2 \leq 48 &amp; \text{ (инфраструктура)} \\
+&amp; 16 x_1 + 8 x_2 \leq 512 &amp; \text{ (персонал)} \\
+&amp; 9 x_1 + 5 x_2 \leq 300 &amp; \text{ (бюджет)} \\
+&amp; x_1  \geq 0 &amp; \text{ (брой американски самолети)} \\
+&amp; x_2 \geq 0 &amp; \text{ (брой британски самолети)}
+\end{align*}
+</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Цялата задача
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">
+\begin{align*}
+&amp; \max z(x_1, x_2) = 3 x_1 + 2 x_2 \\
+&amp; \text{при условията:} \\
+&amp; x_1 + x_2 \leq 48 \\
+&amp; 16 x_1 + 8 x_2 \leq 512 \\
+&amp; 9 x_1 + 5 x_2 \leq 300 \\
+&amp; x_1  \geq 0 \\
+&amp; x_2 \geq 0
+\end{align*}
+</span></p>
+</div>
+</div>
+</div>
 <p>Преди да решим задачата, нека да я решим неформално в опростен вариант, като игнорираме второто и третото ограничение:</p>
 <p><span class="math display">
 \begin{align*}
@@ -345,7 +416,7 @@ x_1 + x_2 = 48
 <li>При <span class="math inline">x_2 = 0</span> на колко е равно <span class="math inline">x_1</span>? <span class="math inline">16 x_1 +8 \cdot 0 = 512 \implies x_1 = 512 / 16 = 32</span></li>
 </ul>
 <p>По същия начин можем да намерим и две точки от правата на третото ограничение (бюджет): (0, 300 / 5) и (300 / 9, 0).</p>
-<div id="927b7083" class="cell" data-execution_count="18">
+<div id="927b7083" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
@@ -357,7 +428,7 @@ x_1 + x_2 = 48
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_181684/1610056778.py:10: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+<pre><code>/tmp/ipykernel_263192/1610056778.py:10: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
   fig.show()</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -368,7 +439,7 @@ x_1 + x_2 = 48
 </div>
 </div>
 </div>
-<div id="initial_id" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2024-01-22T21:22:16.553405813Z&quot;,&quot;start_time&quot;:&quot;2024-01-22T21:22:16.236304076Z&quot;}" data-execution_count="1">
+<div id="initial_id" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2024-01-22T21:22:16.553405813Z&quot;,&quot;start_time&quot;:&quot;2024-01-22T21:22:16.236304076Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polytope <span class="im">as</span> pc</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -383,7 +454,7 @@ x_1 + x_2 = 48
 <pre><code>`polytope` failed to import `cvxopt.glpk`.
 will use `scipy.optimize.linprog`</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>array([[32., -0.],
        [20., 24.],
        [15., 33.],
@@ -392,7 +463,7 @@ will use `scipy.optimize.linprog`</code></pre>
 </div>
 </div>
 <p>Допустимото множество се състои от всички точки в полигона (0, 0), (32, 0), (20, 24), (15, 33), (0, 48). Изчислението на пресечните точки (20, 24) и (15, 33).</p>
-<div id="32ea0aef43589b4e" class="cell" data-execution_count="2">
+<div id="32ea0aef43589b4e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.plot(P_extr[:, <span class="dv">0</span>], P_extr[:, <span class="dv">1</span>], <span class="st">'-o'</span>)</span>
@@ -407,7 +478,7 @@ will use `scipy.optimize.linprog`</code></pre>
 </div>
 </div>
 </div>
-<div id="dcf3824008f58b10" class="cell" data-execution_count="3">
+<div id="dcf3824008f58b10" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> z(x1, x2):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">3</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> x2</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -443,7 +514,7 @@ z(0, 48) =  96</code></pre>
 \binom{n}{k} = \frac{n!}{k!(n-k)!}
 </span></p>
 <p>където <span class="math inline">n</span> е броят на променливите, а <span class="math inline">k</span> е броят на ограниченията. Можем да пресметнем горната граница за броя на върховете на допустимото за различни комбинации на <span class="math inline">n</span> и <span class="math inline">k</span>:</p>
-<div id="b219328f77a8df6f" class="cell" data-execution_count="6">
+<div id="b219328f77a8df6f" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.special <span class="im">import</span> comb</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"n = 20, k = 15, Максимален брой върхове = "</span>, comb(<span class="dv">20</span>, <span class="dv">15</span>))</span>
@@ -456,7 +527,7 @@ n = 50, k = 25, Максимален брой върхове =  126410606437752.
 </div>
 </div>
 <p>Изчисляването на целевата функция за всички върхове е непостижимо дори за модерни компютри. Ако приемем, че компютърът може да обработи 1 милиард върха на секунда, за 80 променливи и 40 ограничения ще му трябва много време:</p>
-<div id="2712991ebc5be91a" class="cell" data-execution_count="5">
+<div id="2712991ebc5be91a" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>comb_n <span class="op">=</span> comb(<span class="dv">80</span>, <span class="dv">45</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(comb_n <span class="op">/</span> (<span class="fl">1e9</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">*</span> <span class="dv">24</span> <span class="op">*</span> <span class="dv">365</span>), <span class="dv">1</span>), <span class="st">"години"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -470,7 +541,7 @@ n = 50, k = 25, Максимален брой върхове =  126410606437752.
 </section>
 <section id="решение-на-модела-с-gurobipy" class="level2" data-number="1.8">
 <h2 data-number="1.8" class="anchored" data-anchor-id="решение-на-модела-с-gurobipy"><span class="header-section-number">1.8</span> Решение на модела с gurobipy</h2>
-<div id="f1e1f795ca3d09b1" class="cell" data-execution_count="25">
+<div id="f1e1f795ca3d09b1" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -501,7 +572,11 @@ n = 50, k = 25, Максимален брой върхове =  126410606437752.
 <span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> m.getVars():</span>
 <span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>v<span class="sc">.</span>varName<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>v<span class="sc">.</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Gurobi Optimizer version 11.0.0 build v11.0.0rc2 (linux64 - "Ubuntu 20.04.6 LTS")
+<pre><code>Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 943475
+Academic license 943475 - for non-commercial use only - registered to am___@feb.uni-sofia.bg
+Gurobi Optimizer version 11.0.0 build v11.0.0rc2 (linux64 - "Ubuntu 20.04.6 LTS")
 
 CPU model: 12th Gen Intel(R) Core(TM) i5-1235U, instruction set [SSE2|AVX|AVX2]
 Thread count: 12 physical cores, 12 logical processors, using up to 12 threads
@@ -527,7 +602,7 @@ Root relaxation: objective 1.110000e+02, 3 iterations, 0.00 seconds (0.00 work u
 
 *    0     0               0     111.0000000  111.00000  0.00%     -    0s
 
-Explored 1 nodes (3 simplex iterations) in 0.04 seconds (0.00 work units)
+Explored 1 nodes (3 simplex iterations) in 0.01 seconds (0.00 work units)
 Thread count was 12 (of 12 available processors)
 
 Solution count 2: 111 96 
@@ -537,17 +612,12 @@ Best objective 1.110000000000e+02, best bound 1.110000000000e+02, gap 0.0000%
 American: 15.0
 British: 33.0</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="25">
-<pre><code>American    15.0
-British     33.0
-dtype: float64</code></pre>
 </div>
-</div>
-<div id="92aff19b" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>tmp <span class="op">=</span> {v.varName: [v.x] <span class="cf">for</span> v <span class="kw">in</span> m.getVars()}</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>res_df <span class="op">=</span> pd.DataFrame(tmp)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>res_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
+<div id="92aff19b" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tmp <span class="op">=</span> {v.varName: [v.x] <span class="cf">for</span> v <span class="kw">in</span> m.getVars()}</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>res_df <span class="op">=</span> pd.DataFrame(tmp)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>res_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 <div>
 
