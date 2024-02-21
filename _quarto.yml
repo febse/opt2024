@@ -1,15 +1,15 @@
 project:
   type: book
 
-lang: de
+lang: bg
 book:
-  title: "Einführung in die mathematische Optimierung"
-  author: "Boyko Amarov"
+  title: "Въведение в математическата оптимизация"
+  author: "Бойко Амаров"
   date: "4/02/2024"
   chapters:
     - index.qmd
-    - part: 01-Python/index.qmd
-    - part: 02-Introduction/index.ipynb
+    # - part: 01-Python/index.qmd
+    - 02-Introduction/index.ipynb
       # chapters:
       #   - 01-Python/01-01-Basics.ipynb
       #   - 01-Python/01-02-Basics-Ex.ipynb

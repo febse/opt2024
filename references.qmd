@@ -1,4 +1,4 @@
-# Literaturverzeichnis {.unnumbered}
+# Библиография {.unnumbered}
 
 ::: {#refs}
 :::

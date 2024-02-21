@@ -19,7 +19,7 @@
   "PandocCiter.DefaultBibs": [   
     "references.bib"
 ],
-"cSpell.language": "en,de",
+"cSpell.language": "en,bg",
 "cSpell.words": [
   "Amarov",
   "ANOVA",
@@ -38,6 +38,12 @@
   "Miniconda",
   "Numpy",
   "Regressionsmodell",
-  "toolsai"
+  "toolsai",
+  "Амаров",
+  "биномния",
+  "максимизационната",
+  "неотрицателност",
+  "Неотрицателността",
+  "умлаути"
 ]
 }
