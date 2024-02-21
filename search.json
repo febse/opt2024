@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Einführung in die mathematische Optimierung",
+    "title": "Въведение в математическата оптимизация",
     "section": "",
-    "text": "Setup\nIn den Übungen werden wir die Programmiersprache Python verwenden, um die in der Vorlesung behandelten Themen zu erklären und an realen Daten zu üben. Die Übungen werden in Form von Jupyter Notebooks bereitgestellt, die Sie in Ihrer eigenen Umgebung ausführen können.\nDeswegen ist es notwendig, zuerst eine Arbeitsumgebung einzurichten.",
+    "text": "Setup",
     "crumbs": [
       "Setup"
     ]
@@ -12,19 +12,9 @@
   {
     "objectID": "index.html#git",
     "href": "index.html#git",
-    "title": "Einführung in die mathematische Optimierung",
+    "title": "Въведение в математическата оптимизация",
     "section": "Git",
-    "text": "Git\nDie Übungen werden in einem Git-Repository auf GitHub bereitgestellt. Git ist ein Versionskontrollsystem, das die Änderungen an Dateien verfolgt und es ermöglicht, verschiedene Versionen von Dateien zu speichern. GitHub ist eine Plattform, die auf Git basiert und es ermöglicht, Git-Repositories zu hosten und zu teilen.\nWir werden Git verwenden, um die Übungen herunterzuladen und um Ihre Lösungen hochzuladen.\nInstallieren Sie Git von https://git-scm.com/downloads. Wählen Sie die Version, die zu Ihrem Betriebssystem passt und folgen Sie den Anweisungen. Lassen Sie die Standardeinstellungen unverändert, es sei denn, Sie wissen ganz genau, was Sie tun.",
-    "crumbs": [
-      "Setup"
-    ]
-  },
-  {
-    "objectID": "index.html#github-account",
-    "href": "index.html#github-account",
-    "title": "Einführung in die mathematische Optimierung",
-    "section": "GitHub Account",
-    "text": "GitHub Account\nFür die Übungen brauchen Sie ein GitHub.com Konto:\n\nErstellen Sie ein Konto auf https://github.com/signup.\nBei der Registrierung wählen Sie ein Passwort, das Sie nirgendwo anders verwenden. Am Ende des Semesters können Sie Ihr Passwort ändern.\nEmpfehlung: Aktivieren Sie die Zwei-Faktor-Authentifizierung (2FA) in den Einstellungen Ihres GitHub-Kontos.\nEmpfehlung: Beantragen Sie die Studentenvorteile, um kostenlosen Zugang zu GitHub Copilot zu erhalten, einem KI-gestützten Code-Completion- und Chat-Tool.",
+    "text": "Git\nGit е система за управление на версии, която се използва широко в софтуерната индустрия. Можете да използвате Git, за да свалите материалите за курса от GitHub хранилището\nhttps://github.com/febse/opt2024",
     "crumbs": [
       "Setup"
     ]
@@ -32,19 +22,19 @@
   {
     "objectID": "index.html#visual-studio-code",
     "href": "index.html#visual-studio-code",
-    "title": "Einführung in die mathematische Optimierung",
+    "title": "Въведение в математическата оптимизация",
     "section": "Visual Studio Code",
-    "text": "Visual Studio Code\nVisual Studio Code (VSC) ist ein Open-Source-Code-Editor, den wir für die Arbeit mit Python benutzen werden.\nInstallieren Sie Visual Studio Code von https://code.visualstudio.com/. Wählen Sie die Version, die zu Ihrem Betriebssystem passt und folgen Sie den Anweisungen.",
+    "text": "Visual Studio Code\nЕдна от възможностите за работа с Python е Visual Studio Code (VSC), безплатна интегрирана среда за разработка (IDE) от Microsoft с множество разширения за различни езици и технологии. Можете да инсталирате VSC от https://code.visualstudio.com/. Изберете версията, която отговаря на операционната ви система и следвайте инструкциите.",
     "crumbs": [
       "Setup"
     ]
   },
   {
-    "objectID": "index.html#kursrepository-klonen",
-    "href": "index.html#kursrepository-klonen",
-    "title": "Einführung in die mathematische Optimierung",
-    "section": "Kursrepository klonen",
-    "text": "Kursrepository klonen\nÖffnen Sie VSC und drücken Sie Ctrl+Shift+P. Suchen Sie nach “Git: Clone” und drücken Sie Enter. Geben Sie die URL des Kursrepositories ein:\nhttp://github.com/febse/econ2024-de.git\nWählen Sie einen Ordner auf Ihrem Computer, in dem Sie das Repository speichern möchten. VSC wird das Repository herunterladen und fragen, ob Sie es öffnen möchten. Klicken Sie auf “Open”.\nWarten Sie einen Moment, bis VSC das Repository geöffnet hat. Sie sollten eine Ordnerstruktur sehen, die den Inhalt des Repositories darstellt. VSC wird Sie fragen, ob Sie die empfohlenen Erweiterungen installieren möchten. Klicken Sie auf “Install All”.\nAm Ende sollten Sie die folgenden Erweiterungen installiert haben:\n\nms-python.autopep8\nms-python.python\nms-python.debugpy\nms-vscode-remote.remote-containers\nms-toolsai.jupyter\ngithub.codespaces\ngithub.copilot\n\nDrucken Sie Ctrl+Shift+X. Dieses wird die Erweiterungsansicht öffnen. Überprüfen Sie ob alle Erweiterungen installiert sind. Falls nicht, kopieren Sie die Kennzeichen (z.B. ms-python.autopep8) der fehlenden Erweiterungen von der Liste (oben), finden Sie die Erweiterungen in der Erweiterungsansicht und installieren Sie sie manuell.",
+    "objectID": "index.html#клониране-на-хранилището-на-курса",
+    "href": "index.html#клониране-на-хранилището-на-курса",
+    "title": "Въведение в математическата оптимизация",
+    "section": "Клониране на хранилището на курса",
+    "text": "Клониране на хранилището на курса\nОтворете VSC и натиснете Ctrl+Shift+P. Търсете “Git: Clone” и натиснете Enter. Въведете URL адреса на хранилището на курса:\nhttps://github.com/febse/opt2024.git\nИзберете директория на вашия компютър, където искате да запазите хранилището. VSC ще свали хранилището и ще ви попита дали искате да го отворите. Натиснете “Open”.\nИзчакайте малко, докато VSC отвори хранилището. Трябва да видите структура от файлове и директории, която представлява съдържанието на хранилището. При първото отваряне на хранилището, VSC ще ви попита дали искате да инсталирате препоръчителните разширения. Натиснете “Install All”.\nСлед инсталацията трябва да видите следните разширения:\n\nms-python.autopep8\nms-python.python\nms-python.debugpy\nms-vscode-remote.remote-containers\nms-toolsai.jupyter\ngithub.codespaces\ngithub.copilot\n\nНатиснете Ctrl+Shift+X, което ще отвори списъка с разширения. Проверете дали всички разширения са инсталирани. Ако не са, копирайте идентификаторите (например ms-python.autopep8) на липсващите разширения от списъка (горе), намерете разширенията в изгледа на разширенията и ги инсталирайте ръчно.",
     "crumbs": [
       "Setup"
     ]
@@ -52,121 +42,111 @@
   {
     "objectID": "index.html#python",
     "href": "index.html#python",
-    "title": "Einführung in die mathematische Optimierung",
+    "title": "Въведение в математическата оптимизация",
     "section": "Python",
-    "text": "Python\nPython ist zurzeit eine der meistbenutzten Programmiersprachen in der Welt. Es ist einfach zu lernen und hat eine große Community, die viele Bibliotheken und Frameworks entwickelt hat. In der Welt der Datenwissenschaft werden meistens Python und R benutzt. In den letzten Jahren stieg die Popularität von Python.\n\nCodespaces (empfohlen)\nUm die Konfiguration zu vereinfachen, können Sie Codespaces benutzen. In den ersten Übungen werden wir eine Anleitung zeigen, wie Sie Codespaces benutzen können.\n\n\nMiniconda\nEs gibt viele Möglichkeiten, wie Sie Python local auf Ihrem Rechner installieren können. Hier zeigen wir die Installation mit Miniconda. Conda ist ein Paketmanager, der es ermöglicht, Python-Umgebungen zu verwalten. Eine Python-Umgebung ist eine isolierte Instanz von Python, die es ermöglicht, verschiedene Versionen von Python und verschiedenen Bibliotheken zu verwenden, ohne dass sie sich gegenseitig beeinflussen. Das ist vor allem dann nützlich, wenn Sie an verschiedenen Projekten arbeiten, die unterschiedliche Anforderungen an Python und Bibliotheken haben.\n\nLaden Sie das Miniconda Installationspaket von https://docs.conda.io/en/latest/miniconda.html für Ihr Betriebssystem.\nStarten Sie das Packet und folgen Sie den Anweisungen. Lassen Sie die Standardeinstellungen unverändert, es sei denn, Sie wissen was Sie tun.\nInstallieren Sie Conda in einem Ordner ohne Leerzeichen und nur mit ASCII Zeichen im Pfad (d.h. keine Kyrillischen Zeichen, keine Umlaute, etc.), z.B. C:\\Miniconda3 oder C:\\Users\\boyko\\Miniconda3.\nNachdem Miniconda installiert ist, öffnen Sie VSC. Drücken Sie Ctrl+Shift+P und starten Sie zu schreiben: “Python: Create environment”. Wenn die Option in dem Dropdown-Menü erscheint, wählen Sie sie und drucken Sie Enter.\nWählen Sie “Conda”.\nWählen Sie die Python-3.11 Version.\nDieses wird einen Order namens .conda erstellen.\nFalls Sie diese Schritte in dem Order des Kursrepositories gemacht haben, werden dann automatisch die notwendingen Bibliotheken installiert.",
+    "text": "Python\nPython е един от най-използваните езици за програмиране, особено в областта на анализ на данни, машинното обучение и изкуствен интелект. Python е лесен за учене и има голяма общност, която е разработила много библиотеки и рамки. Има много начини да инсталирате Python на вашия компютър. За целите на този курс, ние ще използваме Python 3.11 и Miniconda.\n\nСвалете инсталационния пакет на Miniconda от https://docs.conda.io/en/latest/miniconda.html за вашата операционна система.\nСтартирайте инсталационния пакет и следвайте инструкциите. Оставете настройките по подразбиране, освен ако не знаете какво точно искате да направите.\nИнсталирайте Miniconda в директория без интервали и само с ASCII символи в пътя (т.е. без кирилица, без умлаути и т.н.), например C:\\Miniconda3 или C:\\Users\\boyko\\Miniconda3.\nСлед като инсталацията приключи, отворете VSC и натиснете Ctrl+Shift+P. Търсете “Python: Create environment” и натиснете Enter.\nИзберете “Conda”\nИзберете версия на Python: Python-3.11\nТова ще създаде директория .conda в директорията на хранилището на курса и ще инсталира Python 3.11 в нея, заедно с библиотеките, дефинирани в environment.yml.",
     "crumbs": [
       "Setup"
-    ]
-  },
-  {
-    "objectID": "index.html#pycharm-optional",
-    "href": "index.html#pycharm-optional",
-    "title": "Einführung in die mathematische Optimierung",
-    "section": "Pycharm (optional)",
-    "text": "Pycharm (optional)\nStatt VSC können Sie auch PyCharm oder DataSpell benutzen. PyCharm ist eine integrierte Entwicklungsumgebung (IDE) für Python, die von JetBrains entwickelt wurde. PyCharm ist eine der beliebtesten Python-IDEs und bietet viele Funktionen, die die Entwicklung von Python-Programmen erleichtern. Falls Sie mit PyCharm oder DataSpell experimentieren möchten, bieten wir für die Übungen kostenfreie Lizenzen an.\n\nRegistrieren Sie sich auf https://account.jetbrains.com/signup mit Ihrer Universitäts-E-Mail-Adresse (muss auf feb.uni-sofia.bg oder feba.uni-sofia.bg enden).\nLaden Sie Pycharm von https://www.jetbrains.com/pycharm/download/ herunter und installieren Sie es.\nBeim Aktivierungsdialog wählen Sie “Licence Server” und geben Sie https://febs.fls.jetbrains.com/ ein.",
-    "crumbs": [
-      "Setup"
-    ]
-  },
-  {
-    "objectID": "01-Python/index.html",
-    "href": "01-Python/index.html",
-    "title": "Einführung in Python",
-    "section": "",
-    "text": "TBA",
-    "crumbs": [
-      "Einführung in Python"
     ]
   },
   {
     "objectID": "02-Introduction/index.html",
     "href": "02-Introduction/index.html",
-    "title": "Въведение",
+    "title": "1  Въведение",
     "section": "",
-    "text": "Игра на бурито\nhttps://www.gurobi.com/burrito-optimization-game/",
+    "text": "1.1 Игра на бурито\nhttps://www.gurobi.com/burrito-optimization-game/",
     "crumbs": [
-      "Въведение"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Въведение</span>"
     ]
   },
   {
     "objectID": "02-Introduction/index.html#берлинският-въздушен-мост",
     "href": "02-Introduction/index.html#берлинският-въздушен-мост",
-    "title": "Въведение",
-    "section": "Берлинският въздушен мост",
-    "text": "Берлинският въздушен мост\nСлед края на Втората световна война Германия е разделена на четири окупационни зони: Американска, Британска, Френска и Съветска. Берлин също така е разделен на четири зони, но достъпът до него по суша и по вода минава изцяло през територията на Съветската окупационна зона.\n\n\n\nBesatzungszonen in Deutschland nach dem Ende des Zweiten Weltkriegs. Quelle: Wikipedia.\n\n\nНа 24-ти юни 1948 Съветският Съюз блокира достъпа до Западен Берлин, с което започва една от най-значимите конфронтации по време на Студената война. Без достъп по суша или вода, западните съюзници започват да снабдяват града по въздух (Берлински въздушен мост).\n\n\n\nSalzversorgung (Havel). Quelle:Wikipedia.\n\n\n\n\n\nLandung einer C-54 (Flughafen Tempelhof). Quelle: Wikipedia.",
+    "title": "1  Въведение",
+    "section": "1.2 Берлинският въздушен мост",
+    "text": "1.2 Берлинският въздушен мост\nСлед края на Втората световна война Германия е разделена на четири окупационни зони: Американска, Британска, Френска и Съветска. Берлин също така е разделен на четири зони, но достъпът до него по суша и по вода минава изцяло през територията на Съветската окупационна зона.\n\n\n\nОкупационни зони в Германия след Втората световна война. Източник: Wikipedia.\n\n\nНа 24-ти юни 1948 Съветският Съюз блокира достъпа до Западен Берлин, с което започва една от най-значимите конфронтации по време на Студената война. Без достъп по суша или вода, западните съюзници започват да снабдяват града по въздух (Берлински въздушен мост).\n\n\n\nРазтоварване на сол (река Хавел). Източник: Wikipedia.\n\n\n\n\n\nПриземяване на C-54 (Летище Темпелхоф). Източник: Wikipedia.",
     "crumbs": [
-      "Въведение"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Въведение</span>"
     ]
   },
   {
     "objectID": "02-Introduction/index.html#описание-на-проблема",
     "href": "02-Introduction/index.html#описание-на-проблема",
-    "title": "Въведение",
-    "section": "Описание на проблема",
-    "text": "Описание на проблема\nЗа по-просто нека да приемем, че доставките до Берлин се извършват с два вида самолети: американски, които могат да поемат до 30 000 кубични фута товар (\\approx 849 m^3), и британски самолети с капацитет до 20 000 кубични фута (\\approx 566 m^3).\nПоради ограничения в инфраструктурата на ден могат да летят най-много 48 самолета (независимо от кой вид).\nЗа всеки полет на американски самолет има нужда от 16 души персонал, двойно повече от броя нужен за британските самолети. Общо на разположение са 512 души на ден.\nРазходите за гориво и поддръжка на самолетите възлизат на 9000 долара за полет на американски самолет и на 5000 долара за полет на британски самолет. Поради бюджетни ограничения общите разходи не могат да надхвърлят 300 000 долара.\nКолко британски и колко американски самолети да използва на ден въздушният мост, така че да достави до Берлин възможно най-голямо количество стоки?",
+    "title": "1  Въведение",
+    "section": "1.3 Описание на проблема",
+    "text": "1.3 Описание на проблема\nЗа по-просто нека да приемем, че доставките до Берлин се извършват с два вида самолети: американски, които могат да поемат до 30 000 кубични фута товар (\\approx 849 m^3), и британски самолети с капацитет до 20 000 кубични фута (\\approx 566 m^3).\nПоради ограничения в инфраструктурата на ден могат да летят най-много 48 самолета (независимо от кой вид).\nЗа всеки полет на американски самолет има нужда от 16 души персонал, двойно повече от броя нужен за британските самолети. Общо на разположение са 512 души на ден.\nРазходите за гориво и поддръжка на самолетите възлизат на 9000 долара за полет на американски самолет и на 5000 долара за полет на британски самолет. Поради бюджетни ограничения общите разходи не могат да надхвърлят 300 000 долара.\nКолко британски и колко американски самолети да използва на ден въздушният мост, така че да достави до Берлин възможно най-голямо количество стоки?",
     "crumbs": [
-      "Въведение"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Въведение</span>"
     ]
   },
   {
     "objectID": "02-Introduction/index.html#математически-модел",
     "href": "02-Introduction/index.html#математически-модел",
-    "title": "Въведение",
-    "section": "Математически модел",
-    "text": "Математически модел\n\n\\begin{align}\nx_1: \\text{ брой амер. самолети}\\\\\nx_2: \\text{ брой брит. самолети}\n\\end{align}\n\n\n\\begin{align*}\n\\max z(x_1, x_2) = 3 x_1 + 2 x_2 \\text{ (общ товар, целева функция, objective)} \\\\\nx_1 + x_2 \\leq 48 \\text{ (инфраструктура)} \\\\\n  16 x_1 + 8 x_2 \\leq 512 \\text{ (персонал)} \\\\\n  9 x_1 + 5 x_2 \\leq 300 \\text{ (бюджет)} \\\\\n  x_1  \\geq 0 \\text{ (брой амер. самолети)} \\\\\n  x_2 \\geq 0 \\text{ (брой брит. самолети)}\n\\end{align*}\n\nПреди да решим задачата, нека да я решим неформално в опростен вариант, като игнорираме второто и третото ограничение:\n\n\\begin{align*}\n\\max 3 x_1 + 2 x_2 \\\\\nx_1 + x_2 \\leq 48 \\\\\nx_1 \\geq 0 \\\\\nx_2 \\geq 0\n\\end{align*}\n\nРешение:\n\n(x^*_1 = 48, x^*_2 = 0)",
+    "title": "1  Въведение",
+    "section": "1.4 Математически модел",
+    "text": "1.4 Математически модел\n\nИзбор на променливи\n\n:::{.callout .info .collapsed=“true”} \n\\begin{align}\nx_1: \\text{ брой американски самолети}\\\\\nx_2: \\text{ брой британски самолети}\n\\end{align}\n :::\n\n\\begin{align*}\n\\max z(x_1, x_2) = 3 x_1 + 2 x_2 \\text{ (общ товар, целева функция, objective)} \\\\\nx_1 + x_2 \\leq 48 \\text{ (инфраструктура)} \\\\\n  16 x_1 + 8 x_2 \\leq 512 \\text{ (персонал)} \\\\\n  9 x_1 + 5 x_2 \\leq 300 \\text{ (бюджет)} \\\\\n  x_1  \\geq 0 \\text{ (брой американски самолети)} \\\\\n  x_2 \\geq 0 \\text{ (брой британски самолети)}\n\\end{align*}\n\nПреди да решим задачата, нека да я решим неформално в опростен вариант, като игнорираме второто и третото ограничение:\n\n\\begin{align*}\n\\max 3 x_1 + 2 x_2 \\\\\nx_1 + x_2 \\leq 48 \\\\\nx_1 \\geq 0 \\\\\nx_2 \\geq 0\n\\end{align*}\n\nРешение:\n\n(x^*_1 = 48, x^*_2 = 0)",
     "crumbs": [
-      "Въведение"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Въведение</span>"
     ]
   },
   {
     "objectID": "02-Introduction/index.html#допустимо-множество",
     "href": "02-Introduction/index.html#допустимо-множество",
-    "title": "Въведение",
-    "section": "Допустимо множество",
-    "text": "Допустимо множество\nЗа да решим задачата (и с трите ограничения) първо ще представим допустимото множество графично, като за целта ще начертаем правите към всяко от петте ограничения (влючително ограниченията за неотрицателност). За да можем да начертаем правите са ни нужни по две точки от всяка права. Най-лесно можем да намерим пресечните им точки с двете оси (x_1 и x_2).\nЗа всички точки на оста x_2 е изпълнено, че x_1 = 0. Когато заместим с x_1 = 0 в уравнението на всяка от правите ще намерим пресечните им точки с оста x_2. За всички точки от оста x_1 важи, че x_2 = 0, така че когато заместим с x_2 = 0 в уравненията на правите ще получим пресечните им точки с оста x_1.\nПрава на първото ограничение (инфраструктура):\n\nx_1 + x_2 = 48\n За да намерим пресечните точки на правата (инфраструктура) с двете оси:\n\nПри x_1 = 0 на колко е равно x_2? 0 + x_2 = 48\nПри x_2 = 0 на колко е равно x_1? x_1 + 0 = 48\n\nЗа да намерим пресечните точки на втората права (персонал) с двете оси:\n\n16 x_1 + 8 x_2 = 512\n\n\nПри x_1 = 0 на колко е равно x_2? 16 \\cdot 0 + 8x_2 = 512 \\implies x_2 = 512 / 8 = 64\nПри x_2 = 0 на колко е равно x_1? 16 x_1 +8 \\cdot 0 = 512 \\implies x_1 = 512 / 16 = 32\n\nПо същия начин можем да намерим и две точки от правата на третото ограничение (бюджет): (0, 300 / 5) и (300 / 9, 0).\n\nimport polytope as pc\nimport numpy as np\n\nA = np.array([[1, 1], [16, 8], [9, 5], [-1, 0], [0, -1]])\nb = np.array([48, 512, 300, 0, 0])\n\nP = pc.Polytope(A, b)\nP_extr = pc.extreme(P)\n\nP_extr\n\nModuleNotFoundError: No module named 'polytope'\n\n\nДопустимото множество се състои от всички точки в полигона (0, 0), (32, 0), (20, 24), (15, 33), (0, 48). Изчислението на пресечните точки (20, 24) и (15, 33).\n\nfrom matplotlib import pyplot as plt\n\nplt.plot(P_extr[:, 0], P_extr[:, 1], '-o')\n\nfor i, p in enumerate(P_extr):\n    plt.text(p[0], p[1], f\"({p[0]:0.1f}, {p[1]:0.1f})\")\n\nDie zulässige Menge besteht aus allen Punkten innerhalb des Polygons (0, 0), (32, 0), (20, 24), (15, 33), (0, 48). Die Berechnung der Schnittpunkte (20, 24) und (15, 33) überlassen wir vorerst dem Computer.\n\ndef z(x1, x2):\n    return 3 * x1 + 2 * x2\n\n# (0, 0)\nprint(\"z(0, 0) = \", z(0, 0))\n\n# (32, 0)\nprint(\"z(32, 0) = \", z(32, 0))\n\n# (20, 24)\nprint(\"z(20, 24) = \", z(20, 24))\n\n# (15, 33)\nprint(\"z(15, 33) = \", z(15, 33))\n\n# (0, 48)\nprint(\"z(0, 48) = \", z(0, 48))\n\nОптималната комбинация от американски и британски самолети е (x^*_1 = 15, x^*_2 = 33). Това е възможно най-големият товар, който могат да пренесат самолетите при дадените ограничения. Този товар е равен на $30000 x^*_{1} + 20000 x^*_{2} = 30000 \\cdot 15 + 20000 \\cdot 33 = 1 110 000 кубични фута, използвайки 15 американски и 33 британски самолета.",
+    "title": "1  Въведение",
+    "section": "1.5 Допустимо множество",
+    "text": "1.5 Допустимо множество\nЗа да решим задачата (и с трите ограничения) първо ще представим допустимото множество графично, като за целта ще начертаем правите към всяко от петте ограничения (включително ограниченията за неотрицателност). За да можем да начертаем правите са ни нужни по две точки от всяка права. Най-лесно можем да намерим пресечните им точки с двете оси (x_1 и x_2).\nЗа всички точки на оста x_2 е изпълнено, че x_1 = 0. Когато заместим с x_1 = 0 в уравнението на всяка от правите ще намерим пресечните им точки с оста x_2. За всички точки от оста x_1 важи, че x_2 = 0, така че когато заместим с x_2 = 0 в уравненията на правите ще получим пресечните им точки с оста x_1.\nПрава на първото ограничение (инфраструктура):\n\nx_1 + x_2 = 48\n За да намерим пресечните точки на правата (инфраструктура) с двете оси:\n\nПри x_1 = 0 на колко е равно x_2? 0 + x_2 = 48\nПри x_2 = 0 на колко е равно x_1? x_1 + 0 = 48\n\nЗа да намерим пресечните точки на втората права (персонал) с двете оси:\n\n16 x_1 + 8 x_2 = 512\n\n\nПри x_1 = 0 на колко е равно x_2? 16 \\cdot 0 + 8x_2 = 512 \\implies x_2 = 512 / 8 = 64\nПри x_2 = 0 на колко е равно x_1? 16 x_1 +8 \\cdot 0 = 512 \\implies x_1 = 512 / 16 = 32\n\nПо същия начин можем да намерим и две точки от правата на третото ограничение (бюджет): (0, 300 / 5) и (300 / 9, 0).\n\nimport polytope as pc\nimport numpy as np\n\nA = np.array([[1, 1], [16, 8], [9, 5], [-1, 0], [0, -1]])\nb = np.array([48, 512, 300, 0, 0])\n\nP = pc.Polytope(A, b)\nP_extr = pc.extreme(P)\n\nP_extr\n\n`polytope` failed to import `cvxopt.glpk`.\nwill use `scipy.optimize.linprog`\n\n\narray([[32., -0.],\n       [20., 24.],\n       [15., 33.],\n       [-0., 48.],\n       [-0., -0.]])\n\n\nДопустимото множество се състои от всички точки в полигона (0, 0), (32, 0), (20, 24), (15, 33), (0, 48). Изчислението на пресечните точки (20, 24) и (15, 33).\n\nfrom matplotlib import pyplot as plt\n\nplt.plot(P_extr[:, 0], P_extr[:, 1], '-o')\n\nfor i, p in enumerate(P_extr):\n    plt.text(p[0], p[1], f\"({p[0]:0.1f}, {p[1]:0.1f})\")\n\n\n\n\n\n\n\n\n\ndef z(x1, x2):\n    return 3 * x1 + 2 * x2\n\n# (0, 0)\nprint(\"z(0, 0) = \", z(0, 0))\n\n# (32, 0)\nprint(\"z(32, 0) = \", z(32, 0))\n\n# (20, 24)\nprint(\"z(20, 24) = \", z(20, 24))\n\n# (15, 33)\nprint(\"z(15, 33) = \", z(15, 33))\n\n# (0, 48)\nprint(\"z(0, 48) = \", z(0, 48))\n\nz(0, 0) =  0\nz(32, 0) =  96\nz(20, 24) =  108\nz(15, 33) =  111\nz(0, 48) =  96\n\n\nОптималната комбинация от американски и британски самолети е (x^*_1 = 15, x^*_2 = 33). Това е възможно най-големият товар, който могат да пренесат самолетите при дадените ограничения. Този товар е равен на $30000 x^*_{1} + 20000 x^*_{2} = 30000 \\cdot 15 + 20000 \\cdot 33 = 1 110 000 кубични фута, използвайки 15 американски и 33 британски самолета.",
     "crumbs": [
-      "Въведение"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Въведение</span>"
     ]
   },
   {
     "objectID": "02-Introduction/index.html#проблем-с-настоящия-подход",
     "href": "02-Introduction/index.html#проблем-с-настоящия-подход",
-    "title": "Въведение",
-    "section": "Проблем с настоящия подход",
-    "text": "Проблем с настоящия подход\nВ момента решихме задачата, като изчислихме върховете на допустимото множество и пресметнахме целевате функция във всеки от тях. Решението на максимизационната задача беше върхът с най-висока стойност на целевата функция.\nЗа съжаление този подход е приложим само за много малки задачи и няма практическа стойност. Причината за това е, че броят на върховете на допустимото множество нараства много бързо с увеличаване на броя на ограниченията и променливите. Горна граница за броя на върховете на допустимото множество е дадена от биномния коефициент:\n\n\\binom{n}{k} = \\frac{n!}{k!(n-k)!}\n\nкъдето n е броят на променливите, а k е броят на ограниченията. Можем да пресметнем горната граница за броя на върховете на допустимото за различни комбинации на n и k:\n\nfrom scipy.special import comb\n\nprint(\"n = 2, k = 2, Maximale Anzahl der Eckpunkte = \", comb(2, 2))\nprint(\"n = 2, k = 3, Maximale Anzahl der Eckpunkte = \", comb(3, 2))\nprint(\"n = 20, k = 15, Maximale Anzahl der Eckpunkte = \", comb(20, 15))\nprint(\"n = 40, k = 25, Maximale Anzahl der Eckpunkte = \", comb(40, 25))\nprint(\"n = 50, k = 25, Maximale Anzahl der Eckpunkte = \", comb(50, 25))\n\nModuleNotFoundError: No module named 'scipy'\n\n\nИзчисляването на целевата функция за всички върхове е непостижимо дори за модерни компютри. Ако примем, че компютърът може да обработи 1 милиард върха на секунда, за 80 променливи и 40 ограничения ще му трябва много време:\n\ncomb_n = comb(80, 45)\nprint(round(comb_n / (1e9 * 60 * 60 * 24 * 365), 1), \"Jahre\")",
+    "title": "1  Въведение",
+    "section": "1.6 Проблем с настоящия подход",
+    "text": "1.6 Проблем с настоящия подход\nВ момента решихме задачата, като изчислихме върховете на допустимото множество и пресметнахме целевата функция във всеки от тях. Решението на максимизационната задача беше върхът с най-висока стойност на целевата функция.\nЗа съжаление този подход е приложим само за много малки задачи и няма практическа стойност. Причината за това е, че броят на върховете на допустимото множество нараства много бързо с увеличаване на броя на ограниченията и променливите. Горна граница за броя на върховете на допустимото множество е дадена от биномния коефициент:\n\n\\binom{n}{k} = \\frac{n!}{k!(n-k)!}\n\nкъдето n е броят на променливите, а k е броят на ограниченията. Можем да пресметнем горната граница за броя на върховете на допустимото за различни комбинации на n и k:\n\nfrom scipy.special import comb\n\nprint(\"n = 2, k = 2, Максимален брой върхове = \", comb(2, 2))\nprint(\"n = 2, k = 3, Максимален брой върхове = \", comb(3, 2))\nprint(\"n = 20, k = 15, Максимален брой върхове = \", comb(20, 15))\nprint(\"n = 40, k = 25, Максимален брой върхове = \", comb(40, 25))\nprint(\"n = 50, k = 25, Максимален брой върхове = \", comb(50, 25))\n\nn = 2, k = 2, Максимален брой върхове =  1.0\nn = 2, k = 3, Максимален брой върхове =  3.0\nn = 20, k = 15, Максимален брой върхове =  15504.0\nn = 40, k = 25, Максимален брой върхове =  40225345056.0\nn = 50, k = 25, Максимален брой върхове =  126410606437752.05\n\n\nИзчисляването на целевата функция за всички върхове е непостижимо дори за модерни компютри. Ако приемем, че компютърът може да обработи 1 милиард върха на секунда, за 80 променливи и 40 ограничения ще му трябва много време:\n\ncomb_n = comb(80, 45)\nprint(round(comb_n / (1e9 * 60 * 60 * 24 * 365), 1), \"години\")\n\n1836016.6 години",
     "crumbs": [
-      "Въведение"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Въведение</span>"
+    ]
+  },
+  {
+    "objectID": "02-Introduction/index.html#решение-на-модела-в-excel",
+    "href": "02-Introduction/index.html#решение-на-модела-в-excel",
+    "title": "1  Въведение",
+    "section": "1.7 Решение на модела в Excel",
+    "text": "1.7 Решение на модела в Excel\nРешение на модела в Excel",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Въведение</span>"
     ]
   },
   {
     "objectID": "02-Introduction/index.html#решение-на-модела-с-gurobipy",
     "href": "02-Introduction/index.html#решение-на-модела-с-gurobipy",
-    "title": "Въведение",
-    "section": "Решение на модела с gurobipy",
-    "text": "Решение на модела с gurobipy\n\nimport gurobipy as gp\nfrom gurobipy import GRB\n\n# Съставяне на нов модел\n\nm = gp.Model(\"Berlin Airlift\")\n\nx1 = m.addVar(vtype=GRB.INTEGER, lb = 0, name=\"American\")\nx2 = m.addVar(vtype=GRB.INTEGER, lb = 0, name=\"British\")\n\n# Целева функция\n\nm.setObjective(3 * x1 + 2 * x2, GRB.MAXIMIZE)\n\n# Die Einschränkungen hinzufügen\n\nm.addConstr(x1 + x2 &lt;= 48, \"Infrastructure\")\nm.addConstr(16 * x1 + 8 * x2 &lt;= 512, \"Staff\")\nm.addConstr(9 * x1 + 5 * x2 &lt;= 300, \"Budget\")\n\n# Неотрицателността на променливите е автоматично дефинирана в m.addVar\n\n# Решаване на модела\nm.optimize()\n\n# Отпечатване на резултата\nfor v in m.getVars():\n    print(f\"{v.varName}: {v.x}\")",
+    "title": "1  Въведение",
+    "section": "1.8 Решение на модела с gurobipy",
+    "text": "1.8 Решение на модела с gurobipy\n\nimport gurobipy as gp\nfrom gurobipy import GRB\n\n# Съставяне на нов модел\n\nm = gp.Model(\"Berlin Airlift\")\n\nx1 = m.addVar(vtype=GRB.INTEGER, lb = 0, name=\"American\")\nx2 = m.addVar(vtype=GRB.INTEGER, lb = 0, name=\"British\")\n\n# Целева функция\n\nm.setObjective(3 * x1 + 2 * x2, GRB.MAXIMIZE)\n\n# Добавяне на ограниченията\n\nm.addConstr(x1 + x2 &lt;= 48, \"Infrastructure\")\nm.addConstr(16 * x1 + 8 * x2 &lt;= 512, \"Staff\")\nm.addConstr(9 * x1 + 5 * x2 &lt;= 300, \"Budget\")\n\n# Неотрицателността на променливите е автоматично дефинирана в m.addVar\n\n# Решаване на модела\nm.optimize()\n\n# Отпечатване на резултата\nfor v in m.getVars():\n    print(f\"{v.varName}: {v.x}\")",
     "crumbs": [
-      "Въведение"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Въведение</span>"
     ]
   },
   {
     "objectID": "Literature.html",
     "href": "Literature.html",
-    "title": "Literatur",
+    "title": "Литература",
     "section": "",
-    "text": "Dietz und Dietz (2019) (Deutsch): Kapitel 23 und 24\nSchwenkert und Stry (2015) (Deutsch): Teil 1\nWilliams (2013) (English)\nTaha (2017) (English)\n\n\n\n\n\nDietz, Hans M., und Hans M. Dietz. 2019. Lineare Algebra und Optimierung. 3. Auflage. Mathematik für Wirtschaftswissenschaftler / Hans M. Dietz, Band 2. Berlin [Heidelberg]: Springer Spektrum. https://doi.org/10.1007/978-3-662-58702-7.\n\n\nSchwenkert, Rainer, und Yvonne Stry. 2015. Operations Research kompakt: Eine an Beispielen orientierte Einführung. 1. Aufl. 2015. Operations Research kompakt. Berlin: Gabler.\n\n\nTaha, Hamdy A. 2017. Operations Research. 10th ed. Harlow, United Kingdom: Pearson Education Limited.\n\n\nWilliams, Hilary P. 2013. Model Building in Mathematical Programming. Fifth Edition. Chichester: John Wiley & Sons Ltd.",
+    "text": "Taha (2017)\nWilliams (2013)\n\n\n\n\n\nTaha, Hamdy A. 2017. Operations Research. 10th ed. Harlow, United Kingdom: Pearson Education Limited.\n\n\nWilliams, Hilary P. 2013. Model Building in Mathematical Programming. Fifth Edition. Chichester: John Wiley & Sons Ltd.",
     "crumbs": [
-      "Literatur"
+      "Литература"
     ]
   },
   {
     "objectID": "references.html",
     "href": "references.html",
-    "title": "Literaturverzeichnis",
+    "title": "Библиография",
     "section": "",
-    "text": "Dietz, Hans M., and Hans M. Dietz. 2019. Lineare Algebra und\nOptimierung. 3. Auflage. Mathematik für\nWirtschaftswissenschaftler / Hans M. Dietz, Band 2. Berlin\n[Heidelberg]: Springer Spektrum. https://doi.org/10.1007/978-3-662-58702-7.\n\n\nSchwenkert, Rainer, and Yvonne Stry. 2015. Operations Research\nkompakt: Eine an Beispielen orientierte Einführung. 1. Aufl.\n2015. Operations Research kompakt. Berlin:\nGabler.\n\n\nTaha, Hamdy A. 2017. Operations Research. 10th ed.\nHarlow, United Kingdom: Pearson Education\nLimited.\n\n\nWilliams, Hilary P. 2013. Model Building in Mathematical\nProgramming. Fifth Edition. Chichester: John\nWiley & Sons Ltd.",
+    "text": "Taha, Hamdy A. 2017. Operations Research. 10th ed.\nHarlow, United Kingdom: Pearson Education\nLimited.\n\n\nWilliams, Hilary P. 2013. Model Building in Mathematical\nProgramming. Fifth Edition. Chichester: John\nWiley & Sons Ltd.",
     "crumbs": [
-      "Literaturverzeichnis"
+      "Библиография"
     ]
   }
 ]

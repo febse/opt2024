@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="bg" xml:lang="bg"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.550">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Einführung in die mathematische Optimierung - Въведение</title>
+<title>Въведение в математическата оптимизация - 1&nbsp; Въведение</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../Literature.html" rel="next">
-<link href="../01-Python/index.html" rel="prev">
+<link href="../index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -89,17 +89,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Keine Treffer",
-    "search-matching-documents-text": "Treffer",
-    "search-copy-link-title": "Link in die Suche kopieren",
-    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
-    "search-more-match-text": "weitere Treffer in diesem Dokument",
-    "search-more-matches-text": "weitere Treffer in diesem Dokument",
-    "search-clear-button-title": "Zurücksetzen",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Abbrechen",
-    "search-submit-button-title": "Abschicken",
-    "search-label": "Suchen"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -155,11 +155,11 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../02-Introduction/index.html">Въведение</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../02-Introduction/index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Въведение</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -173,12 +173,12 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Einführung in die mathematische Optimierung</a> 
+      <a href="../">Въведение в математическата оптимизация</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Suchen"></div>
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -189,24 +189,22 @@ window.Quarto = {
  <span class="menu-text">Setup</span></a>
   </div>
 </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Einführung in Python</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Въведение</span></span>
-  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-Introduction/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Въведение</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../Literature.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Literatur</span></a>
+ <span class="menu-text">Литература</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Literaturverzeichnis</span></a>
+ <span class="menu-text">Библиография</span></a>
   </div>
 </li>
     </ul>
@@ -216,16 +214,17 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#игра-на-бурито" id="toc-игра-на-бурито" class="nav-link active" data-scroll-target="#игра-на-бурито">Игра на бурито</a></li>
-  <li><a href="#берлинският-въздушен-мост" id="toc-берлинският-въздушен-мост" class="nav-link" data-scroll-target="#берлинският-въздушен-мост">Берлинският въздушен мост</a></li>
-  <li><a href="#описание-на-проблема" id="toc-описание-на-проблема" class="nav-link" data-scroll-target="#описание-на-проблема">Описание на проблема</a></li>
-  <li><a href="#математически-модел" id="toc-математически-модел" class="nav-link" data-scroll-target="#математически-модел">Математически модел</a></li>
-  <li><a href="#допустимо-множество" id="toc-допустимо-множество" class="nav-link" data-scroll-target="#допустимо-множество">Допустимо множество</a></li>
-  <li><a href="#проблем-с-настоящия-подход" id="toc-проблем-с-настоящия-подход" class="nav-link" data-scroll-target="#проблем-с-настоящия-подход">Проблем с настоящия подход</a></li>
-  <li><a href="#решение-на-модела-с-gurobipy" id="toc-решение-на-модела-с-gurobipy" class="nav-link" data-scroll-target="#решение-на-модела-с-gurobipy">Решение на модела с gurobipy</a></li>
+  <li><a href="#игра-на-бурито" id="toc-игра-на-бурито" class="nav-link active" data-scroll-target="#игра-на-бурито"><span class="header-section-number">1.1</span> Игра на бурито</a></li>
+  <li><a href="#берлинският-въздушен-мост" id="toc-берлинският-въздушен-мост" class="nav-link" data-scroll-target="#берлинският-въздушен-мост"><span class="header-section-number">1.2</span> Берлинският въздушен мост</a></li>
+  <li><a href="#описание-на-проблема" id="toc-описание-на-проблема" class="nav-link" data-scroll-target="#описание-на-проблема"><span class="header-section-number">1.3</span> Описание на проблема</a></li>
+  <li><a href="#математически-модел" id="toc-математически-модел" class="nav-link" data-scroll-target="#математически-модел"><span class="header-section-number">1.4</span> Математически модел</a></li>
+  <li><a href="#допустимо-множество" id="toc-допустимо-множество" class="nav-link" data-scroll-target="#допустимо-множество"><span class="header-section-number">1.5</span> Допустимо множество</a></li>
+  <li><a href="#проблем-с-настоящия-подход" id="toc-проблем-с-настоящия-подход" class="nav-link" data-scroll-target="#проблем-с-настоящия-подход"><span class="header-section-number">1.6</span> Проблем с настоящия подход</a></li>
+  <li><a href="#решение-на-модела-в-excel" id="toc-решение-на-модела-в-excel" class="nav-link" data-scroll-target="#решение-на-модела-в-excel"><span class="header-section-number">1.7</span> Решение на модела в Excel</a></li>
+  <li><a href="#решение-на-модела-с-gurobipy" id="toc-решение-на-модела-с-gurobipy" class="nav-link" data-scroll-target="#решение-на-модела-с-gurobipy"><span class="header-section-number">1.8</span> Решение на модела с gurobipy</a></li>
   </ul>
 </nav>
     </div>
@@ -234,7 +233,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Въведение</h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Въведение</span></h1>
 </div>
 
 
@@ -251,57 +250,60 @@ window.Quarto = {
 </header>
 
 
-<section id="игра-на-бурито" class="level2">
-<h2 class="anchored" data-anchor-id="игра-на-бурито">Игра на бурито</h2>
+<section id="игра-на-бурито" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="игра-на-бурито"><span class="header-section-number">1.1</span> Игра на бурито</h2>
 <p><a href="https://www.gurobi.com/burrito-optimization-game/">https://www.gurobi.com/burrito-optimization-game/</a></p>
 </section>
-<section id="берлинският-въздушен-мост" class="level2">
-<h2 class="anchored" data-anchor-id="берлинският-въздушен-мост">Берлинският въздушен мост</h2>
+<section id="берлинският-въздушен-мост" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="берлинският-въздушен-мост"><span class="header-section-number">1.2</span> Берлинският въздушен мост</h2>
 <p>След края на Втората световна война Германия е разделена на четири окупационни зони: Американска, Британска, Френска и Съветска. Берлин също така е разделен на четири зони, но достъпът до него по суша и по вода минава изцяло през територията на Съветската окупационна зона.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Deutschland_Besatzungszonen_8_Jun_1947_-_22_Apr_1949.svg/800px-Deutschland_Besatzungszonen_8_Jun_1947_-_22_Apr_1949.svg.png" class="img-fluid figure-img"></p>
-<figcaption>Besatzungszonen in Deutschland nach dem Ende des Zweiten Weltkriegs. Quelle: Wikipedia.</figcaption>
+<figcaption>Окупационни зони в Германия след Втората световна война. Източник: Wikipedia.</figcaption>
 </figure>
 </div>
 <p>На 24-ти юни 1948 Съветският Съюз <a href="https://en.wikipedia.org/wiki/Berlin_Blockade">блокира</a> достъпа до Западен Берлин, с което започва една от най-значимите конфронтации по време на Студената война. Без достъп по суша или вода, западните съюзници започват да снабдяват града по въздух (Берлински въздушен мост).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Sunderland_201_Sqn_on_Havel_during_Berlin_Airlift_1948.jpg" class="img-fluid figure-img"></p>
-<figcaption>Salzversorgung (Havel). Quelle:Wikipedia.</figcaption>
+<figcaption>Разтоварване на сол (река Хавел). Източник: Wikipedia.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/C-54landingatt%20emplehof.jpg/630px-C-54landingattemplehof.jpg" class="img-fluid figure-img"></p>
-<figcaption>Landung einer C-54 (Flughafen Tempelhof). Quelle: Wikipedia.</figcaption>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/C-54landingattemplehof.jpg" class="img-fluid figure-img"></p>
+<figcaption>Приземяване на C-54 (Летище Темпелхоф). Източник: Wikipedia.</figcaption>
 </figure>
 </div>
 </section>
-<section id="описание-на-проблема" class="level2">
-<h2 class="anchored" data-anchor-id="описание-на-проблема">Описание на проблема</h2>
+<section id="описание-на-проблема" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="описание-на-проблема"><span class="header-section-number">1.3</span> Описание на проблема</h2>
 <p>За по-просто нека да приемем, че доставките до Берлин се извършват с два вида самолети: американски, които могат да поемат до 30 000 кубични фута товар (<span class="math inline">\approx 849 m^3</span>), и британски самолети с капацитет до 20 000 кубични фута (<span class="math inline">\approx 566 m^3</span>).</p>
 <p>Поради ограничения в инфраструктурата на ден могат да летят най-много 48 самолета (независимо от кой вид).</p>
 <p>За всеки полет на американски самолет има нужда от 16 души персонал, двойно повече от броя нужен за британските самолети. Общо на разположение са 512 души на ден.</p>
 <p>Разходите за гориво и поддръжка на самолетите възлизат на 9000 долара за полет на американски самолет и на 5000 долара за полет на британски самолет. Поради бюджетни ограничения общите разходи не могат да надхвърлят 300 000 долара.</p>
 <p>Колко британски и колко американски самолети да използва на ден въздушният мост, така че да достави до Берлин възможно най-голямо количество стоки?</p>
 </section>
-<section id="математически-модел" class="level2">
-<h2 class="anchored" data-anchor-id="математически-модел">Математически модел</h2>
-<p><span class="math display">
+<section id="математически-модел" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="математически-модел"><span class="header-section-number">1.4</span> Математически модел</h2>
+<ul>
+<li>Избор на променливи</li>
+</ul>
+<p>:::{.callout .info .collapsed=“true”} <span class="math display">
 \begin{align}
-x_1: \text{ брой амер. самолети}\\
-x_2: \text{ брой брит. самолети}
+x_1: \text{ брой американски самолети}\\
+x_2: \text{ брой британски самолети}
 \end{align}
-</span></p>
+</span> :::</p>
 <p><span class="math display">
 \begin{align*}
 \max z(x_1, x_2) = 3 x_1 + 2 x_2 \text{ (общ товар, целева функция, objective)} \\
 x_1 + x_2 \leq 48 \text{ (инфраструктура)} \\
   16 x_1 + 8 x_2 \leq 512 \text{ (персонал)} \\
   9 x_1 + 5 x_2 \leq 300 \text{ (бюджет)} \\
-  x_1  \geq 0 \text{ (брой амер. самолети)} \\
-  x_2 \geq 0 \text{ (брой брит. самолети)}
+  x_1  \geq 0 \text{ (брой американски самолети)} \\
+  x_2 \geq 0 \text{ (брой британски самолети)}
 \end{align*}
 </span></p>
 <p>Преди да решим задачата, нека да я решим неформално в опростен вариант, като игнорираме второто и третото ограничение:</p>
@@ -318,9 +320,9 @@ x_2 \geq 0
 (x^*_1 = 48, x^*_2 = 0)
 </span></p>
 </section>
-<section id="допустимо-множество" class="level2">
-<h2 class="anchored" data-anchor-id="допустимо-множество">Допустимо множество</h2>
-<p>За да решим задачата (и с трите ограничения) първо ще представим допустимото множество графично, като за целта ще начертаем правите към всяко от петте ограничения (влючително ограниченията за неотрицателност). За да можем да начертаем правите са ни нужни по две точки от всяка права. Най-лесно можем да намерим пресечните им точки с двете оси (<span class="math inline">x_1</span> и <span class="math inline">x_2</span>).</p>
+<section id="допустимо-множество" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="допустимо-множество"><span class="header-section-number">1.5</span> Допустимо множество</h2>
+<p>За да решим задачата (и с трите ограничения) първо ще представим допустимото множество графично, като за целта ще начертаем правите към всяко от петте ограничения (включително ограниченията за неотрицателност). За да можем да начертаем правите са ни нужни по две точки от всяка права. Най-лесно можем да намерим пресечните им точки с двете оси (<span class="math inline">x_1</span> и <span class="math inline">x_2</span>).</p>
 <p>За всички точки на оста <span class="math inline">x_2</span> е изпълнено, че <span class="math inline">x_1 = 0</span>. Когато заместим с <span class="math inline">x_1 = 0</span> в уравнението на всяка от правите ще намерим пресечните им точки с оста <span class="math inline">x_2</span>. За всички точки от оста <span class="math inline">x_1</span> важи, че <span class="math inline">x_2 = 0</span>, така че когато заместим с <span class="math inline">x_2 = 0</span> в уравненията на правите ще получим пресечните им точки с оста <span class="math inline">x_1</span>.</p>
 <p>Права на първото ограничение (инфраструктура):</p>
 <p><span class="math display">
@@ -349,99 +351,131 @@ x_1 + x_2 = 48
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> pc.Polytope(A, b)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>P_extr <span class="op">=</span> pc.extreme(P)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>P_extr</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>ModuleNotFoundError: No module named 'polytope'</code></pre>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>P_extr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`polytope` failed to import `cvxopt.glpk`.
+will use `scipy.optimize.linprog`</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>array([[32., -0.],
+       [20., 24.],
+       [15., 33.],
+       [-0., 48.],
+       [-0., -0.]])</code></pre>
 </div>
 </div>
 <p>Допустимото множество се състои от всички точки в полигона (0, 0), (32, 0), (20, 24), (15, 33), (0, 48). Изчислението на пресечните точки (20, 24) и (15, 33).</p>
-<div id="32ea0aef43589b4e" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.plot(P_extr[:, <span class="dv">0</span>], P_extr[:, <span class="dv">1</span>], <span class="st">'-o'</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, p <span class="kw">in</span> <span class="bu">enumerate</span>(P_extr):</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    plt.text(p[<span class="dv">0</span>], p[<span class="dv">1</span>], <span class="ss">f"(</span><span class="sc">{</span>p[<span class="dv">0</span>]<span class="sc">:0.1f}</span><span class="ss">, </span><span class="sc">{</span>p[<span class="dv">1</span>]<span class="sc">:0.1f}</span><span class="ss">)"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="32ea0aef43589b4e" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plt.plot(P_extr[:, <span class="dv">0</span>], P_extr[:, <span class="dv">1</span>], <span class="st">'-o'</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, p <span class="kw">in</span> <span class="bu">enumerate</span>(P_extr):</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    plt.text(p[<span class="dv">0</span>], p[<span class="dv">1</span>], <span class="ss">f"(</span><span class="sc">{</span>p[<span class="dv">0</span>]<span class="sc">:0.1f}</span><span class="ss">, </span><span class="sc">{</span>p[<span class="dv">1</span>]<span class="sc">:0.1f}</span><span class="ss">)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
-<p>Die zulässige Menge besteht aus allen Punkten innerhalb des Polygons (0, 0), (32, 0), (20, 24), (15, 33), (0, 48). Die Berechnung der Schnittpunkte (20, 24) und (15, 33) überlassen wir vorerst dem Computer.</p>
-<div id="dcf3824008f58b10" class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> z(x1, x2):</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">3</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> x2</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># (0, 0)</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"z(0, 0) = "</span>, z(<span class="dv">0</span>, <span class="dv">0</span>))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># (32, 0)</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"z(32, 0) = "</span>, z(<span class="dv">32</span>, <span class="dv">0</span>))</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># (20, 24)</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"z(20, 24) = "</span>, z(<span class="dv">20</span>, <span class="dv">24</span>))</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># (15, 33)</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"z(15, 33) = "</span>, z(<span class="dv">15</span>, <span class="dv">33</span>))</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># (0, 48)</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"z(0, 48) = "</span>, z(<span class="dv">0</span>, <span class="dv">48</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="dcf3824008f58b10" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> z(x1, x2):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">3</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> x2</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># (0, 0)</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"z(0, 0) = "</span>, z(<span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># (32, 0)</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"z(32, 0) = "</span>, z(<span class="dv">32</span>, <span class="dv">0</span>))</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># (20, 24)</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"z(20, 24) = "</span>, z(<span class="dv">20</span>, <span class="dv">24</span>))</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># (15, 33)</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"z(15, 33) = "</span>, z(<span class="dv">15</span>, <span class="dv">33</span>))</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># (0, 48)</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"z(0, 48) = "</span>, z(<span class="dv">0</span>, <span class="dv">48</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>z(0, 0) =  0
+z(32, 0) =  96
+z(20, 24) =  108
+z(15, 33) =  111
+z(0, 48) =  96</code></pre>
+</div>
 </div>
 <p>Оптималната комбинация от американски и британски самолети е <span class="math inline">(x^*_1 = 15, x^*_2 = 33)</span>. Това е възможно най-големият товар, който могат да пренесат самолетите при дадените ограничения. Този товар е равен на $30000 <span class="math inline">x^*_{1} + 20000 x^*_{2} = 30000 \cdot 15 + 20000 \cdot 33 = 1 110 000</span> кубични фута, използвайки 15 американски и 33 британски самолета.</p>
 </section>
-<section id="проблем-с-настоящия-подход" class="level2">
-<h2 class="anchored" data-anchor-id="проблем-с-настоящия-подход">Проблем с настоящия подход</h2>
-<p>В момента решихме задачата, като изчислихме върховете на допустимото множество и пресметнахме целевате функция във всеки от тях. Решението на максимизационната задача беше върхът с най-висока стойност на целевата функция.</p>
+<section id="проблем-с-настоящия-подход" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="проблем-с-настоящия-подход"><span class="header-section-number">1.6</span> Проблем с настоящия подход</h2>
+<p>В момента решихме задачата, като изчислихме върховете на допустимото множество и пресметнахме целевата функция във всеки от тях. Решението на максимизационната задача беше върхът с най-висока стойност на целевата функция.</p>
 <p>За съжаление този подход е приложим само за много малки задачи и няма практическа стойност. Причината за това е, че броят на върховете на допустимото множество нараства много бързо с увеличаване на броя на ограниченията и променливите. Горна граница за броя на върховете на допустимото множество е дадена от биномния коефициент:</p>
 <p><span class="math display">
 \binom{n}{k} = \frac{n!}{k!(n-k)!}
 </span></p>
 <p>където <span class="math inline">n</span> е броят на променливите, а <span class="math inline">k</span> е броят на ограниченията. Можем да пресметнем горната граница за броя на върховете на допустимото за различни комбинации на <span class="math inline">n</span> и <span class="math inline">k</span>:</p>
-<div id="b219328f77a8df6f" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.special <span class="im">import</span> comb</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"n = 2, k = 2, Maximale Anzahl der Eckpunkte = "</span>, comb(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"n = 2, k = 3, Maximale Anzahl der Eckpunkte = "</span>, comb(<span class="dv">3</span>, <span class="dv">2</span>))</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"n = 20, k = 15, Maximale Anzahl der Eckpunkte = "</span>, comb(<span class="dv">20</span>, <span class="dv">15</span>))</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"n = 40, k = 25, Maximale Anzahl der Eckpunkte = "</span>, comb(<span class="dv">40</span>, <span class="dv">25</span>))</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"n = 50, k = 25, Maximale Anzahl der Eckpunkte = "</span>, comb(<span class="dv">50</span>, <span class="dv">25</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>ModuleNotFoundError: No module named 'scipy'</code></pre>
+<div id="b219328f77a8df6f" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.special <span class="im">import</span> comb</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"n = 2, k = 2, Максимален брой върхове = "</span>, comb(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"n = 2, k = 3, Максимален брой върхове = "</span>, comb(<span class="dv">3</span>, <span class="dv">2</span>))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"n = 20, k = 15, Максимален брой върхове = "</span>, comb(<span class="dv">20</span>, <span class="dv">15</span>))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"n = 40, k = 25, Максимален брой върхове = "</span>, comb(<span class="dv">40</span>, <span class="dv">25</span>))</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"n = 50, k = 25, Максимален брой върхове = "</span>, comb(<span class="dv">50</span>, <span class="dv">25</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>n = 2, k = 2, Максимален брой върхове =  1.0
+n = 2, k = 3, Максимален брой върхове =  3.0
+n = 20, k = 15, Максимален брой върхове =  15504.0
+n = 40, k = 25, Максимален брой върхове =  40225345056.0
+n = 50, k = 25, Максимален брой върхове =  126410606437752.05</code></pre>
 </div>
 </div>
-<p>Изчисляването на целевата функция за всички върхове е непостижимо дори за модерни компютри. Ако примем, че компютърът може да обработи 1 милиард върха на секунда, за 80 променливи и 40 ограничения ще му трябва много време:</p>
-<div id="2712991ebc5be91a" class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>comb_n <span class="op">=</span> comb(<span class="dv">80</span>, <span class="dv">45</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(comb_n <span class="op">/</span> (<span class="fl">1e9</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">*</span> <span class="dv">24</span> <span class="op">*</span> <span class="dv">365</span>), <span class="dv">1</span>), <span class="st">"Jahre"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Изчисляването на целевата функция за всички върхове е непостижимо дори за модерни компютри. Ако приемем, че компютърът може да обработи 1 милиард върха на секунда, за 80 променливи и 40 ограничения ще му трябва много време:</p>
+<div id="2712991ebc5be91a" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>comb_n <span class="op">=</span> comb(<span class="dv">80</span>, <span class="dv">45</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(comb_n <span class="op">/</span> (<span class="fl">1e9</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">*</span> <span class="dv">24</span> <span class="op">*</span> <span class="dv">365</span>), <span class="dv">1</span>), <span class="st">"години"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1836016.6 години</code></pre>
+</div>
 </div>
 </section>
-<section id="решение-на-модела-с-gurobipy" class="level2">
-<h2 class="anchored" data-anchor-id="решение-на-модела-с-gurobipy">Решение на модела с gurobipy</h2>
+<section id="решение-на-модела-в-excel" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="решение-на-модела-в-excel"><span class="header-section-number">1.7</span> Решение на модела в Excel</h2>
+<p><a href="https://github.com/febse/data/raw/main/opt/Berlin-Air-Example.xlsx">Решение на модела в Excel</a></p>
+</section>
+<section id="решение-на-модела-с-gurobipy" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="решение-на-модела-с-gurobipy"><span class="header-section-number">1.8</span> Решение на модела с gurobipy</h2>
 <div id="f1e1f795ca3d09b1" class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Съставяне на нов модел</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Berlin Airlift"</span>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.INTEGER, lb <span class="op">=</span> <span class="dv">0</span>, name<span class="op">=</span><span class="st">"American"</span>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.INTEGER, lb <span class="op">=</span> <span class="dv">0</span>, name<span class="op">=</span><span class="st">"British"</span>)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Целева функция</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>m.setObjective(<span class="dv">3</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> x2, GRB.MAXIMIZE)</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Die Einschränkungen hinzufügen</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>m.addConstr(x1 <span class="op">+</span> x2 <span class="op">&lt;=</span> <span class="dv">48</span>, <span class="st">"Infrastructure"</span>)</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">16</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="dv">8</span> <span class="op">*</span> x2 <span class="op">&lt;=</span> <span class="dv">512</span>, <span class="st">"Staff"</span>)</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">9</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="dv">5</span> <span class="op">*</span> x2 <span class="op">&lt;=</span> <span class="dv">300</span>, <span class="st">"Budget"</span>)</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Неотрицателността на променливите е автоматично дефинирана в m.addVar</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Решаване на модела</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Отпечатване на резултата</span></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> m.getVars():</span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>v<span class="sc">.</span>varName<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>v<span class="sc">.</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Съставяне на нов модел</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Berlin Airlift"</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.INTEGER, lb <span class="op">=</span> <span class="dv">0</span>, name<span class="op">=</span><span class="st">"American"</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.INTEGER, lb <span class="op">=</span> <span class="dv">0</span>, name<span class="op">=</span><span class="st">"British"</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Целева функция</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>m.setObjective(<span class="dv">3</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> x2, GRB.MAXIMIZE)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Добавяне на ограниченията</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>m.addConstr(x1 <span class="op">+</span> x2 <span class="op">&lt;=</span> <span class="dv">48</span>, <span class="st">"Infrastructure"</span>)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">16</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="dv">8</span> <span class="op">*</span> x2 <span class="op">&lt;=</span> <span class="dv">512</span>, <span class="st">"Staff"</span>)</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">9</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="dv">5</span> <span class="op">*</span> x2 <span class="op">&lt;=</span> <span class="dv">300</span>, <span class="st">"Budget"</span>)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Неотрицателността на променливите е автоматично дефинирана в m.addVar</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Решаване на модела</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Отпечатване на резултата</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> m.getVars():</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>v<span class="sc">.</span>varName<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>v<span class="sc">.</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -502,12 +536,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Kopiert");
+    button.setAttribute("title", "Copied!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Kopiert");
+      button.setAttribute("data-bs-title", "Copied!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -837,13 +871,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../01-Python/index.html" class="pagination-link" aria-label="Einführung in Python">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Einführung in Python</span>
+      <a href="../index.html" class="pagination-link" aria-label="Setup">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Setup</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../Literature.html" class="pagination-link" aria-label="Literatur">
-        <span class="nav-page-text">Literatur</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../Literature.html" class="pagination-link" aria-label="Литература">
+        <span class="nav-page-text">Литература</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
