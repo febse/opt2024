@@ -140,11 +140,11 @@
     ]
   },
   {
-    "objectID": "02-Introduction/index.html#implementierung-in-python-gurobi",
-    "href": "02-Introduction/index.html#implementierung-in-python-gurobi",
+    "objectID": "02-Introduction/index.html#решение-на-модела-с-gurobipy",
+    "href": "02-Introduction/index.html#решение-на-модела-с-gurobipy",
     "title": "Въведение",
-    "section": "Implementierung in Python (gurobi)",
-    "text": "Implementierung in Python (gurobi)\n\nimport gurobipy as gp\nfrom gurobipy import GRB\n\n# Ein neues Modell erstellen\n\nm = gp.Model(\"Berlin Airlift\")\n\nx1 = m.addVar(vtype=GRB.INTEGER, lb = 0, name=\"amerikanisch\")\nx2 = m.addVar(vtype=GRB.INTEGER, lb = 0, name=\"britisch\")\n\n# Die Zielfunktion hinzufügen\n\nm.setObjective(3 * x1 + 2 * x2, GRB.MAXIMIZE)\n\n# Die Einschränkungen hinzufügen\n\nm.addConstr(x1 + x2 &lt;= 48, \"Infrastuktur\")\nm.addConstr(16 * x1 + 8 * x2 &lt;= 512, \"Personal\")\nm.addConstr(9 * x1 + 5 * x2 &lt;= 300, \"Kosten\")\n\n# Die Nichtnegativitätsbedingungen sind in der Definition der Variablen enthalten\n\n# Das Modell optimieren\nm.optimize()\n\nfor v in m.getVars():\n    print(f\"{v.varName}: {v.x}\")",
+    "section": "Решение на модела с gurobipy",
+    "text": "Решение на модела с gurobipy\n\nimport gurobipy as gp\nfrom gurobipy import GRB\n\n# Съставяне на нов модел\n\nm = gp.Model(\"Berlin Airlift\")\n\nx1 = m.addVar(vtype=GRB.INTEGER, lb = 0, name=\"American\")\nx2 = m.addVar(vtype=GRB.INTEGER, lb = 0, name=\"British\")\n\n# Целева функция\n\nm.setObjective(3 * x1 + 2 * x2, GRB.MAXIMIZE)\n\n# Die Einschränkungen hinzufügen\n\nm.addConstr(x1 + x2 &lt;= 48, \"Infrastructure\")\nm.addConstr(16 * x1 + 8 * x2 &lt;= 512, \"Staff\")\nm.addConstr(9 * x1 + 5 * x2 &lt;= 300, \"Budget\")\n\n# Неотрицателността на променливите е автоматично дефинирана в m.addVar\n\n# Решаване на модела\nm.optimize()\n\n# Отпечатване на резултата\nfor v in m.getVars():\n    print(f\"{v.varName}: {v.x}\")",
     "crumbs": [
       "Въведение"
     ]

@@ -225,7 +225,7 @@ window.Quarto = {
   <li><a href="#математически-модел" id="toc-математически-модел" class="nav-link" data-scroll-target="#математически-модел">Математически модел</a></li>
   <li><a href="#допустимо-множество" id="toc-допустимо-множество" class="nav-link" data-scroll-target="#допустимо-множество">Допустимо множество</a></li>
   <li><a href="#проблем-с-настоящия-подход" id="toc-проблем-с-настоящия-подход" class="nav-link" data-scroll-target="#проблем-с-настоящия-подход">Проблем с настоящия подход</a></li>
-  <li><a href="#implementierung-in-python-gurobi" id="toc-implementierung-in-python-gurobi" class="nav-link" data-scroll-target="#implementierung-in-python-gurobi">Implementierung in Python (gurobi)</a></li>
+  <li><a href="#решение-на-модела-с-gurobipy" id="toc-решение-на-модела-с-gurobipy" class="nav-link" data-scroll-target="#решение-на-модела-с-gurobipy">Решение на модела с gurobipy</a></li>
   </ul>
 </nav>
     </div>
@@ -411,36 +411,37 @@ x_1 + x_2 = 48
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(comb_n <span class="op">/</span> (<span class="fl">1e9</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">*</span> <span class="dv">24</span> <span class="op">*</span> <span class="dv">365</span>), <span class="dv">1</span>), <span class="st">"Jahre"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="implementierung-in-python-gurobi" class="level2">
-<h2 class="anchored" data-anchor-id="implementierung-in-python-gurobi">Implementierung in Python (gurobi)</h2>
+<section id="решение-на-модела-с-gurobipy" class="level2">
+<h2 class="anchored" data-anchor-id="решение-на-модела-с-gurobipy">Решение на модела с gurobipy</h2>
 <div id="f1e1f795ca3d09b1" class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ein neues Modell erstellen</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Съставяне на нов модел</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Berlin Airlift"</span>)</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.INTEGER, lb <span class="op">=</span> <span class="dv">0</span>, name<span class="op">=</span><span class="st">"amerikanisch"</span>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.INTEGER, lb <span class="op">=</span> <span class="dv">0</span>, name<span class="op">=</span><span class="st">"britisch"</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.INTEGER, lb <span class="op">=</span> <span class="dv">0</span>, name<span class="op">=</span><span class="st">"American"</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.INTEGER, lb <span class="op">=</span> <span class="dv">0</span>, name<span class="op">=</span><span class="st">"British"</span>)</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Die Zielfunktion hinzufügen</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Целева функция</span></span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>m.setObjective(<span class="dv">3</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> x2, GRB.MAXIMIZE)</span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Die Einschränkungen hinzufügen</span></span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>m.addConstr(x1 <span class="op">+</span> x2 <span class="op">&lt;=</span> <span class="dv">48</span>, <span class="st">"Infrastuktur"</span>)</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">16</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="dv">8</span> <span class="op">*</span> x2 <span class="op">&lt;=</span> <span class="dv">512</span>, <span class="st">"Personal"</span>)</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">9</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="dv">5</span> <span class="op">*</span> x2 <span class="op">&lt;=</span> <span class="dv">300</span>, <span class="st">"Kosten"</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>m.addConstr(x1 <span class="op">+</span> x2 <span class="op">&lt;=</span> <span class="dv">48</span>, <span class="st">"Infrastructure"</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">16</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="dv">8</span> <span class="op">*</span> x2 <span class="op">&lt;=</span> <span class="dv">512</span>, <span class="st">"Staff"</span>)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">9</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="dv">5</span> <span class="op">*</span> x2 <span class="op">&lt;=</span> <span class="dv">300</span>, <span class="st">"Budget"</span>)</span>
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Die Nichtnegativitätsbedingungen sind in der Definition der Variablen enthalten</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Неотрицателността на променливите е автоматично дефинирана в m.addVar</span></span>
 <span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Das Modell optimieren</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Решаване на модела</span></span>
 <span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
 <span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> m.getVars():</span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>v<span class="sc">.</span>varName<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>v<span class="sc">.</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Отпечатване на резултата</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> m.getVars():</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>v<span class="sc">.</span>varName<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>v<span class="sc">.</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
