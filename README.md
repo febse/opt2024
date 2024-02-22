@@ -1,3 +1,4 @@
-# Grundlagen der Ökonometrie
+# Въведение в математическата оптимизация
 
-[https://febs.github.io/opt2024](https://febs.github.io/opt2024)
+[https://febse.github.io/opt2024](https://febse.github.io/opt2024)
+
