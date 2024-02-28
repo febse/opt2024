@@ -304,7 +304,7 @@ x_2 &amp; \geq 0
 <li>Права робуста: (0, 160 / 0.75), (160 / 0.5, 0)</li>
 <li>Права търсене на Делукс: (0, 150), (100, 150) Тази права е успоредна на оста <span class="math inline">x_1</span>.</li>
 </ul>
-<div id="cell-fig-coffее-restr" class="cell" data-execution_count="56">
+<div id="cell-fig-coffее-restr" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Покажи кода</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -315,14 +315,13 @@ x_2 &amp; \geq 0
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, <span class="dv">240</span>], [<span class="dv">480</span>, <span class="dv">0</span>], label<span class="op">=</span><span class="vs">r'$0.5 x_1 + 0.25 x_2 = 120$'</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, <span class="dv">320</span>], [<span class="fl">213.33</span>, <span class="dv">0</span>], label<span class="op">=</span><span class="vs">r'$0.5 x_1 + 0.75 x_2 = 160$'</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ax.plot([0, 0], [0, 150], label=r'$x_1 = 0$')</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, <span class="dv">400</span>], [<span class="dv">150</span>, <span class="dv">150</span>], label<span class="op">=</span><span class="vs">r'$x_2 = 150$'</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># ax.plot([0, 0], [0, 500], label=r'$x_2 = 0$')</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ax.set_xlim((<span class="dv">0</span>, <span class="dv">400</span>))</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ax.set_ylim((<span class="dv">0</span>, <span class="dv">500</span>))</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r'$x_1$'</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'$x_2$'</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="st">'best'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, <span class="dv">400</span>], [<span class="dv">150</span>, <span class="dv">150</span>], label<span class="op">=</span><span class="vs">r'$x_2 = 150$'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ax.set_xlim((<span class="dv">0</span>, <span class="dv">400</span>))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ax.set_ylim((<span class="dv">0</span>, <span class="dv">500</span>))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r'$x_1 \text{ (Супер, кг.)} $'</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'$x_2 \text{ (Делукс, кг.)}$'</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-coffее-restr" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -378,42 +377,31 @@ x_1 &amp; = 200.
 <p>Решението на системата можем да получим, като заместим в първото уравнение с <span class="math inline">x_2 = 150</span>, за да получим</p>
 <p>С това намерихме координатите на пресечната точка между правите на “робуста” и “търсене на Делукс”: (95, 150).</p>
 <p>Така получаваме върховете на допустимото множество: (0, 0), (240, 0), (200, 80), (95, 150), (0, 150) (<a href="#fig-coffee-feasible-set" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>).</p>
-<div id="cell-fig-coffee-feasible-set" class="cell" data-execution_count="57">
+<div id="cell-fig-coffee-feasible-set" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Покажи кода</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Shade the feasible region</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># x = np.linspace(0, 400, 100)</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># y1 = 480 - 2 * x # 0.5 * x1 + 0.25 * x2 &lt;= 120</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># y2 = 213.33 - 0.67 * x # 0.5 * x1 + 0.75 * x2 &lt;= 160</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># y3 = 150 * np.ones(100) # x2 &lt;= 150</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># y4 = np.zeros(100)</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># y6 = np.zeros(100)</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>vertices <span class="op">=</span> [</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">150</span>],</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">95</span>, <span class="dv">150</span>],</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">200</span>, <span class="dv">80</span>],    </span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">240</span>, <span class="dv">0</span>]</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>vertices_x <span class="op">=</span> [v[<span class="dv">0</span>] <span class="cf">for</span> v <span class="kw">in</span> vertices]</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>vertices_y <span class="op">=</span> [v[<span class="dv">1</span>] <span class="cf">for</span> v <span class="kw">in</span> vertices]</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> vertices:</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    ax.annotate(</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"(</span><span class="sc">{</span>v[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>v[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">)"</span>,</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        (v[<span class="dv">0</span>], v[<span class="dv">1</span>]),</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        textcoords<span class="op">=</span><span class="st">"offset points"</span>,</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        xytext<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">5</span>)</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>ax.fill(vertices_x, vertices_y, color<span class="op">=</span><span class="st">'grey'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># ax.fill([0, 0, 95, 200, 240], [0, 150, 150, 80, 0], color='grey', alpha=0.3)</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>display(fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>vertices <span class="op">=</span> [</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">150</span>],</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">95</span>, <span class="dv">150</span>],</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">200</span>, <span class="dv">80</span>],    </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">240</span>, <span class="dv">0</span>]</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>vertices_x <span class="op">=</span> [v[<span class="dv">0</span>] <span class="cf">for</span> v <span class="kw">in</span> vertices]</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>vertices_y <span class="op">=</span> [v[<span class="dv">1</span>] <span class="cf">for</span> v <span class="kw">in</span> vertices]</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> vertices:</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    ax.annotate(</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"(</span><span class="sc">{</span>v[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>v[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">)"</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        (v[<span class="dv">0</span>], v[<span class="dv">1</span>]),</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        textcoords<span class="op">=</span><span class="st">"offset points"</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        xytext<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">5</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>ax.fill(vertices_x, vertices_y, color<span class="op">=</span><span class="st">'grey'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>display(fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-coffee-feasible-set" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -433,7 +421,7 @@ Figure&nbsp;2.2: Допустимо множество
 <h2 data-number="2.3" class="anchored" data-anchor-id="целева-функция-и-оптимален-план"><span class="header-section-number">2.3</span> Целева функция и оптимален план</h2>
 <p>За да определим оптималния план графично ще начертаем прави, съответстващи на различни нива на печалба.</p>
 <p>Целевата функция зависи от две променливи, което означава, че за да я изобразим графично ще трябва да използваме трето измерение. <a href="#fig-coffee-objective" class="quarto-xref">Figure&nbsp;<span>2.3</span></a> показва графиката на целевата функция в тримерно пространство, както и нейната проекция в двумерно пространство.</p>
-<div class="cell" data-execution_count="100">
+<div class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Покажи кода</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -469,7 +457,7 @@ Figure&nbsp;2.2: Допустимо множество
 <span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>display(fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="fig-coffee-objective" class="cell quarto-figure quarto-figure-center quarto-float anchored" data-execution_count="100">
+<div id="fig-coffee-objective" class="cell quarto-figure quarto-figure-center quarto-float anchored" data-execution_count="8">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-coffee-objective-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display">
@@ -515,7 +503,7 @@ Figure&nbsp;2.3
 </span></p>
 <p>Двете прави са успоредни една спрямо друга, тъй като наклонът на правите зависи от коефициентите на <span class="math inline">x_1</span> и <span class="math inline">x_2</span> в уравненията и не зависи от константите (5 000 в първото уравнение и 10 000 във второто).</p>
 </section>
-<section id="нормален-вектор" class="level2 callout-info" data-number="2.4">
+<section id="нормален-вектор" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="нормален-вектор"><span class="header-section-number">2.4</span> Нормален вектор</h2>
 <p>Нека фиксираме ниво на печалба от 5000 лв. Всички комбинации от супер и делукс, които постигат точно това ниво на печалба лежат на права, дадена от следното уравнение:</p>
 <p><span class="math display">
@@ -580,48 +568,35 @@ x_2
 \end{pmatrix}
 = 40 \cdot 125 + 50 \cdot (-100) = 0
 </span></p>
-</section>
-<div id="cell-8" class="cell" data-execution_count="79">
+<div id="cell-7" class="cell">
 <details class="code-fold">
 <summary>Покажи кода</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create some vectors</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">100</span>])</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([<span class="dv">125</span>, <span class="dv">0</span>])</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the difference</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> B <span class="op">-</span> A</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a figure</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the vectors</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>ax.quiver(<span class="dv">0</span>, <span class="dv">0</span>, A[<span class="dv">0</span>], A[<span class="dv">1</span>], angles<span class="op">=</span><span class="st">'xy'</span>, scale_units<span class="op">=</span><span class="st">'xy'</span>, scale<span class="op">=</span><span class="dv">1</span>, color<span class="op">=</span><span class="st">'r'</span>, label<span class="op">=</span><span class="st">'A'</span>)</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>ax.quiver(<span class="dv">0</span>, <span class="dv">0</span>, B[<span class="dv">0</span>], B[<span class="dv">1</span>], angles<span class="op">=</span><span class="st">'xy'</span>, scale_units<span class="op">=</span><span class="st">'xy'</span>, scale<span class="op">=</span><span class="dv">1</span>, color<span class="op">=</span><span class="st">'b'</span>, label<span class="op">=</span><span class="st">'B'</span>)</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>ax.quiver(A[<span class="dv">0</span>], A[<span class="dv">1</span>], C[<span class="dv">0</span>], C[<span class="dv">1</span>], angles<span class="op">=</span><span class="st">'xy'</span>, scale_units<span class="op">=</span><span class="st">'xy'</span>, scale<span class="op">=</span><span class="dv">1</span>, color<span class="op">=</span><span class="st">'g'</span>, label<span class="op">=</span><span class="st">'B-A'</span>)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the limits of the plot</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>ax.set_xlim([<span class="op">-</span><span class="dv">2</span>, <span class="dv">125</span>])</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>ax.set_ylim([<span class="op">-</span><span class="dv">2</span>, <span class="dv">125</span>])</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Set equal scaling</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co"># ax.axis('equal')</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a legend</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> B <span class="op">-</span> A</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a figure</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the vectors</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>ax.quiver(<span class="dv">0</span>, <span class="dv">0</span>, A[<span class="dv">0</span>], A[<span class="dv">1</span>], angles<span class="op">=</span><span class="st">'xy'</span>, scale_units<span class="op">=</span><span class="st">'xy'</span>, scale<span class="op">=</span><span class="dv">1</span>, color<span class="op">=</span><span class="st">'r'</span>, label<span class="op">=</span><span class="st">'A'</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>ax.quiver(<span class="dv">0</span>, <span class="dv">0</span>, B[<span class="dv">0</span>], B[<span class="dv">1</span>], angles<span class="op">=</span><span class="st">'xy'</span>, scale_units<span class="op">=</span><span class="st">'xy'</span>, scale<span class="op">=</span><span class="dv">1</span>, color<span class="op">=</span><span class="st">'b'</span>, label<span class="op">=</span><span class="st">'B'</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>ax.quiver(A[<span class="dv">0</span>], A[<span class="dv">1</span>], C[<span class="dv">0</span>], C[<span class="dv">1</span>], angles<span class="op">=</span><span class="st">'xy'</span>, scale_units<span class="op">=</span><span class="st">'xy'</span>, scale<span class="op">=</span><span class="dv">1</span>, color<span class="op">=</span><span class="st">'g'</span>, label<span class="op">=</span><span class="st">'B-A'</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the limits of the plot</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>ax.set_xlim([<span class="op">-</span><span class="dv">2</span>, <span class="dv">125</span>])</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>ax.set_ylim([<span class="op">-</span><span class="dv">2</span>, <span class="dv">125</span>])</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a legend</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="01-Blending_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
 </div>
 <p>Нека да начертаем тези прави на графиката на допустимото множество. <a href="#fig-coffee-solution" class="quarto-xref">Figure&nbsp;<span>2.4</span></a> показва графиката на допустимото множество и правите на печалбата от 3000 лв., 50000 лв. и 12000 лв.</p>
 <div id="cell-fig-coffee-solution" class="cell" data-execution_count="109">
@@ -770,6 +745,7 @@ Table&nbsp;2.1: Консумация на материали за произво
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
