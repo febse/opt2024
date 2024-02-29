@@ -226,7 +226,11 @@ window.Quarto = {
   <li><a href="#задача-планиране-на-производство" id="toc-задача-планиране-на-производство" class="nav-link active" data-scroll-target="#задача-планиране-на-производство"><span class="header-section-number">2.1</span> Задача: планиране на производство</a></li>
   <li><a href="#допустимо-множество" id="toc-допустимо-множество" class="nav-link" data-scroll-target="#допустимо-множество"><span class="header-section-number">2.2</span> Допустимо множество</a></li>
   <li><a href="#целева-функция-и-оптимален-план" id="toc-целева-функция-и-оптимален-план" class="nav-link" data-scroll-target="#целева-функция-и-оптимален-план"><span class="header-section-number">2.3</span> Целева функция и оптимален план</a></li>
-  <li><a href="#нормален-вектор" id="toc-нормален-вектор" class="nav-link" data-scroll-target="#нормален-вектор"><span class="header-section-number">2.4</span> Нормален вектор</a></li>
+  <li><a href="#нормален-вектор" id="toc-нормален-вектор" class="nav-link" data-scroll-target="#нормален-вектор"><span class="header-section-number">2.4</span> Нормален вектор</a>
+  <ul class="collapse">
+  <li><a href="#задача-1-1" id="toc-задача-1-1" class="nav-link" data-scroll-target="#задача-1-1"><span class="header-section-number">2.4.1</span> Задача 1</a></li>
+  <li><a href="#задача-2" id="toc-задача-2" class="nav-link" data-scroll-target="#задача-2"><span class="header-section-number">2.4.2</span> Задача 2</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -254,7 +258,7 @@ window.Quarto = {
 
 <section id="задача-планиране-на-производство" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="задача-планиране-на-производство"><span class="header-section-number">2.1</span> Задача: планиране на производство</h2>
-<p>Бутиково кафене в София предлага два продукта: Супер еспресо и Делукс еспресо. За приготвянето на един килограм от първия вид кафе са необходими по равни части арабика и робуста, а рецептата за Делукс предвижда смес от арабика и робуста в пропорция 1 към 3. Доставчиците са готови да осигурят 120 кг арабика и 160 кг. робуста. Заведението знае, че няма да може да продаде повече от 150 кг. Делукс еспресо. От всеки продаден килограм Супер еспресо заведението печели 40 лв., докато печалбата от килограм Делукс възлиза на 50 лв.</p>
+<p>Бутиково кафене в София предлага два продукта: Супер еспресо и Делукс еспресо. За приготвянето на един килограм от първия вид еспресо са необходими по равни части арабика и робуста, а рецептата за Делукс предвижда смес от арабика и робуста в пропорция 1 към 3. Доставчиците са готови да осигурят 120 кг арабика и 160 кг. робуста. Заведението знае, че няма да може да продаде повече от 150 кг. Делукс еспресо. От всеки продаден килограм Супер еспресо заведението печели 40 лв., докато печалбата от килограм Делукс възлиза на 50 лв.</p>
 <p>Колко от двата типа кафе ще препоръчате на кафенето да смеси?</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -717,18 +721,64 @@ Table&nbsp;2.1: Консумация на материали за произво
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="задача-1-1" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="задача-1-1"><span class="header-section-number">2.4.1</span> Задача 1</h3>
+<p>Предприятие произвежда два вида боя: екстериорна (за външни повърхности) и интериорна (за вътрешни помещения). Производството двете бои изисква три суровини: разтворител, багрило и смола. За производство на един тон екстериорна боя са нужни 6 тона разтворител, един тон багрило и 2 тона смола. За производство на един тон интериорна боя са нужни 4 тона разтворител, 2 тона багрило и 7 тона смола. На разположение са следните количества суровини: 24 тона разтворител, 6 тона багрило и 4 тона смола. Колко тона от всяка боя да произведе предприятието, за да постигне максимална печалба? От продажбата на един тон екстериорна боя предприятието печели 5 000 лв., а от продажбата на един тон интериорна боя - 4 000 лв.</p>
+<div id="tbl-exercise-paint" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-exercise-paint-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.2: Консумация на материали за производството на интериорна и екстериорна боя и печалба за продаден тон
+</figcaption>
+<div aria-describedby="tbl-exercise-paint-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 19%">
+<col style="width: 17%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Екстериорна боя</th>
+<th>Интериорна боя</th>
+<th>Дневна наличност на ресурс</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Разтворител</td>
+<td>6</td>
+<td>4</td>
+<td>24</td>
+</tr>
+<tr class="even">
+<td>Багрило</td>
+<td>1</td>
+<td>2</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>Смола</td>
+<td>2</td>
+<td>7</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>Печалба (1 000 лв./тон)</td>
+<td>5</td>
+<td>4</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="callout-title-container flex-fill">
-Задача 2
+</figure>
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<p>Съставете математически модел, който да намери оптималния план за производство на боите.</p>
+</section>
+<section id="задача-2" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="задача-2"><span class="header-section-number">2.4.2</span> Задача 2</h3>
 <p>Компания произвежда три вида зърнени закуски: A, B и C. Закуските се произвеждат от четири съставки: овесени ядки, стафиди, настъргани кокосови орехи и нарязани бадеми.</p>
 <ul>
 <li>Продукт А е смес от овесени ядки, стафиди и бадеми в съотношение 50:5:2.</li>
@@ -740,11 +790,9 @@ Table&nbsp;2.1: Консумация на материали за произво
 <li>Доставките са ограничени до 5 тона на ден (овесени ядки), 2 тона (стафиди) и по един тон на ден за останалите две съставки (кокосови орехи, бадеми).</li>
 </ul>
 <p>Съставете математически модел с който да препоръчате оптимален производствен план за тази компания. Целта на модела е да намери производствен план с най-висока стойност на печалбата на компанията.</p>
-</div>
-</div>
-</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
