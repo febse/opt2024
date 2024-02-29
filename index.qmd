@@ -1,4 +1,17 @@
+
+
 # Setup {.unnumbered}
+
+
+:::{.callout-note}
+## Website URL 
+
+<span style="font-size:2em">[https://febse.github.io/opt2024/](https://febse.github.io/opt2024/)</span>
+
+
+![](images/qrcode.png)
+
+:::
 
 :::{.alert .alert-info}
 
