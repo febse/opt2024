@@ -306,7 +306,7 @@ x_2 &amp; \geq 0
 <li>Права робуста: (0, 160 / 0.75), (160 / 0.5, 0)</li>
 <li>Права търсене на Делукс: (0, 150), (100, 150) Тази права е успоредна на оста <span class="math inline">x_1</span>.</li>
 </ul>
-<div id="cell-fig-coffее-restr" class="cell" data-execution_count="6">
+<div id="cell-fig-coffее-restr" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Покажи кода</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -315,14 +315,14 @@ x_2 &amp; \geq 0
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, <span class="dv">240</span>], [<span class="dv">480</span>, <span class="dv">0</span>], label<span class="op">=</span><span class="vs">r'$0.5 x_1 + 0.25 x_2 = 120$'</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, <span class="dv">320</span>], [<span class="fl">213.33</span>, <span class="dv">0</span>], label<span class="op">=</span><span class="vs">r'$0.5 x_1 + 0.75 x_2 = 160$'</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, <span class="dv">400</span>], [<span class="dv">150</span>, <span class="dv">150</span>], label<span class="op">=</span><span class="vs">r'$x_2 = 150$'</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, <span class="dv">240</span>], [<span class="dv">480</span>, <span class="dv">0</span>], label<span class="op">=</span><span class="vs">r"$0.5 x_1 + 0.25 x_2 = 120$ (арабика)"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, <span class="dv">320</span>], [<span class="fl">213.33</span>, <span class="dv">0</span>], label<span class="op">=</span><span class="vs">r"$0.5 x_1 + 0.75 x_2 = 160$ (робуста)"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, <span class="dv">400</span>], [<span class="dv">150</span>, <span class="dv">150</span>], label<span class="op">=</span><span class="vs">r"$x_2 = 150$ (търсене на Делукс)"</span>)</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ax.set_xlim((<span class="dv">0</span>, <span class="dv">400</span>))</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ax.set_ylim((<span class="dv">0</span>, <span class="dv">500</span>))</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r'$x_1 \text{ (Супер, кг.)} $'</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'$x_2 \text{ (Делукс, кг.)}$'</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r'$x_1$ (Супер, кг.)'</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'$x_2$ (Делукс, кг.)'</span>)</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
@@ -379,7 +379,7 @@ x_1 &amp; = 200.
 <p>Решението на системата можем да получим, като заместим в първото уравнение с <span class="math inline">x_2 = 150</span>, за да получим</p>
 <p>С това намерихме координатите на пресечната точка между правите на “робуста” и “търсене на Делукс”: (95, 150).</p>
 <p>Така получаваме върховете на допустимото множество: (0, 0), (240, 0), (200, 80), (95, 150), (0, 150) (<a href="#fig-coffee-feasible-set" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>).</p>
-<div id="cell-fig-coffee-feasible-set" class="cell" data-execution_count="7">
+<div id="cell-fig-coffee-feasible-set" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Покажи кода</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>vertices <span class="op">=</span> [</span>
@@ -423,7 +423,7 @@ Figure&nbsp;2.2: Допустимо множество
 <h2 data-number="2.3" class="anchored" data-anchor-id="целева-функция-и-оптимален-план"><span class="header-section-number">2.3</span> Целева функция и оптимален план</h2>
 <p>За да определим оптималния план графично ще начертаем прави, съответстващи на различни нива на печалба.</p>
 <p>Целевата функция зависи от две променливи, което означава, че за да я изобразим графично ще трябва да използваме трето измерение. <a href="#fig-coffee-objective" class="quarto-xref">Figure&nbsp;<span>2.3</span></a> показва графиката на целевата функция в тримерно пространство, както и нейната проекция в двумерно пространство.</p>
-<div class="cell" data-execution_count="8">
+<div id="cell-fig-coffee-objective" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Покажи кода</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -443,9 +443,9 @@ Figure&nbsp;2.2: Допустимо множество
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a 3D subplot</span></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>ax.plot_surface(x, y, z, rstride<span class="op">=</span><span class="dv">5</span>, cstride<span class="op">=</span><span class="dv">5</span>, edgecolor<span class="op">=</span><span class="st">'k'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>ax.view_init(elev<span class="op">=</span><span class="dv">25</span>, azim<span class="op">=-</span><span class="dv">120</span>)</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Супер"</span>)</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Делукс"</span>)</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>ax.set_zlabel(<span class="st">"Печалба"</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r"$x_1$ (Супер, кг.)"</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r"$x_2$ (Делукс, кг.)"</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>ax.set_zlabel(<span class="vs">r"$z$ (Печалба, лв.)"</span>)</span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>vertices_3d <span class="op">=</span> [v <span class="op">+</span> [<span class="dv">0</span>] <span class="cf">for</span> v <span class="kw">in</span> vertices]</span>
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
@@ -453,44 +453,19 @@ Figure&nbsp;2.2: Допустимо множество
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>poly <span class="op">=</span> Poly3DCollection([vertices_3d], alpha<span class="op">=</span><span class="fl">.25</span>, linewidths<span class="op">=</span><span class="dv">1</span>, edgecolors<span class="op">=</span><span class="st">'r'</span>, facecolors<span class="op">=</span><span class="st">'c'</span>)</span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the Poly3DCollection to the axes</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>ax.add_collection3d(poly)</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>display(fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>ax.add_collection3d(poly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="fig-coffee-objective" class="cell quarto-figure quarto-figure-center quarto-float anchored" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<div id="fig-coffee-objective" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-coffee-objective-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display">
-<div id="fig-coffee-objective-1" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-coffee-objective-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01-Blending_files/figure-html/fig-coffee-objective-output-1.png" class="img-fluid figure-img" data-ref-parent="fig-coffee-objective">
+<img src="01-Blending_files/figure-html/fig-coffee-objective-output-1.png" class="img-fluid figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-coffee-objective-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Целева функция
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-coffee-objective-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.3: Целева функция
 </figcaption>
 </figure>
 </div>
-</div>
-<div class="cell-output cell-output-display">
-<div id="fig-coffee-objective-2" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-coffee-objective-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01-Blending_files/figure-html/fig-coffee-objective-output-2.png" id="fig-coffee-objective-2" class="img-fluid figure-img" data-ref-parent="fig-coffee-objective">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-coffee-objective-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b)
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-coffee-objective-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.3
-</figcaption>
-</figure>
 </div>
 </div>
 <p>Горното изображение е удобно, за да разберем как изглежда целевата функция, но не ни помага да намерим максимума й в рамките на допустимото множество. Затова ще използваме проекцията на целевата функция върху равнината на допустимото множество.</p>
@@ -637,7 +612,7 @@ x_2
 <img src="01-Blending_files/figure-html/fig-coffee-solution-output-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-coffee-solution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.4: Оптимално решение
+Figure&nbsp;2.4: Оптимален план
 </figcaption>
 </figure>
 </div>
@@ -711,6 +686,40 @@ Table&nbsp;2.1: Консумация на материали за произво
 </figure>
 </div>
 <p>Съставете математически модел, който да намери оптималния план за производство на боите.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Математически модел
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Целеви променливи: <span class="math display">
+\begin{align*}
+&amp; x_1: \text{ Екстериорна боя (тонове)}\\
+&amp; x_2: \text{ Интериорна боя (тонове)}
+\end{align*}
+</span></p>
+<p><span class="math display">
+\max z = 5000 x_1 + 4000 x_2 \text{ (целева функция)}
+</span></p>
+<p>Ограничения:</p>
+<p><span class="math display">
+\begin{align*}
+6x_1 + 4x_2 &amp; \leq 24 \text{ (разтворител)}\\
+x_1 + 2x_2 &amp; \leq 6 \text{ (багрило)}\\
+2x_1 + 7x_2 &amp; \leq 4 \text{ (смола)}\\
+x_1 &amp; \geq 0 \\
+x_2 &amp; \geq 0
+\end{align*}
+</span></p>
+</div>
+</div>
+</div>
 </section>
 <section id="задача-2" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="задача-2"><span class="header-section-number">2.6</span> Задача 2</h2>
@@ -725,6 +734,73 @@ Table&nbsp;2.1: Консумация на материали за произво
 <li>Доставките са ограничени до 5 тона на ден (овесени ядки), 2 тона (стафиди) и по един тон на ден за останалите две съставки (кокосови орехи, бадеми).</li>
 </ul>
 <p>Съставете математически модел с който да препоръчате оптимален производствен план за тази компания. Целта на модела е да намери производствен план с най-висока стойност на печалбата на компанията.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Математически модел
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Целеви променливи:</p>
+<p><span class="math display">
+\begin{align*}
+&amp; x_{Aя}: \text{овесени ядки в продукт A} \\
+&amp; x_{Aс}: \text{стафиди в продукт A} \\
+&amp; x_{Aк}: \text{кокосови орехи в продукт A} \\
+&amp; x_{Aб}: \text{бадеми в продукт A} \\
+&amp; x_{Bя}: \text{овесени ядки в продукт B} \\
+&amp; x_{Bк}: \text{кокосови орехи в продукт B} \\
+&amp; x_{Bб}: \text{бадеми в продукт B} \\
+&amp; x_{Cя}: \text{овесени ядки в продукт C} \\
+&amp; x_{Cс}: \text{стафиди в продукт C} \\
+&amp; x_{Cк}: \text{кокосови орехи в продукт C} \\
+&amp; x_{Cб}: \text{бадеми в продукт C} \\
+\end{align*}
+</span></p>
+<p><span class="math display">
+\begin{align*}
+X_A &amp; = \frac{50}{57} x_{Aя} + \frac{5}{57} x_{Aс} + 0\cdot x_{Ak}  + \frac{2}{57} x_{Aб} \\
+X_B &amp; = \frac{60}{65} x_{Bя} + 0 \cdot x_{Bс} + \frac{2}{65} x_{Bк} + \frac{3}{65} x_{Bб} \\
+X_C &amp; = \frac{60}{69} x_{Cя} + \frac{3}{69} x_{Cс} + \frac{4}{69} x_{Cк} + \frac{2}{69} x_{Cб} \\
+\end{align*}
+</span></p>
+<p>Приходи</p>
+<p><span class="math display">
+\text{Приходи} = 2.0 \cdot 500 x_{A} + 2.5 \cdot 500 x_{B} + 3.0 \cdot 500 x_{C}
+</span></p>
+<p>Разходи:</p>
+<p><span class="math display">
+\text{Разходи} = 100(\underbrace{x_{Aя} + x_{Bя} + x_{Cя}_{\text{използвани ядки}}}) + 120(\underbrace{x_{Aс} + x_{Cс}}_{\text{използвани стафиди}}) + 110(\underbrace{x_{Bк} + x_{Cк}}_{\text{използван кокос}}) + 200(\undebrace{x_{Aб} + x_{Bб} + x_{Cб}}_{използвани бадеми})
+</span></p>
+<p>Целева функция:</p>
+<p><span class="math display">
+\text{Печалба} = \text{Приходи} - \text{Разходи}
+</span></p>
+<p>Ограничения за минимални доставки</p>
+<p><span class="math display">
+\begin{align*}
+X_{A} &amp; \geq 500 / (1000 / 2) \text{ (минимално производство на A в тонове)}\\
+X_{B} &amp; \geq 600 / (1000 / 2) /  \text{ (минимално производство на B в тонове)}\\
+X_{C} &amp; \geq 400 / (100 / 2) \text{ (минимално производство на C в тонове)}
+\end{align*}
+</span></p>
+<p>Ограничения за наличност на суровини</p>
+<p><span class="math display">
+\begin{align*}
+x_{Aя} + x_{Bя} + x_{Cя} &amp; \leq 5 \text{ (овесени ядки в тонове)}\\
+x_{Aс} + x_{Cс} &amp; \leq 2 \text{ (стафиди в тонове)}\\
+x_{Bк} + x_{Cк} &amp; \leq 1 \text{ (кокосови орехи в тонове)}\\
+x_{Aб} + x_{Bб} + x_{Cб} &amp; \leq 1 \text{ (бадеми в тонове)}
+\end{align*}
+</span></p>
+</div>
+</div>
+</div>
 
 
 </section>
