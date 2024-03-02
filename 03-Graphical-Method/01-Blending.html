@@ -705,7 +705,7 @@ Table&nbsp;2.1: Консумация на материали за произво
 \end{align*}
 </span></p>
 <p><span class="math display">
-\max z = 5000 x_1 + 4000 x_2 \text{ (целева функция)}
+\max z = 5 x_1 + 4 x_2 \text{ (целева функция)}
 </span></p>
 <p>Ограничения:</p>
 <p><span class="math display">
@@ -718,6 +718,53 @@ x_2 &amp; \geq 0
 \end{align*}
 </span></p>
 </div>
+</div>
+</div>
+<div id="cell-12" class="cell" data-execution_count="18">
+<details class="code-fold">
+<summary>Покажи кода</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new model</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Paint"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variables</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>p_exterior <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"exterior"</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>p_interior <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"interior"</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>m.setObjective(<span class="dv">5</span> <span class="op">*</span> p_exterior <span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> p_interior, GRB.MAXIMIZE)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">6</span> <span class="op">*</span> p_exterior <span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> p_interior <span class="op">&lt;=</span> <span class="dv">24</span>, <span class="st">"Solvent"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">1</span> <span class="op">*</span> p_exterior <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> p_interior <span class="op">&lt;=</span> <span class="dv">6</span>, <span class="st">"Dye"</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">2</span> <span class="op">*</span> p_exterior <span class="op">+</span> <span class="dv">7</span> <span class="op">*</span> p_interior <span class="op">&lt;=</span> <span class="dv">4</span>, <span class="st">"Resin"</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Optimal solution: p_exterior = </span><span class="sc">{</span>p_exterior<span class="sc">.</span>x<span class="sc">}</span><span class="ss">, p_interior = </span><span class="sc">{</span>p_interior<span class="sc">.</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Gurobi Optimizer version 11.0.0 build v11.0.0rc2 (linux64 - "Ubuntu 22.04.4 LTS")
+
+CPU model: Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 6 physical cores, 12 logical processors, using up to 12 threads
+
+Optimize a model with 3 rows, 2 columns and 6 nonzeros
+Model fingerprint: 0x436b8b96
+Coefficient statistics:
+  Matrix range     [1e+00, 7e+00]
+  Objective range  [4e+00, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e+00, 2e+01]
+Presolve removed 3 rows and 2 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    1.0000000e+01   0.000000e+00   0.000000e+00      0s
+
+Solved in 0 iterations and 0.00 seconds (0.00 work units)
+Optimal objective  1.000000000e+01
+Optimal solution: p_exterior = 2.0, p_interior = 0.0</code></pre>
 </div>
 </div>
 </section>
@@ -746,56 +793,120 @@ x_2 &amp; \geq 0
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Целеви променливи:</p>
+<p>Към задачата можем да подходим по поне два начина в зависимост от избора на променливи.</p>
+<p>И при двата подхода искаме да намерим максимума на печалбата, която е разликата от приходите, реализирани от продажба да продуктите и разходите за суровини (овесени ядки, стафиди и т.н.).</p>
+<ol type="1">
+<li>Нека <span class="math inline">x_A, x_B, x_C</span> са произведените количества от продуктите A, B и C в кг. Тогава целевата функция.</li>
+</ol>
+<p>От описанието на съставките на трите продукта можем да изразим пропорциите на съставките в проценти от общото количество на продукта (<a href="#tbl-cereals-composition" class="quarto-xref">Table&nbsp;<span>2.2</span></a>).</p>
+<div id="tbl-cereals-composition" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cereals-composition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.2: Състав на продуктите A, B и C
+</figcaption>
+<div aria-describedby="tbl-cereals-composition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 20%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Продукт/Съставка</th>
+<th>Ов. ядки</th>
+<th>Стафиди</th>
+<th>Кокос</th>
+<th>Бадеми</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td><span class="math inline">\frac{50}{57}</span></td>
+<td><span class="math inline">\frac{5}{57}</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">\frac{2}{57}</span></td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td><span class="math inline">\frac{60}{65}</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">\frac{2}{65}</span></td>
+<td><span class="math inline">\frac{3}{65}</span></td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td><span class="math inline">\frac{60}{69}</span></td>
+<td><span class="math inline">\frac{3}{69}</span></td>
+<td><span class="math inline">\frac{4}{69}</span></td>
+<td><span class="math inline">\frac{2}{69}</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>При производството на един килограм от продукт A са необходими <span class="math inline">\frac{50}{57}</span> кг. овесени ядки, <span class="math inline">\frac{5}{57}</span> кг. стафиди и <span class="math inline">\frac{2}{57}</span> кг. бадеми. При производството на един килограм от продукт B са необходими <span class="math inline">\frac{60}{65}</span> кг. овесени ядки, <span class="math inline">\frac{2}{65}</span> кг. кокосови орехи и <span class="math inline">\frac{3}{65}</span> кг. бадеми. При производството на един килограм от продукт C са необходими <span class="math inline">\frac{60}{69}</span> кг. овесени ядки, <span class="math inline">\frac{3}{69}</span> кг. стафиди, <span class="math inline">\frac{4}{69}</span> кг. кокосови орехи и <span class="math inline">\frac{2}{69}</span> кг. бадеми.</p>
+<p>Нека <span class="math inline">y_{\text{овес}}, y_{\text{стафиди}}, y_{\text{кокос}}, y_{\text{бадеми}}</span> са общо изразходваните количества на съставките в килограми.</p>
+<p>От <a href="#tbl-cereals-composition" class="quarto-xref">Table&nbsp;<span>2.2</span></a> можем да изведем използваните количества суровини при производството на <span class="math inline">x_A, x_B</span> и <span class="math inline">x_C</span> от продуктите.</p>
+<p><span class="math display">
+y_{\text{овес}} = \frac{50}{57} x_{A} + \frac{60}{65} x_{B} + \frac{60}{69} x_{C} \\
+y_{\text{стафиди}} = \frac{5}{57} x_{A} + \frac{3}{69} x_{C} \\
+y_{\text{кокос}} = \frac{2}{65} x_{B} + \frac{4}{69} x_{C} \\
+</span></p>
+<p>Общите разходи за суровини са:</p>
+<p><span class="math display">
+Разходи = (100 y_{\text{овес}} + 120 y_{\text{стафиди}} + 110 y_{\text{кокос}} + 200 y_{\text{бадеми}}) / 1000
+</span></p>
+<p>Приходите от продажбата на продуктите са:</p>
+<p><span class="math display">
+(2.0 \cdot 500 x_{A} + 2.5 \cdot 500 x_{B} + 3.0 \cdot 500 x_{C}) / 2
+</span></p>
+<p>Целевата функция ще е разликата на приходите и разходите.</p>
+<p><span class="math display">
+z = \text{Приходи} - \text{Разходи}
+</span></p>
+<p>В задачата има две групи ограничения:</p>
+<ol type="1">
+<li>Ограничения за минимални доставки</li>
+</ol>
 <p><span class="math display">
 \begin{align*}
-&amp; x_{Aя}: \text{овесени ядки в продукт A} \\
+x_{A} \geq 500 * 2 \text{ (минимално производство на A в кг.)} \\
+x_{B} \geq 600 * 2  \text{ (минимално производство на B в кг.)} \\
+x_{C} \geq 400 * 2 \text{ (минимално производство на C в кг.)}
+\end{align*}
+</span></p>
+<ol start="2" type="1">
+<li>Ограничения за наличност на суровини</li>
+</ol>
+<p><span class="math display">
+\begin{align*}
+y_{\text{овес}} &amp; \leq 5 * 1000 \text{ (овесени ядки в кг.)}\\
+y_{\text{стафиди}} &amp; \leq 2 \text{ (стафиди в кг.)}\\
+y_{\text{кокос}} &amp; \leq 1 \text{ (кокосови орехи в кг.)}\\
+\end{align*}
+</span></p>
+<ol start="2" type="1">
+<li>Подход с променливи за съставките</li>
+</ol>
+<p>Нека <span class="math inline">x_{Aо}, x_{Aс}, x_{Aк}, x_{Aб}, x_{Bо}, x_{Bк}, x_{Bб}, x_{Cо}, x_{Cс}, x_{Cк}, x_{Cб}</span> са количествата на съставките в килограми, които са използвани за производството на продуктите A, B и C.</p>
+<p><span class="math display">
+\begin{align*}
+&amp; x_{Aо}: \text{овесени ядки в продукт A} \\
 &amp; x_{Aс}: \text{стафиди в продукт A} \\
 &amp; x_{Aк}: \text{кокосови орехи в продукт A} \\
 &amp; x_{Aб}: \text{бадеми в продукт A} \\
-&amp; x_{Bя}: \text{овесени ядки в продукт B} \\
+&amp; x_{Bо}: \text{овесени ядки в продукт B} \\
 &amp; x_{Bк}: \text{кокосови орехи в продукт B} \\
 &amp; x_{Bб}: \text{бадеми в продукт B} \\
-&amp; x_{Cя}: \text{овесени ядки в продукт C} \\
+&amp; x_{Cо}: \text{овесени ядки в продукт C} \\
 &amp; x_{Cс}: \text{стафиди в продукт C} \\
 &amp; x_{Cк}: \text{кокосови орехи в продукт C} \\
 &amp; x_{Cб}: \text{бадеми в продукт C} \\
-\end{align*}
-</span></p>
-<p><span class="math display">
-\begin{align*}
-X_A &amp; = \frac{50}{57} x_{Aя} + \frac{5}{57} x_{Aс} + 0\cdot x_{Ak}  + \frac{2}{57} x_{Aб} \\
-X_B &amp; = \frac{60}{65} x_{Bя} + 0 \cdot x_{Bс} + \frac{2}{65} x_{Bк} + \frac{3}{65} x_{Bб} \\
-X_C &amp; = \frac{60}{69} x_{Cя} + \frac{3}{69} x_{Cс} + \frac{4}{69} x_{Cк} + \frac{2}{69} x_{Cб} \\
-\end{align*}
-</span></p>
-<p>Приходи</p>
-<p><span class="math display">
-\text{Приходи} = 2.0 \cdot 500 x_{A} + 2.5 \cdot 500 x_{B} + 3.0 \cdot 500 x_{C}
-</span></p>
-<p>Разходи:</p>
-<p><span class="math display">
-\text{Разходи} = 100(\underbrace{x_{Aя} + x_{Bя} + x_{Cя}_{\text{използвани ядки}}}) + 120(\underbrace{x_{Aс} + x_{Cс}}_{\text{използвани стафиди}}) + 110(\underbrace{x_{Bк} + x_{Cк}}_{\text{използван кокос}}) + 200(\undebrace{x_{Aб} + x_{Bб} + x_{Cб}}_{използвани бадеми})
-</span></p>
-<p>Целева функция:</p>
-<p><span class="math display">
-\text{Печалба} = \text{Приходи} - \text{Разходи}
-</span></p>
-<p>Ограничения за минимални доставки</p>
-<p><span class="math display">
-\begin{align*}
-X_{A} &amp; \geq 500 / (1000 / 2) \text{ (минимално производство на A в тонове)}\\
-X_{B} &amp; \geq 600 / (1000 / 2) /  \text{ (минимално производство на B в тонове)}\\
-X_{C} &amp; \geq 400 / (100 / 2) \text{ (минимално производство на C в тонове)}
-\end{align*}
-</span></p>
-<p>Ограничения за наличност на суровини</p>
-<p><span class="math display">
-\begin{align*}
-x_{Aя} + x_{Bя} + x_{Cя} &amp; \leq 5 \text{ (овесени ядки в тонове)}\\
-x_{Aс} + x_{Cс} &amp; \leq 2 \text{ (стафиди в тонове)}\\
-x_{Bк} + x_{Cк} &amp; \leq 1 \text{ (кокосови орехи в тонове)}\\
-x_{Aб} + x_{Bб} + x_{Cб} &amp; \leq 1 \text{ (бадеми в тонове)}
 \end{align*}
 </span></p>
 </div>
