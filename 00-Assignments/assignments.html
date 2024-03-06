@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="bg" xml:lang="bg"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Въведение в математическата оптимизация - 3&nbsp; Задачи</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Literature.html" rel="next">
+<link href="../03-Graphical-Method/01-Blending.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../00-Assignments/assignments.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Задачи</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Въведение в математическата оптимизация</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-Introduction/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Въведение</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03-Graphical-Method/01-Blending.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Графичен метод</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../00-Assignments/assignments.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Задачи</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Literature.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Литература</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Библиография</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#банкови-заеми" id="toc-банкови-заеми" class="nav-link active" data-scroll-target="#банкови-заеми"><span class="header-section-number">3.1</span> Банкови заеми</a></li>
+  <li><a href="#производство-и-склад-1" id="toc-производство-и-склад-1" class="nav-link" data-scroll-target="#производство-и-склад-1"><span class="header-section-number">3.2</span> Производство и склад (1)</a></li>
+  <li><a href="#производство-и-склад-2" id="toc-производство-и-склад-2" class="nav-link" data-scroll-target="#производство-и-склад-2"><span class="header-section-number">3.3</span> Производство и склад (2)</a></li>
+  <li><a href="#производство-и-персонал-1" id="toc-производство-и-персонал-1" class="nav-link" data-scroll-target="#производство-и-персонал-1"><span class="header-section-number">3.4</span> Производство и персонал (1)</a></li>
+  <li><a href="#производство-и-персонал-2" id="toc-производство-и-персонал-2" class="nav-link" data-scroll-target="#производство-и-персонал-2"><span class="header-section-number">3.5</span> Производство и персонал (2)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Задачи</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="банкови-заеми" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="банкови-заеми"><span class="header-section-number">3.1</span> Банкови заеми</h2>
+<p>Банка е в процеса на определяне на кредитната си политика за пет различни сектора с характеристики дадени в следната таблица:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Вид кредит</th>
+<th style="text-align: right;">Лихва</th>
+<th style="text-align: right;">Дял на несъбираеми кредити</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Потребителски</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.10</td>
+</tr>
+<tr class="even">
+<td>Автомобили</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">0.07</td>
+</tr>
+<tr class="odd">
+<td>Недвижими имоти</td>
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">0.03</td>
+</tr>
+<tr class="even">
+<td>Земеделие</td>
+<td style="text-align: right;">0.125</td>
+<td style="text-align: right;">0.05</td>
+</tr>
+<tr class="odd">
+<td>Търговия</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+</tbody>
+</table>
+<p>Банката разполага с общо 12 милиона лева и при определяне на политиката трябва да се съобрази със следните регулации:</p>
+<ol type="1">
+<li>Поне 40% от заемите трябва да са насочени към търговския сектор.</li>
+<li>Заеми за недвижими имоти трябва да са поне половината от общата сума на потребителски кредити, кредити свързани с автомобили и недвижими имоти.</li>
+<li>По силата на регулаторни изисквания дялът на несъбираемите кредити не трябва да надвишава 4% от всички кредити. Несъбираемите кредити не носят лихви.</li>
+</ol>
+<p>Какъв е оптималният (най-висока печалба) план за банката?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Математически модел
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">
+\begin{align*}
+x_{п} &amp; : \text{потребителски кредити в млн. лв.} \\
+x_{а} &amp; : \text{кредити за автомобили в млн. лв.} \\
+x_{н} &amp; : \text{кредити за недвижими имоти в млн. лв.} \\
+x_{з} &amp; : \text{земеделски кредити в млн. лв.} \\
+x_{т} &amp; : \text{търговски кредити в млн. лв.}
+\end{align*}
+</span></p>
+<p>Общата лихва от кредитите е:</p>
+<p><span class="math display">
+\begin{align*}
+\text{лихви} = &amp; 0.15(1 - 0.1)x_{п} + \\
+               &amp; 0.13(1 - 0.07)x_{а} + \\
+               &amp; 0.12(1 - 0.03)x_{н} + \\
+               &amp; 0.125(1 - 0.05)x_{з} + \\
+               &amp; 0.10(1 - 0.02)x_{т}
+\end{align*}
+</span></p>
+<p>Несъбираемите кредити възлизат на</p>
+<p><span class="math display">
+\text{несъбираеми} = 0.10x_{п} + 0.07x_{а} + 0.03x_{н} + 0.05x_{з} + 0.02x_{т}
+</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="производство-и-склад-1" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="производство-и-склад-1"><span class="header-section-number">3.2</span> Производство и склад (1)</h2>
+<p>Малък шивашки цех се опитва да определи производствения си план за следващия сезон. Цехът произвежда четири продукта: якета, шапки, ръкавици и панталони, които се произвеждат в четири отделения: рязане, уплътняване, шиене и пакетиране.</p>
+<table class="table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 14%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Отделения/продукти</th>
+<th style="text-align: right;">Якета</th>
+<th style="text-align: right;">Шапки</th>
+<th style="text-align: right;">Ръкавици</th>
+<th style="text-align: right;">Панталони</th>
+<th style="text-align: right;">Капацитет (часове)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Рязане</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">1000</td>
+</tr>
+<tr class="even">
+<td>Уплътняване</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">0.35</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">1000</td>
+</tr>
+<tr class="odd">
+<td>Шиене</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">1000</td>
+</tr>
+<tr class="even">
+<td>Пакетиране</td>
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">1000</td>
+</tr>
+</tbody>
+</table>
+<p>Цехът вече има получени поръчки за четирите продукта. Договорите за производство включват неустойка за всяка недоставена единица:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Отделения/продукти</th>
+<th style="text-align: right;">Якета</th>
+<th style="text-align: right;">Шапки</th>
+<th style="text-align: right;">Ръкавици</th>
+<th style="text-align: right;">Панталони</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Поръчки (брой)</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">750</td>
+<td style="text-align: right;">600</td>
+<td style="text-align: right;">600</td>
+</tr>
+<tr class="even">
+<td>Печалба (лв./брой)</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="odd">
+<td>Неустойка (лв./брой)</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">8</td>
+</tr>
+</tbody>
+</table>
+<p>Намерете оптималния производствен план за този цех.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Математически модел
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">
+\begin{align}
+x_{jackets} &amp; : \text{брой якета} \\
+x_{hats} &amp; : \text{брой шапки} \\
+x_{gloves} &amp; : \text{брой ръкавици} \\
+x_{pants} &amp; : \text{брой панталони}
+\end{align}
+</span></p>
+<p>Общата печалба от производството е равна на печалбата от продажбата на минус разходите за неустойки:</p>
+<p>Печалбата от продажба е равна на количествата произведени продукти умножени по цената на единица:</p>
+<p><span class="math display">
+\text{profit (sale)} = 30x_{jackets} + 40x_{hats} + 20x_{gloves} + 10x_{pants}
+</span></p>
+<p>Разходите за неустойки се определят от разликата между поръчките и произведените продукти:</p>
+<p><span class="math display">
+\begin{align}
+x_{jackets} + s_{jackets} = 800 \\
+x_{hats} + s_{hats} = 750 \\
+x_{gloves} + s_{gloves} = 600 \\
+x_{pants} + s_{pants} = 600
+\end{align}
+</span></p>
+<p>където <span class="math inline">s_{jackets}</span>, <span class="math inline">s_{hats}</span>, <span class="math inline">s_{gloves}</span> и <span class="math inline">s_{pants}</span> са разликите между произведени и поръчани продукти. Общата неустойка е равна на сбора от неустойките за всеки продукт:</p>
+<p><span class="math display">
+\text{penalty} = 15s_{jackets} + 20s_{hats} + 10s_{gloves} + 8s_{pants}
+</span></p>
+<p>В задачата има още и ограничения за капацитета на отделенията:</p>
+<p><span class="math display">
+0.3 x_{jackets} + 0.3 x_{hats} + 0.25 x_{gloves} + 0.15 x_{pants} \leq 1000 \\
+0.25 x_{jackets} + 0.35 x_{hats} + 0.3 x_{gloves} + 0.10 x_{pants} \leq 1000 \\
+0.45 x_{jackets} + 0.5 x_{hats} + 0.4 x_{gloves} + 0.22 x_{pants} \leq 1000 \\
+0.12 x_{jackets} + 0.15 x_{hats} + 0.1 x_{gloves} + 0.05 x_{pants} \leq 1000
+</span></p>
+<p>Накрая има и ограничения за неотрицателност на променливите:</p>
+<p><span class="math display">
+\begin{align*}
+x_{jackets}, x_{hats}, x_{gloves}, x_{pants} \geq 0 \\
+s_{jackets}, s_{hats}, s_{gloves}, s_{pants} \geq 0
+\end{align*}
+</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="производство-и-склад-2" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="производство-и-склад-2"><span class="header-section-number">3.3</span> Производство и склад (2)</h2>
+<p>Компания за производство на дограма има договор за доставка на дървени дограми за следващите 6 месеца. За същия период компанията очаква разходите за производство (труд и материали) да варират. Компанията може да се възползва от по-ниски производствени разходи в даден период и да произведе повече дограми от необходимото, като разходите за складиране на продуктите са 8 лв. на месец на брой. В момента на планиране фирмата няма готови дограми на склад.</p>
+<table class="table">
+<colgroup>
+<col style="width: 46%">
+<col style="width: 10%">
+<col style="width: 13%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 6%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: right;">Януари</th>
+<th style="text-align: right;">Февруари</th>
+<th style="text-align: right;">Март</th>
+<th style="text-align: right;">Април</th>
+<th>Май</th>
+<th>Юни</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Поръчки (брой)</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">250</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: right;">140</td>
+<td>220</td>
+<td>110</td>
+</tr>
+<tr class="even">
+<td>Производствени разходи (лв./брой)</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">48</td>
+<td>52</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<p>Формулирайте оптимизационна задача, която да намери оптималния производствен план.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Математически модел
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">
+\begin{align*}
+x_{jan} &amp; : \text{брой дограми произведени през януари} \\
+x_{feb} &amp; : \text{брой дограми произведени през февруари} \\
+x_{mar} &amp; : \text{брой дограми произведени през март} \\
+x_{apr} &amp; : \text{брой дограми произведени през април} \\
+x_{may} &amp; : \text{брой дограми произведени през май} \\
+x_{jun} &amp; : \text{брой дограми произведени през юни} \\
+\end{align*}
+</span></p>
+<p><span class="math display">
+\begin{align*}
+y_{jan} &amp; : \text{брой дограми на склад в края на януари} \\
+y_{feb} &amp; : \text{брой дограми на склад в края на февруари} \\
+y_{mar} &amp; : \text{брой дограми на склад в края на март} \\
+y_{apr} &amp; : \text{брой дограми на склад в края на април} \\
+y_{may} &amp; : \text{брой дограми на склад в края на май} \\
+y_{jun} &amp; : \text{брой дограми на склад в края на юни}
+\end{align*}
+</span></p>
+<p>Общите производствени разходи са равни на сбора от произведените дограми умножен по цената на единица:</p>
+<p><span class="math display">
+\text{production cost} = 50x_{jan} + 45x_{feb} + 55x_{mar} + 48x_{apr} + 52x_{may} + 50x_{jun}
+</span></p>
+<p>Разходите за складиране са равни на сбора от дограмите на склад умножен по цената на единица:</p>
+<p><span class="math display">
+\text{storage cost} = 8y_{jan} + 8y_{feb} + 8y_{mar} + 8y_{apr} + 8y_{may} + 8y_{jun}
+</span></p>
+<p>За всеки период моделът трябва да гарантира, че броят произведени дограми е равен на продадените и разликата в складираните дограми.</p>
+<p><span class="math display">
+\begin{align*}
+x_{jan} + (0  - y_{jan}) &amp; = 100 \\
+x_{feb} + (y_{jan} - y_{feb}) &amp; = 250 \\
+x_{mar} + (y_{feb} - y_{mar}) &amp; = 190 \\
+x_{apr} + (y_{mar} - y_{apr}) &amp; = 140 \\
+x_{may} + (y_{apr} - y_{may}) &amp; = 220 \\
+x_{jun} + (y_{may} - 0) &amp; = 110
+\end{align*}
+</span></p>
+<p>Накрая има и ограничения за неотрицателност на променливите:</p>
+<p><span class="math display">
+\begin{align*}
+x_{jan}, x_{feb}, x_{mar}, x_{apr}, x_{may}, x_{jun} &amp; \geq 0 \\
+y_{jan}, y_{feb}, y_{mar}, y_{apr}, y_{may}, y_{jun} &amp; \geq 0
+\end{align*}
+</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="производство-и-персонал-1" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="производство-и-персонал-1"><span class="header-section-number">3.4</span> Производство и персонал (1)</h2>
+<p>Компания за производство на дограма има договор за доставка на дървени дограми за следващата година. Компанията разполага с 10 опитни сътрудника, назначени на трудови договори. Всеки от тях произвежда по 12 дограми на тримесечие. Компанията може да отговори на флуктуациите в търсенето на своите продукти, като назначава и уволнява сътрудници на срочни договори. Временно заетите произвеждат по 3 дограми на месец. Разходите за назначаване/уволняване на временни сътрудници са съответно 200 лв. и 400 лв. за тримесечие. Компанията може да складира непродадени единици на цена 50 лв. на месец на единица.</p>
+<table class="table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 17%">
+<col style="width: 14%">
+<col style="width: 20%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: right;">Януари-Март</th>
+<th style="text-align: right;">Април-Юни</th>
+<th style="text-align: right;">Юли-Септември</th>
+<th style="text-align: right;">Октомври-Декември</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Поръчки (брой)</td>
+<td style="text-align: right;">520</td>
+<td style="text-align: right;">720</td>
+<td style="text-align: right;">520</td>
+<td style="text-align: right;">620</td>
+</tr>
+</tbody>
+</table>
+<p>Формулирайте оптимизационна задача, която да намери оптималния план за назначаване/уволняване на временно заетите работници.</p>
+</section>
+<section id="производство-и-персонал-2" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="производство-и-персонал-2"><span class="header-section-number">3.5</span> Производство и персонал (2)</h2>
+<p>Фирма, специализирана в производство на зимни палта се опитва да посрещне търсенето на нейните стоки с възможно най-малки разходи. Всеки работник, нает в началото на сезона работи през целия сезон, произвежда 80 палта и получава 6000 лв. заплата. В началото на годината фирмата разполага с 30 работника.</p>
+<p>Търсенето на палта има силни сезонни колебания и фирмата има три опции, за да отговори на тези вариации:</p>
+<ul>
+<li>работниците могат да работят и по-продължително, но допълнителният труд се заплаща 50% по-скъпо и работниците могат да работят не повече от 20% повече от нормалното работно време.</li>
+<li>Произведени в предишния период палта могат да се складират на цена от 12 лв. на сезон за всяко палто.</li>
+<li>Фирмата може да назначава и освобождава служители. За назначаване на един нов служител цената е 500 лв. За освобождаване на служител разходите възлизат на 420 лв.</li>
+<li>Фирмата няма начални запаси от готови палта.</li>
+</ul>
+<p>Маркетинговият отдел на предприятието оценява, че през следващите четири сезона търсенето ще възлиза на съответно 5000, 2000, 500 и 1500 палта.</p>
+<p>Изгответе математически модел с който да намерите оптималния план (в смисъл на най-ниски разходи) за тази фирма.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Математически модел
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\begin{align*}
+&amp; w_i: \text{работници в сезон } i\\
+&amp; x_i: \text{произведени палта в сезон } i\\
+&amp; o_i: \text{произведени с извънреден труд палта  в сезон } i\\
+&amp; h_i: \text{брой наети сътрудници в сезон } i\\
+&amp; f_i: \text{брой освободени сътрудници в сезон } i\\
+&amp; s_i: \text{брой палта на склад сезон } i\\
+&amp; d_i: \text{брой палта продадени през сезон } i\\
+\end{align*}</span></p>
+<p><span class="math display">\begin{align*}
+&amp; \min 6000 \sum_{i = 1}^{4} w_i + 500 \sum_{i = 1}^{4} h_i + 420 \sum_{i = 1}^{4} f_i + 12 \sum_{i = 1}^{4} s_i +
+1.5\frac{6000}{80} \sum_{i = 1}^{4} o_i\\
+&amp; w_0 = 30\\
+&amp; w_i = w_{i - 1} + h_i - f_i\\
+&amp; x_i = 80 w_i + o_i \\
+&amp; s_0 = 0 \\
+&amp; s_i = s_{i - 1} + x_i - d_i \\
+&amp; o_i \leq 0.2 \cdot 80 w_i
+\end{align*}</span></p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../03-Graphical-Method/01-Blending.html" class="pagination-link" aria-label="Графичен метод">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Графичен метод</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../Literature.html" class="pagination-link" aria-label="Литература">
+        <span class="nav-page-text">Литература</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
