@@ -144,7 +144,7 @@
     "href": "03-Graphical-Method/01-Blending.html#задача-планиране-на-производство",
     "title": "2  Графичен метод",
     "section": "",
-    "text": "Математически модел\n\n\n\n\n\nЦелеви променливи:\n\n\\begin{align*}\n& x_1: \\text{ Супер еспресо (кг.)}\\\\\n& x_2: \\text{ Делукс еспресо (кг.)}\n\\end{align*}\n\n\n\\max z = 40 x_1 + 50 x_2 \\text{ (целева функция)}\n \\begin{align*}\n0.5 x_1 + 0.25 x_2 & \\leq 120 \\text{ (арабика)}\\\\\n0.5 x_1 + 0.75 x_2 & \\leq 160 \\text{ (робуста)} \\\\\n0 \\cdot x_1 + x_2 & \\leq 150 \\text{ (търсене Делукс)}\\\\\nx_1 & \\geq 0 \\\\\nx_2 & \\geq 0\n\\end{align*}",
+    "text": "Математически модел\n\n\n\n\n\nЦелеви променливи:\n\n\\begin{align*}\n& x_1: \\text{ Супер еспресо (кг.)}\\\\\n& x_2: \\text{ Делукс еспресо (кг.)}\n\\end{align*}\n\n\n\\max z = 40 x_1 + 50 x_2 \\text{ (целева функция)}\n\n$$ \\begin{align*}\n0.5 x_1 + 0.25 x_2 & \\leq 120 \\text{ (арабика)}\\\\\n0.5 x_1 + 0.75 x_2 & \\leq 160 \\text{ (робуста)} \\\\\n0 \\cdot x_1 + x_2 & \\leq 150 \\text{ (търсене Делукс)}\\\\\nx_1 & \\geq 0 \\\\\nx_2 & \\geq 0\n\\end{align*}",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Графичен метод</span>"
     ]
