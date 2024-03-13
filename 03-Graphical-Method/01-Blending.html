@@ -234,12 +234,7 @@ window.Quarto = {
   <li><a href="#целева-функция-и-оптимален-план" id="toc-целева-функция-и-оптимален-план" class="nav-link" data-scroll-target="#целева-функция-и-оптимален-план"><span class="header-section-number">2.3</span> Целева функция и оптимален план</a></li>
   <li><a href="#нормален-вектор" id="toc-нормален-вектор" class="nav-link" data-scroll-target="#нормален-вектор"><span class="header-section-number">2.4</span> Нормален вектор</a></li>
   <li><a href="#задача-1" id="toc-задача-1" class="nav-link" data-scroll-target="#задача-1"><span class="header-section-number">2.5</span> Задача 1</a></li>
-  <li><a href="#анализ-на-решението" id="toc-анализ-на-решението" class="nav-link" data-scroll-target="#анализ-на-решението"><span class="header-section-number">2.6</span> Анализ на решението</a>
-  <ul class="collapse">
-  <li><a href="#дефицитност-на-ресурси" id="toc-дефицитност-на-ресурси" class="nav-link" data-scroll-target="#дефицитност-на-ресурси"><span class="header-section-number">2.6.1</span> Дефицитност на ресурси</a></li>
-  </ul></li>
-  <li><a href="#допустими-граници-на-промяна" id="toc-допустими-граници-на-промяна" class="nav-link" data-scroll-target="#допустими-граници-на-промяна"><span class="header-section-number">2.7</span> Допустими граници на промяна</a></li>
-  <li><a href="#задача-2" id="toc-задача-2" class="nav-link" data-scroll-target="#задача-2"><span class="header-section-number">2.8</span> Задача 2</a></li>
+  <li><a href="#задача-2" id="toc-задача-2" class="nav-link" data-scroll-target="#задача-2"><span class="header-section-number">2.6</span> Задача 2</a></li>
   </ul>
 </nav>
     </div>
@@ -779,128 +774,8 @@ Optimal solution: p_exterior = 2.0, p_interior = 0.0</code></pre>
 </div>
 </div>
 </section>
-<section id="анализ-на-решението" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="анализ-на-решението"><span class="header-section-number">2.6</span> Анализ на решението</h2>
-<p>В предишния раздел намерихме оптималния план за производство на двата вида еспресо (Супер и Делукс).</p>
-<section id="дефицитност-на-ресурси" class="level3" data-number="2.6.1">
-<h3 data-number="2.6.1" class="anchored" data-anchor-id="дефицитност-на-ресурси"><span class="header-section-number">2.6.1</span> Дефицитност на ресурси</h3>
-<p>В оптималния план <span class="math inline">(x^*_1 = 200, x^*_2 = 80)</span> заведението изразходва:</p>
-<p><span class="math display">
-\begin{aligned}
-0.5 x^*_1 + 0.25 x^*_2 &amp; = 0.5 \cdot 200 + 0.25 \cdot 80 &amp; = 120 \text{ кг. арабика} \\
-0.5 x^*_1 + 0.75x^*_2 &amp; = 0.5 \cdot 200 + 0.75 \cdot 80 &amp; = 160 \text{ кг. робуста} \\
-0 \cdot x^*_1 + x^*_2 &amp; = 0\cdot 200 + 1\cdot 80 &amp; = 80 \text{ кг. търсене Делукс}
-\end{aligned}
-</span></p>
-<p>Общо заведението разполага с 120 кг. бразилско кафе, 160 кг. кубинско кафе и 150 кг. търсене на Делукс. Тъй като в оптимума се изразходва цялото налично количество от кубинско и бразилско кафе казваме, че тези ресурси са <em>дефицитни</em>. Кои ресурси са дефицитни може да се види лесно от графиките. В пресечната точка на две прави едновременно са изпълнени и двете уравнения, които ги определят.</p>
-<ul>
-<li>Във всяка точка от правата на ограничението за арабика важи, че изразходваното количество бразилско кафе е 120 кг., защото е изпълнено Уравнение (eq:p-2-constr-brazilian).</li>
-<li>Във всяка точка от правата на ограничението за робуста важи, че изразходваното количество кубинско кафе е 120 кг., защото е изпълнено уравнението (eq:p-2-constr-cuban).</li>
-<li>Във всяка точка от правата на ограничението за търсене на Делукс важи, че изразходваното количество “търсене на Делукс” е 150 кг., защото е изпълнено Уравнение (eq:p-2-constr-demand).</li>
-</ul>
-<p>В оптималния план остават <span class="math inline">150 - 80 = 70</span> кг. неизползвано търсене на Делукс (<em>slack</em>). Казваме, че “търсенето на Делукс” е недефицитен ресурс.</p>
-<div id="cell-14" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Покажи кода</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> linalg</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>Constr <span class="op">=</span> np.array([[<span class="fl">0.5</span>, <span class="fl">0.25</span>], [<span class="fl">0.5</span>, <span class="fl">0.75</span>], [<span class="dv">0</span>, <span class="dv">1</span>]])</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>RHS <span class="op">=</span> np.array([<span class="dv">120</span>, <span class="dv">160</span>, <span class="dv">150</span>])</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Арабика/Робуста</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(linalg.solve(Constr[[<span class="dv">0</span>, <span class="dv">1</span>],], RHS[[<span class="dv">0</span>, <span class="dv">1</span>]]))</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Арабика/Търсене на Делукс</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>linalg.solve(Constr[[<span class="dv">0</span>, <span class="dv">2</span>],], RHS[[<span class="dv">0</span>, <span class="dv">2</span>]])</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Робуста/Търсене на Делукс</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>linalg.solve(Constr[[<span class="dv">1</span>, <span class="dv">2</span>],], RHS[[<span class="dv">1</span>, <span class="dv">2</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>array([ 95., 150.])</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="допустими-граници-на-промяна" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="допустими-граници-на-промяна"><span class="header-section-number">2.7</span> Допустими граници на промяна</h2>
-<ul>
-<li><p>В какви граници може да се променя ограничението за бразилското кафе без да се промени характера на оптималния план (без да се променят дефицитните ресурси)?</p></li>
-<li><p>В какви граници може да се променя ограничението за кубинското кафе без да се промени характера на оптималния план (без да се променят дефицитните ресурси)?</p></li>
-<li><p>В какви граници може да се променя ограничението за търсенето на Супер еспресо кафе без да се промени характера на оптималния план (без да се променят дефицитните ресурси)?</p></li>
-</ul>
-<p>За да видим как се променя решението на задачата, когато варираме наличното количество кубинско кафе, ще я решим графично при четири нива на наличност на ресурса: 120 кг., 180 кг., 195 кг. и 220 кг. Уравненията на ограниченията за всяко от тези нива са:</p>
-<p><span class="math display">
-\begin{aligned}
-0.5 x_1 + 0.75 x_2 &amp; = 160 \text{ налични 160 кг. (първоначална задача)} \\
-0.5 x_1 + 0.75 x_2 &amp; = 180 \text{ налични 180 кг.} \\
-0.5 x_1 + 0.75 x_2 &amp; = 220 \text{ налични 220 кг.} \\
-0.5 x_1 + 0.75 x_2 &amp; = 195 \text{ налични 195 кг.} \\
-\end{aligned}
-</span></p>
-<p>Първото от тези нива е първоначалното ниво в задачата, която решихме използвайки <span class="quarto-unresolved-ref">?fig-p-2-solution</span>.</p>
-<p>За втория случай <span class="quarto-unresolved-ref">?fig-p-2-constr-cuban-2</span> показва решението при 180 кг. налично кубинско кафе. Оптималната комбинация от Супер и Делукс еспресо е (180, 120) при печалба от <span class="math inline">40 \cdot 180 + 50 \cdot 120 = 13200</span> лв. Дефицитните ресурси отново са “бразилско кафе” и “кубинско кафе”, т.е. характерът на решението не се променя спрямо първоначалната задача.</p>
-<!-- Можете да използвате [интерактивната тетрадка](https://mybinder.org/v2/gh/boyko/linprog-py/d2e86ee9892e0ad1ff020bf4290b38c08aec2dea?urlpath=lab%2Ftree%2Fgraphical_method.ipynb) тук, за да видите как се променя оптималният план в зависимост -->
-<!-- от наличните ресурси -->
-<div id="cell-16" class="cell" data-execution_count="2">
-<details class="code-fold">
-<summary>Покажи кода</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># #| label: fig-p-2-constr-cuban-2</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># #| fig-cap: "Допустимо множество и оптимум при 160 и при 180 кг. разполагаемо кубинско кафе."</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># #| </span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># import pandas as pd</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># import matplotlib.pyplot as plt</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># import matplotlib.patches as patches</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># # Create the data</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># cub_coffee_optima = pd.DataFrame({</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#     'x': [180, 200],</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#     'y': [120, 80],</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#     'level': [180, 160]</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co"># })</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co"># cub_coffee_optima['point_coord'] = '(' + cub_coffee_optima['x'].astype(str) + ', ' + cub_coffee_optima['y'].astype(str) + ')'</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co"># cub_coffee_optima['level_label'] = 'Куб. кафе=' + cub_coffee_optima['level'].astype(str)</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co"># # Create the plot</span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co"># fig, ax = plt.subplots()</span></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co"># # Add the lines</span></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co"># ax.plot([70, 250], [180 / 0.75, -0.5 / 0.75], color='b', alpha=0.6)</span></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co"># ax.plot([70, 250], [180 / 0.75, -0.5 / 0.75], color='b', alpha=0.6)</span></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="co"># # Add the points</span></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="co"># ax.scatter(cub_coffee_optima['x'], cub_coffee_optima['y'], marker='x', color='r')</span></span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="co"># # Add the labels</span></span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="co"># for _, row in cub_coffee_optima.iterrows():</span></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="co">#     ax.text(row['x'] + 10, row['y'] + 10, row['point_coord'])</span></span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="co">#     ax.text(row['x'] + 18, row['y'] + 20, row['level_label'])</span></span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="co"># # Add the polygon</span></span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="co"># polygon = patches.Polygon([[200, 80], [180, 120], [135, 150], [95, 150]], closed=True, alpha=0.5)</span></span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="co"># ax.add_patch(polygon)</span></span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a><span class="co"># # Set the limits of the plot</span></span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a><span class="co"># ax.set_xlim([70, 250])</span></span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a><span class="co"># ax.set_ylim([70, 250])</span></span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="co"># # Show the plot</span></span>
-<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.show()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="01-Blending_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="задача-2" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="задача-2"><span class="header-section-number">2.8</span> Задача 2</h2>
+<section id="задача-2" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="задача-2"><span class="header-section-number">2.6</span> Задача 2</h2>
 <p>Компания произвежда три вида зърнени закуски: A, B и C. Закуските се произвеждат от четири съставки: овесени ядки, стафиди, настъргани кокосови орехи и нарязани бадеми.</p>
 <ul>
 <li>Продукт А е смес от овесени ядки, стафиди и бадеми в съотношение 50:5:2.</li>
@@ -1027,49 +902,49 @@ y_{\text{кокос}} &amp; \leq 1 \cdot 1000 \text{ (кокосови орех�
 </div>
 </div>
 </div>
-<div id="cell-18" class="cell" data-execution_count="3">
+<div id="cell-14" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Покажи кода</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new model</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Cereals"</span>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>x_A <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"x_A"</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>x_B <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"x_B"</span>)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>x_C <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"x_C"</span>)</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>revenue <span class="op">=</span> (<span class="fl">2.0</span> <span class="op">*</span> x_A <span class="op">+</span> <span class="fl">2.5</span> <span class="op">*</span> x_B <span class="op">+</span> <span class="fl">3.0</span> <span class="op">*</span> x_C) <span class="op">/</span> <span class="fl">2.0</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># For the costs we define the raw materials</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>y_oats <span class="op">=</span> (<span class="dv">50</span> <span class="op">/</span> <span class="dv">57</span>) <span class="op">*</span> x_A <span class="op">+</span> (<span class="dv">60</span><span class="op">/</span><span class="dv">65</span>) <span class="op">*</span> x_B <span class="op">+</span> (<span class="dv">60</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>y_raisins <span class="op">=</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">57</span>) <span class="op">*</span> x_A <span class="op">+</span> (<span class="dv">3</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C </span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>y_coconuts <span class="op">=</span> (<span class="dv">2</span> <span class="op">/</span> <span class="dv">65</span>) <span class="op">*</span> x_B <span class="op">+</span> (<span class="dv">4</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>y_almonds <span class="op">=</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">57</span>) <span class="op">*</span> x_A <span class="op">+</span> (<span class="dv">3</span> <span class="op">/</span> <span class="dv">65</span>) <span class="op">*</span> x_B <span class="op">+</span> (<span class="dv">2</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>costs <span class="op">=</span> (<span class="dv">100</span> <span class="op">*</span> y_oats <span class="op">+</span> <span class="dv">120</span> <span class="op">*</span> y_raisins <span class="op">+</span> <span class="dv">110</span> <span class="op">*</span> y_coconuts <span class="op">+</span> <span class="dv">200</span> <span class="op">*</span> y_almonds) <span class="op">/</span> <span class="dv">1000</span></span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the objective function</span></span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>m.setObjective(revenue <span class="op">-</span> costs, GRB.MAXIMIZE)</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Minimum production constraints</span></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_A <span class="op">&gt;=</span> <span class="dv">500</span> <span class="op">*</span> <span class="dv">2</span>, <span class="st">"MinA"</span>)</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_B <span class="op">&gt;=</span> <span class="dv">600</span> <span class="op">*</span> <span class="dv">2</span>, <span class="st">"MinB"</span>)</span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_C <span class="op">&gt;=</span> <span class="dv">400</span> <span class="op">*</span> <span class="dv">2</span>, <span class="st">"MinC"</span>)</span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Raw materials constraints</span></span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_oats <span class="op">&lt;=</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Oats"</span>)</span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_raisins <span class="op">&lt;=</span> <span class="dv">2</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Raisins"</span>)</span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_coconuts <span class="op">&lt;=</span> <span class="dv">1</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Coconuts"</span>)</span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_almonds <span class="op">&lt;=</span> <span class="dv">1</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Almonds"</span>)</span>
-<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
-<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Optimal solution: x_A = </span><span class="sc">{</span>x_A<span class="sc">.</span>x<span class="sc">}</span><span class="ss">, x_B = </span><span class="sc">{</span>x_B<span class="sc">.</span>x<span class="sc">}</span><span class="ss">, x_C = </span><span class="sc">{</span>x_C<span class="sc">.</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new model</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Cereals"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>x_A <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"x_A"</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>x_B <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"x_B"</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>x_C <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"x_C"</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>revenue <span class="op">=</span> (<span class="fl">2.0</span> <span class="op">*</span> x_A <span class="op">+</span> <span class="fl">2.5</span> <span class="op">*</span> x_B <span class="op">+</span> <span class="fl">3.0</span> <span class="op">*</span> x_C) <span class="op">/</span> <span class="fl">2.0</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># For the costs we define the raw materials</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>y_oats <span class="op">=</span> (<span class="dv">50</span> <span class="op">/</span> <span class="dv">57</span>) <span class="op">*</span> x_A <span class="op">+</span> (<span class="dv">60</span><span class="op">/</span><span class="dv">65</span>) <span class="op">*</span> x_B <span class="op">+</span> (<span class="dv">60</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>y_raisins <span class="op">=</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">57</span>) <span class="op">*</span> x_A <span class="op">+</span> (<span class="dv">3</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C </span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>y_coconuts <span class="op">=</span> (<span class="dv">2</span> <span class="op">/</span> <span class="dv">65</span>) <span class="op">*</span> x_B <span class="op">+</span> (<span class="dv">4</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>y_almonds <span class="op">=</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">57</span>) <span class="op">*</span> x_A <span class="op">+</span> (<span class="dv">3</span> <span class="op">/</span> <span class="dv">65</span>) <span class="op">*</span> x_B <span class="op">+</span> (<span class="dv">2</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>costs <span class="op">=</span> (<span class="dv">100</span> <span class="op">*</span> y_oats <span class="op">+</span> <span class="dv">120</span> <span class="op">*</span> y_raisins <span class="op">+</span> <span class="dv">110</span> <span class="op">*</span> y_coconuts <span class="op">+</span> <span class="dv">200</span> <span class="op">*</span> y_almonds) <span class="op">/</span> <span class="dv">1000</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the objective function</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>m.setObjective(revenue <span class="op">-</span> costs, GRB.MAXIMIZE)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Minimum production constraints</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_A <span class="op">&gt;=</span> <span class="dv">500</span> <span class="op">*</span> <span class="dv">2</span>, <span class="st">"MinA"</span>)</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_B <span class="op">&gt;=</span> <span class="dv">600</span> <span class="op">*</span> <span class="dv">2</span>, <span class="st">"MinB"</span>)</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_C <span class="op">&gt;=</span> <span class="dv">400</span> <span class="op">*</span> <span class="dv">2</span>, <span class="st">"MinC"</span>)</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Raw materials constraints</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_oats <span class="op">&lt;=</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Oats"</span>)</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_raisins <span class="op">&lt;=</span> <span class="dv">2</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Raisins"</span>)</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_coconuts <span class="op">&lt;=</span> <span class="dv">1</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Coconuts"</span>)</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_almonds <span class="op">&lt;=</span> <span class="dv">1</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Almonds"</span>)</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Optimal solution: x_A = </span><span class="sc">{</span>x_A<span class="sc">.</span>x<span class="sc">}</span><span class="ss">, x_B = </span><span class="sc">{</span>x_B<span class="sc">.</span>x<span class="sc">}</span><span class="ss">, x_C = </span><span class="sc">{</span>x_C<span class="sc">.</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Gurobi Optimizer version 11.0.0 build v11.0.0rc2 (linux64 - "Ubuntu 20.04.6 LTS")
