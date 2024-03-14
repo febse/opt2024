@@ -303,7 +303,7 @@ window.Quarto = {
 <p>За втория случай <span class="quarto-unresolved-ref">?fig-p-2-constr-cuban-2</span> показва решението при 180 кг. налично робуста. Оптималната комбинация от Супер и Делукс еспресо е (180, 120) при печалба от <span class="math inline">40 \cdot 180 + 50 \cdot 120 = 13200</span> лв. Дефицитните ресурси отново са “арабика” и “робуста”, т.е. характерът на решението не се променя спрямо първоначалната задача.</p>
 <!-- Можете да използвате [интерактивната тетрадка](https://mybinder.org/v2/gh/boyko/linprog-py/d2e86ee9892e0ad1ff020bf4290b38c08aec2dea?urlpath=lab%2Ftree%2Fgraphical_method.ipynb) тук, за да видите как се променя оптималният план в зависимост -->
 <!-- от наличните ресурси -->
-<div id="cell-fig-coffe-restr-var-robusta-increase" class="cell" data-execution_count="12">
+<div id="cell-fig-coffe-restr-var-robusta-increase" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Покажи кода</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -327,7 +327,7 @@ window.Quarto = {
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, q <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="dv">120</span>, <span class="dv">180</span>, <span class="dv">195</span>, <span class="dv">220</span>]):</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    plt.axline([<span class="dv">0</span>, q <span class="op">/</span> <span class="fl">0.75</span>], slope<span class="op">=-</span><span class="fl">0.5</span><span class="op">/</span><span class="fl">0.75</span>,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>               label<span class="op">=</span><span class="ss">f"Arabica = </span><span class="sc">{</span>q<span class="sc">}</span><span class="ss"> kg"</span>,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>               label<span class="op">=</span><span class="ss">f"Робуста = </span><span class="sc">{</span>q<span class="sc">}</span><span class="ss"> kg"</span>,</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>               linestyle<span class="op">=</span><span class="st">'--'</span>, </span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>               color<span class="op">=</span>palette[idx],</span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>               alpha<span class="op">=</span><span class="fl">0.5</span></span>
@@ -347,7 +347,7 @@ window.Quarto = {
 <img src="02-Sensitivity_files/figure-html/fig-coffe-restr-var-robusta-increase-output-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-coffe-restr-var-robusta-increase-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: Die zulässige Menge für zwei verschiedene Werte der Arabica Verfügbarkeit.
+Figure&nbsp;3.1: Промяна в наличността на робуста
 </figcaption>
 </figure>
 </div>
