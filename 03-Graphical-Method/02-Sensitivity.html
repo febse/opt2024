@@ -239,6 +239,7 @@ window.Quarto = {
   <li><a href="#допустими-граници-на-промяна" id="toc-допустими-граници-на-промяна" class="nav-link" data-scroll-target="#допустими-граници-на-промяна"><span class="header-section-number">3.2</span> Допустими граници на промяна</a></li>
   <li><a href="#скрити-цени" id="toc-скрити-цени" class="nav-link" data-scroll-target="#скрити-цени"><span class="header-section-number">3.3</span> Скрити цени</a></li>
   <li><a href="#реализация-в-excel" id="toc-реализация-в-excel" class="nav-link" data-scroll-target="#реализация-в-excel"><span class="header-section-number">3.4</span> Реализация в <code>Excel</code></a></li>
+  <li><a href="#задача" id="toc-задача" class="nav-link" data-scroll-target="#задача"><span class="header-section-number">3.5</span> Задача</a></li>
   </ul>
 </nav>
     </div>
@@ -385,6 +386,120 @@ z = 40 \cdot 165 + 50 \cdot 150 = 14100.
 <section id="реализация-в-excel" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="реализация-в-excel"><span class="header-section-number">3.4</span> Реализация в <code>Excel</code></h2>
 <p>Тук можете да изтеглите <a href="https://github.com/febse/data/raw/main/opt/Problem_2_coffee_blending.xlsx">пример за реализация в Excel</a>.</p>
+</section>
+<section id="задача" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="задача"><span class="header-section-number">3.5</span> Задача</h2>
+<p>Металургично предприятие произвежда стоманени и чугунени отливки на две машини. Производството на една стоманена отливка изисква 2 ч. време на първата машина и 1 час на втората. Чугунените отливки изискват един час на първата машина и три на втората. Общият капацитет на машините е 8 ч. на ден. Компанията се стреми да максимизира печалбата си, към която една стоманена отливка допринася с 100 лв., а чугунена с 120 лв. Колко от коя отливка трябва да произведе компанията, за да максимизира печалбата си?</p>
+<p><span class="math display">
+\begin{align*}
+x_s: &amp; \text{ брой стоманени отливки} \\
+x_c: &amp; \text{ брой чугунени отливки}
+\end{align*}
+</span></p>
+<p><span class="math display">
+\begin{align*}
+\max &amp; 100x_s + 120x_c \\
+\text{при условия} &amp; \\
+2 x_s + x_c &amp; \leq 8 \\
+x_s + 3x_c &amp; \leq 8 \\
+x_s, x_c &amp; \geq 0
+\end{align*}
+</span></p>
+<div id="abbfa905" class="cell" data-execution_count="11">
+<details class="code-fold">
+<summary>Покажи кода</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the constraints</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>x_s <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">8</span>]  <span class="co"># Range of x_s values</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>x_c1 <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">8</span>]  <span class="co"># Range of x_c values for constraint 1</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>x_c2 <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">8</span>]  <span class="co"># Range of x_c values for constraint 2</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the constraints</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.plot(x_s, [<span class="dv">8</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> x <span class="cf">for</span> x <span class="kw">in</span> x_s], label<span class="op">=</span><span class="vs">r"$2x_s + x_c \leq 8$"</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>plt.plot(x_s, [(<span class="dv">8</span> <span class="op">-</span> x) <span class="op">/</span> <span class="dv">3</span> <span class="cf">for</span> x <span class="kw">in</span> x_s], label<span class="op">=</span><span class="vs">r"$x_s + 3x_c \leq 8$"</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plt.annotate(<span class="ss">f"(</span><span class="sc">{</span><span class="fl">3.2</span><span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="fl">1.6</span><span class="sc">}</span><span class="ss">)"</span>, (<span class="fl">3.2</span>, <span class="fl">1.6</span>), textcoords<span class="op">=</span><span class="st">"offset points"</span>, xytext<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">5</span>), ha<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the x and y axis labels</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r"$x_s$"</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r"$x_c$"</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the x and y axis limits</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">0</span>, <span class="dv">8</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>, <span class="dv">8</span>)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a legend</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-Sensitivity_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="f6e69d98" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Покажи кода</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new model</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Casting problem"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variables</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>x_s <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Steel"</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>x_c <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Cast iron"</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Set objective</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>m.setObjective(<span class="dv">100</span> <span class="op">*</span> x_s <span class="op">+</span> <span class="dv">120</span> <span class="op">*</span> x_c, sense<span class="op">=</span>GRB.MAXIMIZE)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">2</span> <span class="op">*</span> x_s <span class="op">+</span> x_c <span class="op">&lt;=</span> <span class="dv">8</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_s <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> x_c <span class="op">&lt;=</span> <span class="dv">8</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Optimize model</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Steel: </span><span class="sc">{</span>x_s<span class="sc">.</span>x<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Cast iron: </span><span class="sc">{</span>x_c<span class="sc">.</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Gurobi Optimizer version 11.0.0 build v11.0.0rc2 (linux64 - "Ubuntu 22.04.4 LTS")
+
+CPU model: Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 6 physical cores, 12 logical processors, using up to 12 threads
+
+Optimize a model with 2 rows, 2 columns and 4 nonzeros
+Model fingerprint: 0x400a48f0
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+00]
+  Objective range  [1e+02, 1e+02]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [8e+00, 8e+00]
+Presolve time: 0.00s
+Presolved: 2 rows, 2 columns, 4 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.2000000e+32   2.500000e+30   2.200000e+02      0s
+       2    5.1200000e+02   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.01 seconds (0.00 work units)
+Optimal objective  5.120000000e+02
+Steel: 3.2
+Cast iron: 1.6</code></pre>
+</div>
+</div>
+<p>Въпроси:</p>
+<ul>
+<li><p>Предприятието обмисля да увеличи работния капацитет на машините си. Коя машина би трябвало да е приоритетна?</p></li>
+<li><p>Бизнес консултанти препоръчват на предприятието да увеличи капацитета на машините си на цена от 10 лв. на ден за всяка от машините. Бихте ли препоръчали на предприятието да приеме тази оферта?</p></li>
+<li><p>Как би се променила оптималната печалба при увеличение на капацитета на първата машина на 20 ч. на ден?</p></li>
+</ul>
 
 
 </section>
