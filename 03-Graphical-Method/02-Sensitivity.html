@@ -443,6 +443,13 @@ x_s, x_c &amp; \geq 0
 </div>
 </div>
 </div>
+<p>Въпроси:</p>
+<ul>
+<li><p>Предприятието обмисля да увеличи работния капацитет на машините си. Коя машина би трябвало да е приоритетна?</p></li>
+<li><p>Бизнес консултанти препоръчват на предприятието да увеличи капацитета на машините си на цена от 10 лв. на ден за всяка от машините. Бихте ли препоръчали на предприятието да приеме тази оферта?</p></li>
+<li><p>Бизнес консултанти препоръчват на предприятието да въведе нов продукт, който би заел 2 ч. на първата машина и 2 ч. на втората машина. Очакваната печалба от продажбата на една единица от този продукт е 125 лв. Бихте ли препоръчали на предприятието да започне производството на този продукт? Колко най-малко трябва да е цената на продукта, за да се оправдае производството му?</p></li>
+<li><p>Как би се променила оптималната печалба при увеличение на капацитета на първата машина на 20 ч. на ден?</p></li>
+</ul>
 <div id="f6e69d98" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Покажи кода</summary>
@@ -494,12 +501,60 @@ Steel: 3.2
 Cast iron: 1.6</code></pre>
 </div>
 </div>
-<p>Въпроси:</p>
-<ul>
-<li><p>Предприятието обмисля да увеличи работния капацитет на машините си. Коя машина би трябвало да е приоритетна?</p></li>
-<li><p>Бизнес консултанти препоръчват на предприятието да увеличи капацитета на машините си на цена от 10 лв. на ден за всяка от машините. Бихте ли препоръчали на предприятието да приеме тази оферта?</p></li>
-<li><p>Как би се променила оптималната печалба при увеличение на капацитета на първата машина на 20 ч. на ден?</p></li>
-</ul>
+<div id="aab5184c" class="cell" data-execution_count="32">
+<details class="code-fold">
+<summary>Покажи кода</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new model</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Casting problem"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variables</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>x_s <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Steel"</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>x_c <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Cast iron"</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>x_n <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"New product"</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Set objective</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>m.setObjective(<span class="dv">100</span> <span class="op">*</span> x_s <span class="op">+</span> <span class="dv">120</span> <span class="op">*</span> x_c <span class="op">+</span> <span class="dv">125</span> <span class="op">*</span> x_n, sense<span class="op">=</span>GRB.MAXIMIZE)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">2</span> <span class="op">*</span> x_s <span class="op">+</span> x_c <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> x_n <span class="op">&lt;=</span> <span class="dv">8</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_s <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> x_c <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> x_n <span class="op">&lt;=</span> <span class="dv">8</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Optimize model</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Steel: </span><span class="sc">{</span>x_s<span class="sc">.</span>x<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Cast iron: </span><span class="sc">{</span>x_c<span class="sc">.</span>x<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"New product: </span><span class="sc">{</span>x_n<span class="sc">.</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Gurobi Optimizer version 11.0.0 build v11.0.0rc2 (linux64 - "Ubuntu 22.04.4 LTS")
+
+CPU model: Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 6 physical cores, 12 logical processors, using up to 12 threads
+
+Optimize a model with 2 rows, 3 columns and 6 nonzeros
+Model fingerprint: 0xff1fe2f4
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+00]
+  Objective range  [1e+02, 1e+02]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [8e+00, 8e+00]
+Presolve time: 0.00s
+Presolved: 2 rows, 3 columns, 6 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    3.4500000e+32   4.000000e+30   3.450000e+02      0s
+       2    5.1200000e+02   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.01 seconds (0.00 work units)
+Optimal objective  5.120000000e+02
+Steel: 3.2
+Cast iron: 1.6
+New product: 0.0</code></pre>
+</div>
+</div>
 
 
 </section>
