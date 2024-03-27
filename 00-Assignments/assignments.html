@@ -1156,75 +1156,66 @@ y_{jan}, y_{feb}, y_{mar}, y_{apr}, y_{may}, y_{jun} &amp; \geq 0
 </div>
 </div>
 </div>
-<div id="cell-18" class="cell" data-execution_count="11">
+<div id="cell-18" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Покажи кода</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span> <span class="op">*</span> <span class="dv">90</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> <span class="dv">100</span>) <span class="op">/</span> <span class="dv">3</span></span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>96.66666666666667</code></pre>
-</div>
-</div>
-<div id="cell-19" class="cell" data-execution_count="10">
-<details class="code-fold">
-<summary>Покажи кода</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new model</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Oil Refinery"</span>)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>m.Params.LogToConsole <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variables</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>s1_dist <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S1 Distillation"</span>)</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>s2_dist <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S2 Distillation"</span>)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>s3_dist <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S3 Distillation"</span>)</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>s1_crack <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S1 Cracking"</span>)</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>s2_crack <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S2 Cracking"</span>)</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>s3_crack <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S3 Cracking"</span>)</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Set objective</span></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>m.setObjective(<span class="fl">6.7</span> <span class="op">*</span> (s1_dist <span class="op">+</span> s1_crack) <span class="op">+</span> <span class="fl">7.2</span> <span class="op">*</span> (s2_dist <span class="op">+</span> s2_crack) <span class="op">+</span> <span class="fl">8.1</span> <span class="op">*</span> (s3_dist <span class="op">+</span> s3_crack), GRB.MAXIMIZE)</span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Constraints</span></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a><span class="co">## Octane numbers of products</span></span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">82</span> <span class="op">*</span> s1_dist <span class="op">+</span> <span class="dv">98</span> <span class="op">*</span> s1_crack <span class="op">&gt;=</span> <span class="dv">87</span> <span class="op">*</span> (s1_dist <span class="op">+</span> s1_crack), <span class="st">"ON of gasoline 1"</span>)</span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">82</span> <span class="op">*</span> s2_dist <span class="op">+</span> <span class="dv">98</span> <span class="op">*</span> s2_crack <span class="op">&gt;=</span> <span class="dv">89</span> <span class="op">*</span> (s2_dist <span class="op">+</span> s2_crack), <span class="st">"ON of gasoline 2"</span>)</span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">82</span> <span class="op">*</span> s3_dist <span class="op">+</span> <span class="dv">98</span> <span class="op">*</span> s3_crack <span class="op">&gt;=</span> <span class="dv">93</span> <span class="op">*</span> (s3_dist <span class="op">+</span> s3_crack), <span class="st">"ON of gasoline 3"</span>)</span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a><span class="co">## Input capacities</span></span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">2</span> <span class="op">*</span> (s1_crack <span class="op">+</span> s2_crack <span class="op">+</span> s3_crack) <span class="op">&lt;=</span> <span class="fl">200e3</span>, <span class="st">"Cracker"</span>)</span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">5</span> <span class="op">*</span> (s1_dist <span class="op">+</span> s2_dist <span class="op">+</span> s3_dist) <span class="op">+</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">2</span> <span class="op">*</span> (s1_crack <span class="op">+</span> s2_crack <span class="op">+</span> s3_crack) <span class="op">&lt;=</span> <span class="fl">1.5e6</span>, <span class="st">"Distillation"</span>)</span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Demand constraints</span></span>
-<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>m.addConstr(s1_dist <span class="op">+</span> s1_crack <span class="op">&lt;=</span> <span class="fl">50e3</span>, <span class="st">"Demand of gasoline 1"</span>)</span>
-<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>m.addConstr(s2_dist <span class="op">+</span> s2_crack <span class="op">&lt;=</span> <span class="fl">30e3</span>, <span class="st">"Demand of gasoline 2"</span>)</span>
-<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>m.addConstr(s3_dist <span class="op">+</span> s3_crack <span class="op">&lt;=</span> <span class="fl">40e3</span>, <span class="st">"Demand of gasoline 3"</span>)</span>
-<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
-<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>vars_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Variable'</span>, <span class="st">'Value'</span>, <span class="st">'RC'</span>], data<span class="op">=</span>[(v.VarName, v.X, v.RC) <span class="cf">for</span> v <span class="kw">in</span> m.getVars()])</span>
-<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>constr_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Constraint'</span>, <span class="st">'Shadow Price'</span>, <span class="st">'Lower'</span>, <span class="st">'Upper'</span>], data<span class="op">=</span>[(c.ConstrName, c.Pi, c.SARHSLow, c.SARHSUp) <span class="cf">for</span> c <span class="kw">in</span> m.getConstrs()])</span>
-<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Model Status:'</span>, m.status)</span>
-<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Objective:'</span>, m.objVal)</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new model</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Oil Refinery"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>m.Params.LogToConsole <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variables</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>s1_dist <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S1 Distillation"</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>s2_dist <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S2 Distillation"</span>)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>s3_dist <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S3 Distillation"</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>s1_crack <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S1 Cracking"</span>)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>s2_crack <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S2 Cracking"</span>)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>s3_crack <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S3 Cracking"</span>)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Set objective</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>m.setObjective(<span class="fl">6.7</span> <span class="op">*</span> (s1_dist <span class="op">+</span> s1_crack) <span class="op">+</span> <span class="fl">7.2</span> <span class="op">*</span> (s2_dist <span class="op">+</span> s2_crack) <span class="op">+</span> <span class="fl">8.1</span> <span class="op">*</span> (s3_dist <span class="op">+</span> s3_crack), GRB.MAXIMIZE)</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Constraints</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="co">## Octane numbers of products</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">82</span> <span class="op">*</span> s1_dist <span class="op">+</span> <span class="dv">98</span> <span class="op">*</span> s1_crack <span class="op">&gt;=</span> <span class="dv">87</span> <span class="op">*</span> (s1_dist <span class="op">+</span> s1_crack), <span class="st">"ON of gasoline 1"</span>)</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">82</span> <span class="op">*</span> s2_dist <span class="op">+</span> <span class="dv">98</span> <span class="op">*</span> s2_crack <span class="op">&gt;=</span> <span class="dv">89</span> <span class="op">*</span> (s2_dist <span class="op">+</span> s2_crack), <span class="st">"ON of gasoline 2"</span>)</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">82</span> <span class="op">*</span> s3_dist <span class="op">+</span> <span class="dv">98</span> <span class="op">*</span> s3_crack <span class="op">&gt;=</span> <span class="dv">93</span> <span class="op">*</span> (s3_dist <span class="op">+</span> s3_crack), <span class="st">"ON of gasoline 3"</span>)</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a><span class="co">## Input capacities</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">2</span> <span class="op">*</span> (s1_crack <span class="op">+</span> s2_crack <span class="op">+</span> s3_crack) <span class="op">&lt;=</span> <span class="fl">200e3</span>, <span class="st">"Cracker"</span>)</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">5</span> <span class="op">*</span> (s1_dist <span class="op">+</span> s2_dist <span class="op">+</span> s3_dist) <span class="op">+</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">2</span> <span class="op">*</span> (s1_crack <span class="op">+</span> s2_crack <span class="op">+</span> s3_crack) <span class="op">&lt;=</span> <span class="fl">1.5e6</span>, <span class="st">"Distillation"</span>)</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Demand constraints</span></span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>m.addConstr(s1_dist <span class="op">+</span> s1_crack <span class="op">&lt;=</span> <span class="fl">50e3</span>, <span class="st">"Demand of gasoline 1"</span>)</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>m.addConstr(s2_dist <span class="op">+</span> s2_crack <span class="op">&lt;=</span> <span class="fl">30e3</span>, <span class="st">"Demand of gasoline 2"</span>)</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>m.addConstr(s3_dist <span class="op">+</span> s3_crack <span class="op">&lt;=</span> <span class="fl">40e3</span>, <span class="st">"Demand of gasoline 3"</span>)</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>vars_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Variable'</span>, <span class="st">'Value'</span>, <span class="st">'RC'</span>], data<span class="op">=</span>[(v.VarName, v.X, v.RC) <span class="cf">for</span> v <span class="kw">in</span> m.getVars()])</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>constr_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Constraint'</span>, <span class="st">'Shadow Price'</span>, <span class="st">'Lower'</span>, <span class="st">'Upper'</span>], data<span class="op">=</span>[(c.ConstrName, c.Pi, c.SARHSLow, c.SARHSUp) <span class="cf">for</span> c <span class="kw">in</span> m.getConstrs()])</span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Model Status:'</span>, m.status)</span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Objective:'</span>, m.objVal)</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Model Status: 2
 Objective: 875000.0</code></pre>
 </div>
 </div>
-<div id="cell-20" class="cell" data-execution_count="8">
+<div id="cell-19" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Покажи кода</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>vars_df</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>vars_df</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
@@ -1284,10 +1275,10 @@ Objective: 875000.0</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-21" class="cell" data-execution_count="9">
+<div id="cell-20" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Покажи кода</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>constr_df</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>constr_df</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div>
