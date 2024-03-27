@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="bg" xml:lang="bg"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.552">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -102,6 +102,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -236,10 +242,12 @@ window.Quarto = {
    
   <ul>
   <li><a href="#банкови-заеми" id="toc-банкови-заеми" class="nav-link active" data-scroll-target="#банкови-заеми"><span class="header-section-number">4.1</span> Банкови заеми</a></li>
-  <li><a href="#производство-и-склад-1" id="toc-производство-и-склад-1" class="nav-link" data-scroll-target="#производство-и-склад-1"><span class="header-section-number">4.2</span> Производство и склад (1)</a></li>
-  <li><a href="#производство-и-склад-2" id="toc-производство-и-склад-2" class="nav-link" data-scroll-target="#производство-и-склад-2"><span class="header-section-number">4.3</span> Производство и склад (2)</a></li>
-  <li><a href="#производство-и-персонал-1" id="toc-производство-и-персонал-1" class="nav-link" data-scroll-target="#производство-и-персонал-1"><span class="header-section-number">4.4</span> Производство и персонал (1)</a></li>
-  <li><a href="#производство-и-персонал-2" id="toc-производство-и-персонал-2" class="nav-link" data-scroll-target="#производство-и-персонал-2"><span class="header-section-number">4.5</span> Производство и персонал (2)</a></li>
+  <li><a href="#планиране-на-градско-строителство" id="toc-планиране-на-градско-строителство" class="nav-link" data-scroll-target="#планиране-на-градско-строителство"><span class="header-section-number">4.2</span> Планиране на градско строителство</a></li>
+  <li><a href="#производство-и-склад-1" id="toc-производство-и-склад-1" class="nav-link" data-scroll-target="#производство-и-склад-1"><span class="header-section-number">4.3</span> Производство и склад (1)</a></li>
+  <li><a href="#производство-и-склад-2" id="toc-производство-и-склад-2" class="nav-link" data-scroll-target="#производство-и-склад-2"><span class="header-section-number">4.4</span> Производство и склад (2)</a></li>
+  <li><a href="#производство-и-персонал-1" id="toc-производство-и-персонал-1" class="nav-link" data-scroll-target="#производство-и-персонал-1"><span class="header-section-number">4.5</span> Производство и персонал (1)</a></li>
+  <li><a href="#производство-и-персонал-2" id="toc-производство-и-персонал-2" class="nav-link" data-scroll-target="#производство-и-персонал-2"><span class="header-section-number">4.6</span> Производство и персонал (2)</a></li>
+  <li><a href="#оптимизация-на-производство-рафинерия" id="toc-оптимизация-на-производство-рафинерия" class="nav-link" data-scroll-target="#оптимизация-на-производство-рафинерия"><span class="header-section-number">4.7</span> Оптимизация на производство (рафинерия)</a></li>
   </ul>
 </nav>
     </div>
@@ -349,7 +357,7 @@ x_{т} &amp; : \text{търговски кредити в млн. лв.}
 </div>
 </div>
 </div>
-<div id="cell-1" class="cell">
+<div id="cell-1" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Покажи кода</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
@@ -375,10 +383,199 @@ x_{т} &amp; : \text{търговски кредити в млн. лв.}
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Constraints</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Restricted license - for non-production use only - expires 2025-11-24</code></pre>
+</div>
 </div>
 </section>
-<section id="производство-и-склад-1" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="производство-и-склад-1"><span class="header-section-number">4.2</span> Производство и склад (1)</h2>
+<section id="планиране-на-градско-строителство" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="планиране-на-градско-строителство"><span class="header-section-number">4.2</span> Планиране на градско строителство</h2>
+<p>Да приемем, че София е изправена пред дефицит в местния бюджет и общинският съвет обмисля как да увеличи приходите от данък сгради чрез преустройства на общински имоти. Проектът се състои от две части – разчистване на занемарени и повредени постройки и построяване на нови жилища.</p>
+<ol type="1">
+<li>В момента на планиране общината притежава 300 занемарени постройки, които могат да бъдат съборени. Всяка от тях освобождава 1000 кв. метра и събарянето й струва 3 000 лв. на постройка. 15 процента от освободеното пространство е предвидено за улици, тротоари и свободни пространства.</li>
+<li>На освободените парцели общината може да построи четири вида нови жилищни сгради: еднофамилни (300 кв. метра), двуфамилни (500 кв. метра), три-фамилни (700 кв. метра) и четири-фамилни къщи (900 кв. метра). Очакваните данъчни постъпления са съответно 1 000 лв., 1 700 лв., 2 400 лв. и 2 800 лв. на година.</li>
+<li>Поне 20 процента от новите постройки трябва да са еднофамилни къщи, двуфамилните домове трябва да съставляват поне 20 процента, а три и четири-фамилните домове трябва да са поне една четвърт от всички нови постройки.</li>
+<li>Строителните разходи за новите домове са съответно 50 000 лв., 70 000 лв., 130 000 лв. и 160 000 лв.</li>
+<li>Общината предвижда на финансира проекта чрез банков заем, който не може да надвишава 15 милиона лева.</li>
+</ol>
+<p>Колко от всеки вид къщи трябва да планира да построи общината, така че да постигне възможно най-високи данъчни постъпления?</p>
+<div id="cell-3" class="cell" data-fold-code="true" data-execution_count="2">
+<details class="code-fold">
+<summary>Покажи кода</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> gp.Env(empty<span class="op">=</span><span class="va">True</span>) <span class="im">as</span> env:</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    env.setParam(<span class="st">"OutputFlag"</span>, <span class="dv">0</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    env.setParam(<span class="st">"LogToConsole"</span>, <span class="dv">0</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    env.start()</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> gp.Model(<span class="st">"City planning"</span>, env<span class="op">=</span>env) <span class="im">as</span> m:</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create variables</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        single <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Single"</span>, lb<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        dbl <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Double"</span>, lb<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        trpl <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Triple"</span>, lb<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        quad <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Quadruple"</span>, lb<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        dem <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Demolished"</span>, lb<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Set objective</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        m.setObjective(single <span class="op">+</span> <span class="fl">1.7</span> <span class="op">*</span> dbl <span class="op">+</span> <span class="fl">2.4</span> <span class="op">*</span> trpl <span class="op">+</span> <span class="fl">2.8</span> <span class="op">*</span> quad, GRB.MAXIMIZE)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Add constraints</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        m.addConstr(<span class="dv">300</span> <span class="op">*</span> single <span class="op">+</span> <span class="dv">500</span> <span class="op">*</span> dbl <span class="op">+</span> <span class="dv">700</span> <span class="op">*</span> trpl <span class="op">+</span> <span class="dv">900</span> <span class="op">*</span> quad <span class="op">-</span> <span class="dv">850</span> <span class="op">*</span> dem <span class="op">&lt;=</span> <span class="dv">0</span>, <span class="st">"Area"</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        m.addConstr(dem <span class="op">&lt;=</span> <span class="dv">300</span>, <span class="st">"Demolitions"</span>)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        m.addConstr(<span class="op">-</span><span class="fl">0.8</span> <span class="op">*</span> single <span class="op">+</span> <span class="fl">0.2</span> <span class="op">*</span> dbl <span class="op">+</span> <span class="fl">0.2</span> <span class="op">*</span> trpl <span class="op">+</span> <span class="fl">0.2</span> <span class="op">*</span> quad <span class="op">&lt;=</span> <span class="dv">0</span>, <span class="st">"Single"</span>)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        m.addConstr(<span class="fl">0.1</span> <span class="op">*</span> single <span class="op">-</span> <span class="fl">0.9</span> <span class="op">*</span> dbl <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> trpl <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> quad <span class="op">&lt;=</span> <span class="dv">0</span>, <span class="st">"Double"</span>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        m.addConstr(<span class="fl">0.25</span> <span class="op">*</span> single <span class="op">+</span> <span class="fl">0.25</span> <span class="op">*</span> dbl <span class="op">-</span><span class="fl">0.75</span> <span class="op">*</span> trpl <span class="op">-</span> <span class="fl">0.75</span> <span class="op">*</span> quad <span class="op">&lt;=</span> <span class="dv">0</span>, <span class="st">"Triple/Quadruple"</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        m.addConstr(<span class="dv">50</span> <span class="op">*</span> single <span class="op">+</span> <span class="dv">70</span> <span class="op">*</span> dbl <span class="op">+</span> <span class="dv">130</span> <span class="op">*</span> trpl <span class="op">+</span> <span class="dv">160</span> <span class="op">*</span> quad <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> dem <span class="op">&lt;=</span> <span class="dv">15000</span>, <span class="st">"Budget"</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Optimize model</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        m.optimize()</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Print results</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'Model Status:'</span>, m.status)</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'Objective:'</span>, m.objVal)</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>        var_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Variable'</span>, <span class="st">'Value'</span>, <span class="st">'RC'</span>], data<span class="op">=</span>[(v.VarName, v.X, v.RC) <span class="cf">for</span> v <span class="kw">in</span> m.getVars()])</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>        constr_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Constraint'</span>, <span class="st">'Shadow Price'</span>, <span class="st">'Lower'</span>, <span class="st">'Upper'</span>], data<span class="op">=</span>[(c.ConstrName, c.Pi, c.SARHSLow, c.SARHSUp) <span class="cf">for</span> c <span class="kw">in</span> m.getConstrs()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model Status: 2
+Objective: 314.3115942028985</code></pre>
+</div>
+</div>
+<div id="cell-4" class="cell" data-fold-code="true" data-execution_count="3">
+<details class="code-fold">
+<summary>Покажи кода</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>var_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Variable</th>
+<th data-quarto-table-cell-role="th">Value</th>
+<th data-quarto-table-cell-role="th">RC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Single</td>
+<td>36.231884</td>
+<td>0.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Double</td>
+<td>99.637681</td>
+<td>0.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Triple</td>
+<td>45.289855</td>
+<td>0.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Quadruple</td>
+<td>0.000000</td>
+<td>-0.243414</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Demolished</td>
+<td>108.695652</td>
+<td>0.000000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="cell-5" class="cell" data-fold-code="true" data-execution_count="4">
+<details class="code-fold">
+<summary>Покажи кода</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>constr_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Constraint</th>
+<th data-quarto-table-cell-role="th">Shadow Price</th>
+<th data-quarto-table-cell-role="th">Lower</th>
+<th data-quarto-table-cell-role="th">Upper</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Area</td>
+<td>0.000074</td>
+<td>-166222.222222</td>
+<td>9.444444e+04</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Demolitions</td>
+<td>0.000000</td>
+<td>108.695652</td>
+<td>inf</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Single</td>
+<td>0.266127</td>
+<td>-91.858790</td>
+<td>3.450609e+01</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Double</td>
+<td>0.000000</td>
+<td>-81.521739</td>
+<td>inf</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Triple/Quadruple</td>
+<td>0.572038</td>
+<td>-61.298077</td>
+<td>5.545407e+01</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Budget</td>
+<td>0.020954</td>
+<td>0.000000</td>
+<td>4.140000e+04</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="производство-и-склад-1" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="производство-и-склад-1"><span class="header-section-number">4.3</span> Производство и склад (1)</h2>
 <p>Малък шивашки цех се опитва да определи производствения си план за следващия сезон. Цехът произвежда четири продукта: якета, шапки, ръкавици и панталони, които се произвеждат в четири отделения: рязане, уплътняване, шиене и пакетиране.</p>
 <table class="table">
 <colgroup>
@@ -525,49 +722,49 @@ s_{jackets}, s_{hats}, s_{gloves}, s_{pants} \geq 0
 </div>
 </div>
 </div>
-<div id="cell-3" class="cell" data-execution_count="2">
+<div id="cell-7" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Покажи кода</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new model</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Production and Penalty"</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variables</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>jackets <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Jackets"</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>hats <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Hats"</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>gloves <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Gloves"</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>pants <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Pants"</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Set objective</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>profit_sales <span class="op">=</span> <span class="dv">30</span> <span class="op">*</span> jackets <span class="op">+</span> <span class="dv">40</span> <span class="op">*</span> hats <span class="op">+</span> <span class="dv">20</span> <span class="op">*</span> gloves <span class="op">+</span> <span class="dv">10</span> <span class="op">*</span> pants</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># The deficit of jackets, hats, gloves and pants</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>jackets_deficit <span class="op">=</span> <span class="dv">800</span> <span class="op">-</span> jackets</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>hats_deficit <span class="op">=</span> <span class="dv">750</span> <span class="op">-</span> hats</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>gloves_deficit <span class="op">=</span> <span class="dv">600</span> <span class="op">-</span> gloves</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>pants_deficit <span class="op">=</span> <span class="dv">600</span> <span class="op">-</span> pants</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>penalty <span class="op">=</span> <span class="dv">15</span> <span class="op">*</span> jackets_deficit <span class="op">+</span> <span class="dv">20</span> <span class="op">*</span> hats_deficit <span class="op">+</span> <span class="dv">10</span> <span class="op">*</span> gloves_deficit <span class="op">+</span> <span class="dv">8</span> <span class="op">*</span> pants_deficit</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>m.setObjective(profit_sales <span class="op">-</span> penalty, GRB.MAXIMIZE)</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Constraints</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># The production of jackets, hats, gloves and pants</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="fl">0.3</span> <span class="op">*</span> jackets <span class="op">+</span> <span class="fl">0.3</span> <span class="op">*</span> hats <span class="op">+</span> <span class="fl">0.25</span> <span class="op">*</span> gloves <span class="op">+</span> <span class="fl">0.15</span> <span class="op">*</span> pants <span class="op">&lt;=</span> <span class="dv">1000</span>, <span class="st">"Cutting"</span>)</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="fl">0.25</span> <span class="op">*</span> jackets <span class="op">+</span> <span class="fl">0.35</span> <span class="op">*</span> hats <span class="op">+</span> <span class="fl">0.3</span> <span class="op">*</span> gloves <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> pants <span class="op">&lt;=</span> <span class="dv">1000</span>, <span class="st">"Sewing"</span>)</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="fl">0.45</span> <span class="op">*</span> jackets <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> hats <span class="op">+</span> <span class="fl">0.4</span> <span class="op">*</span> gloves <span class="op">+</span> <span class="fl">0.22</span> <span class="op">*</span> pants <span class="op">&lt;=</span> <span class="dv">1000</span>, <span class="st">"Sealing"</span>)</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="fl">0.12</span> <span class="op">*</span> jackets <span class="op">+</span> <span class="fl">0.15</span> <span class="op">*</span> hats <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> gloves <span class="op">+</span> <span class="fl">0.05</span> <span class="op">*</span> pants <span class="op">&lt;=</span> <span class="dv">1000</span>, <span class="st">"Packaging"</span>)</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> m.getVars():</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'</span><span class="sc">%s</span><span class="st"> </span><span class="sc">%g</span><span class="st">'</span> <span class="op">%</span> (v.varName, v.x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new model</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Production and Penalty"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variables</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>jackets <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Jackets"</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>hats <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Hats"</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>gloves <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Gloves"</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>pants <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Pants"</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Set objective</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>profit_sales <span class="op">=</span> <span class="dv">30</span> <span class="op">*</span> jackets <span class="op">+</span> <span class="dv">40</span> <span class="op">*</span> hats <span class="op">+</span> <span class="dv">20</span> <span class="op">*</span> gloves <span class="op">+</span> <span class="dv">10</span> <span class="op">*</span> pants</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co"># The deficit of jackets, hats, gloves and pants</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>jackets_deficit <span class="op">=</span> <span class="dv">800</span> <span class="op">-</span> jackets</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>hats_deficit <span class="op">=</span> <span class="dv">750</span> <span class="op">-</span> hats</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>gloves_deficit <span class="op">=</span> <span class="dv">600</span> <span class="op">-</span> gloves</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>pants_deficit <span class="op">=</span> <span class="dv">600</span> <span class="op">-</span> pants</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>penalty <span class="op">=</span> <span class="dv">15</span> <span class="op">*</span> jackets_deficit <span class="op">+</span> <span class="dv">20</span> <span class="op">*</span> hats_deficit <span class="op">+</span> <span class="dv">10</span> <span class="op">*</span> gloves_deficit <span class="op">+</span> <span class="dv">8</span> <span class="op">*</span> pants_deficit</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>m.setObjective(profit_sales <span class="op">-</span> penalty, GRB.MAXIMIZE)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Constraints</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="co"># The production of jackets, hats, gloves and pants</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="fl">0.3</span> <span class="op">*</span> jackets <span class="op">+</span> <span class="fl">0.3</span> <span class="op">*</span> hats <span class="op">+</span> <span class="fl">0.25</span> <span class="op">*</span> gloves <span class="op">+</span> <span class="fl">0.15</span> <span class="op">*</span> pants <span class="op">&lt;=</span> <span class="dv">1000</span>, <span class="st">"Cutting"</span>)</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="fl">0.25</span> <span class="op">*</span> jackets <span class="op">+</span> <span class="fl">0.35</span> <span class="op">*</span> hats <span class="op">+</span> <span class="fl">0.3</span> <span class="op">*</span> gloves <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> pants <span class="op">&lt;=</span> <span class="dv">1000</span>, <span class="st">"Sewing"</span>)</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="fl">0.45</span> <span class="op">*</span> jackets <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> hats <span class="op">+</span> <span class="fl">0.4</span> <span class="op">*</span> gloves <span class="op">+</span> <span class="fl">0.22</span> <span class="op">*</span> pants <span class="op">&lt;=</span> <span class="dv">1000</span>, <span class="st">"Sealing"</span>)</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="fl">0.12</span> <span class="op">*</span> jackets <span class="op">+</span> <span class="fl">0.15</span> <span class="op">*</span> hats <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> gloves <span class="op">+</span> <span class="fl">0.05</span> <span class="op">*</span> pants <span class="op">&lt;=</span> <span class="dv">1000</span>, <span class="st">"Packaging"</span>)</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> m.getVars():</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'</span><span class="sc">%s</span><span class="st"> </span><span class="sc">%g</span><span class="st">'</span> <span class="op">%</span> (v.varName, v.x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Gurobi Optimizer version 11.0.0 build v11.0.0rc2 (linux64 - "Ubuntu 22.04.4 LTS")
@@ -598,8 +795,8 @@ Pants 0</code></pre>
 </div>
 </div>
 </section>
-<section id="производство-и-склад-2" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="производство-и-склад-2"><span class="header-section-number">4.3</span> Производство и склад (2)</h2>
+<section id="производство-и-склад-2" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="производство-и-склад-2"><span class="header-section-number">4.4</span> Производство и склад (2)</h2>
 <p>Компания за производство на дограма има договор за доставка на дървени дограми за следващите 6 месеца. За същия период компанията очаква разходите за производство (труд и материали) да варират. Компанията може да се възползва от по-ниски производствени разходи в даден период и да произведе повече дограми от необходимото, като разходите за складиране на продуктите са 8 лв. на месец на брой. В момента на планиране фирмата няма готови дограми на склад. В края на периода за планиране компанията изисква да няма дограми на склад.</p>
 <table class="table">
 <colgroup>
@@ -705,52 +902,95 @@ y_{jan}, y_{feb}, y_{mar}, y_{apr}, y_{may}, y_{jun} &amp; \geq 0
 </div>
 </div>
 </div>
-<div id="cell-5" class="cell">
+<div id="cell-9" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Покажи кода</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new model</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Production and Storage"</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variables</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>x_jan <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Production in January"</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>x_feb <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Production in February"</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>x_mar <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Production in March"</span>)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>x_apr <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Production in April"</span>)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>x_may <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Production in May"</span>)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>x_jun <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Production in June"</span>)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>y_jan <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Storage in January"</span>)</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>y_feb <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Storage in February"</span>)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>y_mar <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Storage in March"</span>)</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>y_apr <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Storage in April"</span>)</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>y_may <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Storage in May"</span>)</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>y_jun <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Storage in June"</span>)</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>production_costs <span class="op">=</span> <span class="dv">50</span> <span class="op">*</span> x_jan <span class="op">+</span> <span class="dv">45</span> <span class="op">*</span> x_feb <span class="op">+</span> <span class="dv">55</span> <span class="op">*</span> x_mar <span class="op">+</span> <span class="dv">48</span> <span class="op">*</span> x_apr <span class="op">+</span> <span class="dv">52</span> <span class="op">*</span> x_may <span class="op">+</span> <span class="dv">50</span> <span class="op">*</span> x_jun</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Balance of production and storage</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_jan <span class="op">+</span> (<span class="dv">0</span> <span class="op">-</span> y_jan)  <span class="op">==</span> <span class="dv">100</span>, <span class="st">"Balance of production and storage in February"</span>)</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_feb <span class="op">+</span> y_jan <span class="op">-</span> y_feb <span class="op">==</span> <span class="dv">250</span>, <span class="st">"Balance of production and storage in March"</span>)</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_mar <span class="op">+</span> y_feb <span class="op">-</span> y_mar <span class="op">==</span> <span class="dv">190</span>, <span class="st">"Balance of production and storage in April"</span>)</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_apr <span class="op">+</span> y_mar <span class="op">-</span> y_apr <span class="op">==</span> <span class="dv">140</span>, <span class="st">"Balance of production and storage in May"</span>)</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_may <span class="op">+</span> y_apr <span class="op">-</span> y_may <span class="op">==</span> <span class="dv">220</span>, <span class="st">"Balance of production and storage in June"</span>)</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_jun <span class="op">+</span> y_may  <span class="op">-</span> <span class="dv">0</span> <span class="op">==</span> <span class="dv">110</span>, <span class="st">"Balance of production and storage in July"</span>)</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> m.getVars():</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'</span><span class="sc">%s</span><span class="st"> </span><span class="sc">%g</span><span class="st">'</span> <span class="op">%</span> (v.varName, v.x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new model</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Production and Storage"</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variables</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>x_jan <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Production in January"</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>x_feb <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Production in February"</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>x_mar <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Production in March"</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>x_apr <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Production in April"</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>x_may <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Production in May"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>x_jun <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Production in June"</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>y_jan <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Storage in January"</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>y_feb <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Storage in February"</span>)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>y_mar <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Storage in March"</span>)</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>y_apr <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Storage in April"</span>)</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>y_may <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Storage in May"</span>)</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>y_jun <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"Storage in June"</span>)</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>production_costs <span class="op">=</span> <span class="dv">50</span> <span class="op">*</span> x_jan <span class="op">+</span> <span class="dv">45</span> <span class="op">*</span> x_feb <span class="op">+</span> <span class="dv">55</span> <span class="op">*</span> x_mar <span class="op">+</span> <span class="dv">48</span> <span class="op">*</span> x_apr <span class="op">+</span> <span class="dv">52</span> <span class="op">*</span> x_may <span class="op">+</span> <span class="dv">50</span> <span class="op">*</span> x_jun</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Balance of production and storage</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_jan <span class="op">+</span> (<span class="dv">0</span> <span class="op">-</span> y_jan)  <span class="op">==</span> <span class="dv">100</span>, <span class="st">"Balance of production and storage in February"</span>)</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_feb <span class="op">+</span> y_jan <span class="op">-</span> y_feb <span class="op">==</span> <span class="dv">250</span>, <span class="st">"Balance of production and storage in March"</span>)</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_mar <span class="op">+</span> y_feb <span class="op">-</span> y_mar <span class="op">==</span> <span class="dv">190</span>, <span class="st">"Balance of production and storage in April"</span>)</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_apr <span class="op">+</span> y_mar <span class="op">-</span> y_apr <span class="op">==</span> <span class="dv">140</span>, <span class="st">"Balance of production and storage in May"</span>)</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_may <span class="op">+</span> y_apr <span class="op">-</span> y_may <span class="op">==</span> <span class="dv">220</span>, <span class="st">"Balance of production and storage in June"</span>)</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_jun <span class="op">+</span> y_may  <span class="op">-</span> <span class="dv">0</span> <span class="op">==</span> <span class="dv">110</span>, <span class="st">"Balance of production and storage in July"</span>)</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> m.getVars():</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>v<span class="sc">.</span>varName<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>v<span class="sc">.</span>x<span class="sc">}</span><span class="ss">, RC = </span><span class="sc">{</span>v<span class="sc">.</span>RC<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> m.getConstrs():</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>c<span class="sc">.</span>constrName<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>c<span class="sc">.</span>slack<span class="sc">}</span><span class="ss">, Shadow price = </span><span class="sc">{</span>c<span class="sc">.</span>Pi<span class="sc">}</span><span class="ss">, Lower= </span><span class="sc">{</span>c<span class="sc">.</span>SARHSLow<span class="sc">}</span><span class="ss">, Upper = </span><span class="sc">{</span>c<span class="sc">.</span>SARHSUp<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Gurobi Optimizer version 11.0.0 build v11.0.0rc2 (linux64 - "Ubuntu 22.04.4 LTS")
+
+CPU model: Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 6 physical cores, 12 logical processors, using up to 12 threads
+
+Optimize a model with 6 rows, 12 columns and 16 nonzeros
+Model fingerprint: 0xeaa15f89
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [0e+00, 0e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+02, 2e+02]
+Presolve removed 6 rows and 12 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 0 iterations and 0.00 seconds (0.00 work units)
+Optimal objective  0.000000000e+00
+Production in January = 100.0, RC = 0.0
+Production in February = 250.0, RC = 0.0
+Production in March = 190.0, RC = 0.0
+Production in April = 470.0, RC = 0.0
+Production in May = 0.0, RC = 0.0
+Production in June = 0.0, RC = 0.0
+Storage in January = 0.0, RC = 0.0
+Storage in February = 0.0, RC = 0.0
+Storage in March = 0.0, RC = 0.0
+Storage in April = 330.0, RC = 0.0
+Storage in May = 110.0, RC = 0.0
+Storage in June = 0.0, RC = 0.0
+Balance of production and storage in February = 0.0, Shadow price = 0.0, Lower= 0.0, Upper = inf
+Balance of production and storage in March = 0.0, Shadow price = -0.0, Lower= 0.0, Upper = inf
+Balance of production and storage in April = 0.0, Shadow price = -0.0, Lower= 0.0, Upper = inf
+Balance of production and storage in May = 0.0, Shadow price = -0.0, Lower= -330.0, Upper = inf
+Balance of production and storage in June = 0.0, Shadow price = -0.0, Lower= -110.0, Upper = inf
+Balance of production and storage in July = 0.0, Shadow price = -0.0, Lower= 0.0, Upper = inf</code></pre>
+</div>
 </div>
 </section>
-<section id="производство-и-персонал-1" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="производство-и-персонал-1"><span class="header-section-number">4.4</span> Производство и персонал (1)</h2>
+<section id="производство-и-персонал-1" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="производство-и-персонал-1"><span class="header-section-number">4.5</span> Производство и персонал (1)</h2>
 <p>Компания за производство на дограма има договор за доставка на дървени дограми за следващата година. Компанията разполага с 10 опитни сътрудника, назначени на трудови договори. Всеки от тях произвежда по 12 дограми на тримесечие. Компанията може да отговори на флуктуациите в търсенето на своите продукти, като назначава и уволнява сътрудници на срочни договори. Временно заетите произвеждат по 3 дограми на месец. Разходите за назначаване/уволняване на временни сътрудници са съответно 200 лв. и 400 лв. за тримесечие. Компанията може да складира непродадени единици на цена 50 лв. на месец на единица.</p>
 <table class="table">
 <colgroup>
@@ -781,8 +1021,8 @@ y_{jan}, y_{feb}, y_{mar}, y_{apr}, y_{may}, y_{jun} &amp; \geq 0
 </table>
 <p>Формулирайте оптимизационна задача, която да намери оптималния план за назначаване/уволняване на временно заетите работници.</p>
 </section>
-<section id="производство-и-персонал-2" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="производство-и-персонал-2"><span class="header-section-number">4.5</span> Производство и персонал (2)</h2>
+<section id="производство-и-персонал-2" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="производство-и-персонал-2"><span class="header-section-number">4.6</span> Производство и персонал (2)</h2>
 <p>Фирма, специализирана в производство на зимни палта се опитва да посрещне търсенето на нейните стоки с възможно най-малки разходи. Всеки работник, нает в началото на сезона работи през целия сезон, произвежда 80 палта и получава 6000 лв. заплата. В началото на годината фирмата разполага с 30 работника.</p>
 <p>Търсенето на палта има силни сезонни колебания и фирмата има три опции, за да отговори на тези вариации:</p>
 <ul>
@@ -824,6 +1064,254 @@ y_{jan}, y_{feb}, y_{mar}, y_{apr}, y_{may}, y_{jun} &amp; \geq 0
 &amp; s_i = s_{i - 1} + x_i - d_i \\
 &amp; o_i \leq 0.2 \cdot 80 w_i
 \end{align*}</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="оптимизация-на-производство-рафинерия" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="оптимизация-на-производство-рафинерия"><span class="header-section-number">4.7</span> Оптимизация на производство (рафинерия)</h2>
+<p>Рафинерия произвежда три вида безоловен бензин, които се различават по октановото си число (ON): обикновен (<span class="math inline">ON \geq 87</span>), премиум (<span class="math inline">ON \geq 89</span>) и супер (<span class="math inline">ON \geq 92</span>). Преработката на суровия петрол обхваща три компонента.</p>
+<ol type="1">
+<li>В първият компонент суровият петрол се дестилира до петролна суровина (feedstock) с октаново число ON = 82. За производството на един барел суровина са нужни 5 барела суров петрол. Капацитетът на дестилационните съоръжения са 1 500 хиляди барела на ден.</li>
+<li>Част от петролната суровина се обработва допълнително в термичен крекер, който произвежда бензин с ON = 98. От един барел суровина крекерът произвежда половин барел бензин. Капацитетът на крекера е ограничен до 200 000 барела петролна суровина на ден.</li>
+<li>Последният елемент в рафинерията е смесител, който комбинира бензин от крекера и петролната суровина от дестилацията. Октановото число на смес е приблизително равно на претегленото средно на октановите числа компонентите й. Пример: от 1 барел с ON=90 и 2 барела с ON=100 ще се получи смес с октаново число <span class="math inline">(1\times 90 + 2 \times 100) / 3 \approx 96.6</span></li>
+<li>Търсенето на трите вида бензин е ограничено до съответно 50, 30, и 40 хиляди барела на ден.</li>
+<li>Рафинерията оценява печалбата от барел бензин на съответно 6, 7 и 8 долара за трите вида бензин, които продава.</li>
+</ol>
+<p>Съставете математически модел, на базата на който да препоръчате оптимален (най-висока печалба) производствен план на рафинерията.</p>
+<p>Виж <a href="#fig-refinery" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> за производствената схема на рафинерията.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-refinery" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-refinery-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-refinery">flowchart LR
+    A[Дестилация 5:1] --&gt;|ON=82| B[Крекер 2:1]
+    A --&gt; |ON=82| C
+    B --&gt;|ON=98| C[Смесител 1:1]
+    C --&gt; D(ON=82)
+    C --&gt; E(ON=89)
+    C --&gt; F(ON=92)
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-refinery-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.1: Производствена схема на рафинерия
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-12" class="cell" data-execution_count="11">
+<details class="code-fold">
+<summary>Покажи кода</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span> <span class="op">*</span> <span class="dv">90</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> <span class="dv">100</span>) <span class="op">/</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>96.66666666666667</code></pre>
+</div>
+</div>
+<div id="cell-13" class="cell" data-execution_count="10">
+<details class="code-fold">
+<summary>Покажи кода</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new model</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Oil Refinery"</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>m.Params.LogToConsole <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variables</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>s1_dist <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S1 Distillation"</span>)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>s2_dist <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S2 Distillation"</span>)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>s3_dist <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S3 Distillation"</span>)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>s1_crack <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S1 Cracking"</span>)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>s2_crack <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S2 Cracking"</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>s3_crack <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S3 Cracking"</span>)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Set objective</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>m.setObjective(<span class="fl">6.7</span> <span class="op">*</span> (s1_dist <span class="op">+</span> s1_crack) <span class="op">+</span> <span class="fl">7.2</span> <span class="op">*</span> (s2_dist <span class="op">+</span> s2_crack) <span class="op">+</span> <span class="fl">8.1</span> <span class="op">*</span> (s3_dist <span class="op">+</span> s3_crack), GRB.MAXIMIZE)</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Constraints</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="co">## Octane numbers of products</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">82</span> <span class="op">*</span> s1_dist <span class="op">+</span> <span class="dv">98</span> <span class="op">*</span> s1_crack <span class="op">&gt;=</span> <span class="dv">87</span> <span class="op">*</span> (s1_dist <span class="op">+</span> s1_crack), <span class="st">"ON of gasoline 1"</span>)</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">82</span> <span class="op">*</span> s2_dist <span class="op">+</span> <span class="dv">98</span> <span class="op">*</span> s2_crack <span class="op">&gt;=</span> <span class="dv">89</span> <span class="op">*</span> (s2_dist <span class="op">+</span> s2_crack), <span class="st">"ON of gasoline 2"</span>)</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">82</span> <span class="op">*</span> s3_dist <span class="op">+</span> <span class="dv">98</span> <span class="op">*</span> s3_crack <span class="op">&gt;=</span> <span class="dv">93</span> <span class="op">*</span> (s3_dist <span class="op">+</span> s3_crack), <span class="st">"ON of gasoline 3"</span>)</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="co">## Input capacities</span></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">2</span> <span class="op">*</span> (s1_crack <span class="op">+</span> s2_crack <span class="op">+</span> s3_crack) <span class="op">&lt;=</span> <span class="fl">200e3</span>, <span class="st">"Cracker"</span>)</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">5</span> <span class="op">*</span> (s1_dist <span class="op">+</span> s2_dist <span class="op">+</span> s3_dist) <span class="op">+</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">2</span> <span class="op">*</span> (s1_crack <span class="op">+</span> s2_crack <span class="op">+</span> s3_crack) <span class="op">&lt;=</span> <span class="fl">1.5e6</span>, <span class="st">"Distillation"</span>)</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Demand constraints</span></span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>m.addConstr(s1_dist <span class="op">+</span> s1_crack <span class="op">&lt;=</span> <span class="fl">50e3</span>, <span class="st">"Demand of gasoline 1"</span>)</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>m.addConstr(s2_dist <span class="op">+</span> s2_crack <span class="op">&lt;=</span> <span class="fl">30e3</span>, <span class="st">"Demand of gasoline 2"</span>)</span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>m.addConstr(s3_dist <span class="op">+</span> s3_crack <span class="op">&lt;=</span> <span class="fl">40e3</span>, <span class="st">"Demand of gasoline 3"</span>)</span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>vars_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Variable'</span>, <span class="st">'Value'</span>, <span class="st">'RC'</span>], data<span class="op">=</span>[(v.VarName, v.X, v.RC) <span class="cf">for</span> v <span class="kw">in</span> m.getVars()])</span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>constr_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Constraint'</span>, <span class="st">'Shadow Price'</span>, <span class="st">'Lower'</span>, <span class="st">'Upper'</span>], data<span class="op">=</span>[(c.ConstrName, c.Pi, c.SARHSLow, c.SARHSUp) <span class="cf">for</span> c <span class="kw">in</span> m.getConstrs()])</span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Model Status:'</span>, m.status)</span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Objective:'</span>, m.objVal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model Status: 2
+Objective: 875000.0</code></pre>
+</div>
+</div>
+<div id="cell-14" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Покажи кода</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>vars_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Variable</th>
+<th data-quarto-table-cell-role="th">Value</th>
+<th data-quarto-table-cell-role="th">RC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>S1 Distillation</td>
+<td>34375.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>S2 Distillation</td>
+<td>16875.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>S3 Distillation</td>
+<td>12500.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>S1 Cracking</td>
+<td>15625.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>S2 Cracking</td>
+<td>13125.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>S3 Cracking</td>
+<td>27500.0</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="cell-15" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Покажи кода</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>constr_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Constraint</th>
+<th data-quarto-table-cell-role="th">Shadow Price</th>
+<th data-quarto-table-cell-role="th">Lower</th>
+<th data-quarto-table-cell-role="th">Upper</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>ON of gasoline 1</td>
+<td>-0.0</td>
+<td>-250000.0</td>
+<td>5.500000e+05</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>ON of gasoline 2</td>
+<td>-0.0</td>
+<td>-210000.0</td>
+<td>2.700000e+05</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>ON of gasoline 3</td>
+<td>-0.0</td>
+<td>-440000.0</td>
+<td>2.000000e+05</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Cracker</td>
+<td>0.0</td>
+<td>112500.0</td>
+<td>inf</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Distillation</td>
+<td>0.0</td>
+<td>881250.0</td>
+<td>inf</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Demand of gasoline 1</td>
+<td>6.7</td>
+<td>0.0</td>
+<td>1.442857e+05</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Demand of gasoline 2</td>
+<td>7.2</td>
+<td>0.0</td>
+<td>1.160870e+05</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Demand of gasoline 3</td>
+<td>8.1</td>
+<td>0.0</td>
+<td>1.036364e+05</td>
+</tr>
+</tbody>
+</table>
+
+</div>
 </div>
 </div>
 </div>
