@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Въведение в математическата оптимизация - Литература</title>
+<title>Въведение в математическата оптимизация - 4&nbsp; Симплекс метод</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,47 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
-<link href="./00-Assignments/assignments.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../00-Assignments/assignments.html" rel="next">
+<link href="../03-Graphical-Method/02-Sensitivity.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -89,6 +69,49 @@ div.csl-indent {
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -101,7 +124,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Включи/скрий страничната навигация" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Literature.html">Литература</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../04-Simplex/01-Simplex.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Симплекс метод</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Включи/скрий страничната навигация" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -116,7 +139,7 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Въведение в математическата оптимизация</a> 
+      <a href="../">Въведение в математическата оптимизация</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -128,49 +151,49 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-Introduction/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../02-Introduction/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Въведение</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-Graphical-Method/01-Blending.html" class="sidebar-item-text sidebar-link">
+  <a href="../03-Graphical-Method/01-Blending.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Графичен метод</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-Graphical-Method/02-Sensitivity.html" class="sidebar-item-text sidebar-link">
+  <a href="../03-Graphical-Method/02-Sensitivity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Анализ на чувствителността на решението</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-Simplex/01-Simplex.html" class="sidebar-item-text sidebar-link">
+  <a href="../04-Simplex/01-Simplex.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Симплекс метод</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./00-Assignments/assignments.html" class="sidebar-item-text sidebar-link">
+  <a href="../00-Assignments/assignments.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Задачи</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Literature.html" class="sidebar-item-text sidebar-link active">
+  <a href="../Literature.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Литература</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Библиография</span></a>
   </div>
 </li>
@@ -180,14 +203,20 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Съдържание</h2>
+   
+  <ul>
+  <li><a href="#каноничен-вид-на-задачата-за-линейно-програмиране" id="toc-каноничен-вид-на-задачата-за-линейно-програмиране" class="nav-link active" data-scroll-target="#каноничен-вид-на-задачата-за-линейно-програмиране"><span class="header-section-number">4.1</span> Каноничен вид на задачата за линейно програмиране</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Литература</h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Симплекс метод</span></h1>
 </div>
 
 
@@ -204,20 +233,94 @@ div.csl-indent {
 </header>
 
 
-<ol type="1">
-<li><span class="citation" data-cites="TAHA2017OperationsResearch">Taha (<a href="references.html#ref-TAHA2017OperationsResearch" role="doc-biblioref">2017</a>)</span></li>
-<li><span class="citation" data-cites="WILLIAMS2013ModelBuildingMathematical">Williams (<a href="references.html#ref-WILLIAMS2013ModelBuildingMathematical" role="doc-biblioref">2013</a>)</span></li>
-</ol>
+<section id="каноничен-вид-на-задачата-за-линейно-програмиране" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="каноничен-вид-на-задачата-за-линейно-програмиране"><span class="header-section-number">4.1</span> Каноничен вид на задачата за линейно програмиране</h2>
+<p>Задачата за линейно програмиране в каноничен вид трябва да включва само равенства и неотрицателни променливи. Конвенцията в този курс е, че в каноничния вид се търси максимума на целевата функция.</p>
+<p>Трансформацията от произволна задача за линейно програмиране към каноничен вид се извършва по следния начин:</p>
+<ul>
+<li>В случай на минимизационна задача, целевата функция се умножава с -1 и се търси максимума на новата целева функция.</li>
+<li>Неравенствата от типа <span class="math inline">\leq</span> се преобразуват до равенства чрез добавяне на неотрицателни променливи.</li>
+<li>Неравенствата от типа <span class="math inline">\geq</span> се преобразуват до равенства чрез изваждане на неотрицателна променлива.</li>
+<li>Равенствата се запазват.</li>
+<li>Променливи, които се допускат да бъдат отрицателни, се представят като разлика на две неотрицателни променливи. Например печалбата от продажба на даден продукт (която може да е отрицателна, т.е. загуба) може да се представи като разлика на две неотрицателни променливи: приходи и разходи.</li>
+</ul>
+<div id="exr-canonical-form-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Упражнение 4.1</strong></span> Каква е каноничната форма на следната оптимизационна задача?</p>
+<p><span class="math display">\begin{align*}
+&amp; \min z = x_1 - x_2 + 3x_3\\
+&amp; 2x_1 - x_2 + 3x_3 \leq 5\\
+&amp; x_1 + 2x_3 = 8 \\
+&amp; -x_1 - 2x_2 \geq 1 \\
+&amp; x_1, x_2, x_3 \geq 0
+\end{align*}</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Решение
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">
+\begin{align*}
+&amp; \max z = -x_1 + x_2 - 3x_3\\
+&amp; 2x_1 - x_2 + 3x_3 + s_1 = 5\\
+&amp; x_1 + 2 x_2 = 8\\
+&amp; -x_1 - 2x_2 -s_3 = 1\\
+&amp; x_1, x_2, x_3, s_1, s_2 \geq 0
+\end{align*}
+</span></p>
+</div>
+</div>
+</div>
+<div id="exr-canonical-form-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Упражнение 4.2</strong></span> Каква е каноничната форма на следната оптимизационна задача?</p>
+<p><span class="math display">
+\begin{align*}
+&amp; \max z = 2x_1 + 3x_2 - x_3\\
+&amp; x_1 - 2x_2 + x_3 \geq 4\\
+&amp; x_1 + x2 - 3x_3 \leq 9 \\
+&amp; x_1 + 3x2 + 2x_3 = 10 \\
+&amp; x_1, x_3 \geq 0
+\end{align*}
+</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Решение
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Променливата <span class="math inline">x_2</span> е свободна, следователно я представяме като разлика на две неотрицателни променливи:</p>
+<p><span class="math display">
+x_2 = x_2^{+} - x_{2}^{-}
+</span></p>
+<p><span class="math display">
+\begin{align*}
+&amp; \max z = 2x_1 + 3(x_2^{+} - x_{2}^{-}) - x_3\\
+&amp; x_1 - 2(x_2^{+} - x_{2}^{-}) + x_3 - s_1 = 4\\
+&amp; x_1 + (x_2^{+} - x_{2}^{-}) - 3x_3 + s_2 = 9 \\
+&amp; x_1 + 3(x_2^{+} - x_{2}^{-}) + 2x_3 = 10 \\
+&amp; x_1, x_2^{+}, x_{2}^{-}, x_3, s_1, s_2 \geq 0
+\end{align*}
+</span></p>
+</div>
+</div>
+</div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-TAHA2017OperationsResearch" class="csl-entry" role="listitem">
-Taha, Hamdy A. 2017. <em>Operations <span>Research</span></em>. 10th ed. <span>Harlow, United Kingdom</span>: <span>Pearson Education Limited</span>.
-</div>
-<div id="ref-WILLIAMS2013ModelBuildingMathematical" class="csl-entry" role="listitem">
-Williams, Hilary P. 2013. <em>Model Building in Mathematical Programming</em>. Fifth Edition. <span>Chichester</span>: <span>John Wiley &amp; Sons Ltd</span>.
-</div>
-</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -631,13 +734,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./00-Assignments/assignments.html" class="pagination-link" aria-label="Задачи">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Задачи</span></span>
+      <a href="../03-Graphical-Method/02-Sensitivity.html" class="pagination-link" aria-label="Анализ на чувствителността на решението">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Анализ на чувствителността на решението</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="Библиография">
-        <span class="nav-page-text">Библиография</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../00-Assignments/assignments.html" class="pagination-link" aria-label="Задачи">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Задачи</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
