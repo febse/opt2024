@@ -13,6 +13,7 @@ book:
     - 02-Introduction/index.ipynb
     - 03-Graphical-Method/01-Blending.ipynb
     - 03-Graphical-Method/02-Sensitivity.ipynb
+    - 04-Simplex/01-Simplex.ipynb
     - 00-Assignments/assignments.ipynb
       # chapters:
       #   - 01-Python/01-01-Basics.ipynb
