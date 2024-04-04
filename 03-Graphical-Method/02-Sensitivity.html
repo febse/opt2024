@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="bg" xml:lang="bg"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.552">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -299,17 +299,13 @@ window.Quarto = {
 <p>За да видим как се променя решението на задачата, когато варираме наличното количество робуста, ще я решим графично при четири нива на наличност на ресурса: 120 кг., 180 кг., 195 кг. и 220 кг. Уравненията на ограниченията за всяко от тези нива са:</p>
 <p><span class="math display">
 \begin{align*}
-0.5 x_1 + 0.75 x_2 &amp; = 120 \text{ налични 120 кг. (първоначална задача)} \\
+0.5 x_1 + 0.75 x_2 &amp; = 160 \text{ налични 160 кг. (първоначална задача)} \\
 0.5 x_1 + 0.75 x_2 &amp; = 180 \text{ налични 180 кг.} \\
 0.5 x_1 + 0.75 x_2 &amp; = 195 \text{ налични 195 кг.} \\
 0.5 x_1 + 0.75 x_2 &amp; = 220 \text{ налични 220 кг.} \\
 \end{align*}
 </span></p>
-<p>Графично тези четири уравнения представляват четири успоредни прави (защото коефициентите пред <span class="math inline">x_1</span> и <span class="math inline">x_2</span> са едни и същи).</p>
-<p>Първото от тези нива е първоначалното ниво в задачата, която решихме използвайки <span class="quarto-unresolved-ref">?fig-p-2-solution</span>.</p>
-<p>За втория случай <span class="quarto-unresolved-ref">?fig-p-2-constr-cuban-2</span> показва решението при 180 кг. налична робуста. Оптималната комбинация от Супер и Делукс еспресо е (180, 120) при печалба от <span class="math inline">40 \cdot 180 + 50 \cdot 120 = 13200</span> лв. Дефицитните ресурси отново са “арабика” и “робуста”, т.е. характерът на решението не се променя спрямо първоначалната задача.</p>
-<!-- Можете да използвате [интерактивната тетрадка](https://mybinder.org/v2/gh/boyko/linprog-py/d2e86ee9892e0ad1ff020bf4290b38c08aec2dea?urlpath=lab%2Ftree%2Fgraphical_method.ipynb) тук, за да видите как се променя оптималният план в зависимост -->
-<!-- от наличните ресурси -->
+<p>Графично тези четири уравнения представляват четири успоредни прави (защото коефициентите пред <span class="math inline">x_1</span> и <span class="math inline">x_2</span> са едни и същи) и са изобразени във <a href="#fig-coffe-restr-var-robusta-increase" class="quarto-xref">Фигура&nbsp;<span>3.1</span></a>.</p>
 <div id="cell-fig-coffe-restr-var-robusta-increase" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Покажи кода</summary>
@@ -334,7 +330,7 @@ window.Quarto = {
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, q <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="dv">120</span>, <span class="dv">180</span>, <span class="dv">195</span>, <span class="dv">220</span>]):</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    plt.axline([<span class="dv">0</span>, q <span class="op">/</span> <span class="fl">0.75</span>], slope<span class="op">=-</span><span class="fl">0.5</span><span class="op">/</span><span class="fl">0.75</span>,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>               label<span class="op">=</span><span class="ss">f"Робуста = </span><span class="sc">{</span>q<span class="sc">}</span><span class="ss"> kg"</span>,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>               label<span class="op">=</span><span class="vs">fr"$0.5x_1 + 0.75 x_2 = </span><span class="sc">{</span>q<span class="sc">}</span><span class="vs">$ kg робуста"</span>,</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>               linestyle<span class="op">=</span><span class="st">'--'</span>, </span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>               color<span class="op">=</span>palette[idx],</span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>               alpha<span class="op">=</span><span class="fl">0.5</span></span>
@@ -360,8 +356,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>За третия случай <span class="quarto-unresolved-ref">?fig-p-2-constr-cuban-1</span> показва решението при 220 кг. налична робуста. Пресечната точка на правите на “арабика” и “робуста” при (140, 200) този път не е оптимален план, защото не принадлежи към допустимото множество, тъй като не изпълнява ограничението за търсене на Делукс (<span class="math inline">200 \nleq 150</span>).</p>
-<p>От графиката виждаме, че при наличие на робуста от повече от 195 кг. се променя характера на оптимума, защото дефицитни стават ресурсите “арабика” и “търсене Делукс”. Разликата между 195 кг. и първоначално наличните в задачата 160 кг. наричаме допустимо увеличение на ресурса (195 - 160 = 35 кг.). Новият оптимум е пресечната точка на “арабика” и “търсене Делукс”. Можем да намерим координатите на тази точка като решение на системата от двете уравнения (eq:p-2-constr-brazilian) и (eq:p-2-constr-demand):</p>
+<p>От графиката виждаме, че при наличие на робуста от повече от 195 кг. се променя характера на оптимума, защото дефицитни стават ресурсите “арабика” и “търсене Делукс”. Разликата между 195 кг. и първоначално наличните в задачата 160 кг. наричаме допустимо увеличение на ресурса (195 - 160 = 35 кг.). Новият оптимум е пресечната точка на “арабика” и “търсене Делукс”. Можем да намерим координатите на тази точка като решение на системата от двете уравнения, които съответстват на тези ограничения:</p>
 <p><span class="math display">
 \begin{align*}
 0.5 x_1 + 0.25 x_2 &amp; = 120  \\
@@ -369,7 +364,7 @@ window.Quarto = {
 \end{align*}
 </span></p>
 <p>Решението на системата е (165, 150). За разлика от оптимумите при 160 кг. и 180 кг. робуста, сега дефицитните ресурси са “арабика” и “търсене Делукс”.</p>
-<p>В четвъртия случай при наличие на 195 кг. робуста допустимото множество съвпада с това в предходния пример при 220 кг. <span class="quarto-unresolved-ref">?fig-p-2-constr-cuban</span>. По тази причина и оптимумът е същият: (165, 150) при ниво на печалба <span class="math inline">40 \cdot 165 + 50 \cdot 150 = 14100</span> лв.</p>
+<p>В четвъртия случай при наличие на 195 кг. робуста допустимото множество съвпада с това в предходния пример при 220 кг. По тази причина и оптимумът е същият: (165, 150) при ниво на печалба <span class="math inline">40 \cdot 165 + 50 \cdot 150 = 14100</span> лв.</p>
 <p>От тези примери виждаме, че количеството робуста може да се увеличи с най-много <span class="math inline">195 - 160 = 35</span> кг. без да се промени характера на оптимума. Това количество наричаме допустимо увеличение (allowable increase).</p>
 </section>
 <section id="скрити-цени" class="level2" data-number="3.3">
