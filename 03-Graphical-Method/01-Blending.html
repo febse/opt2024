@@ -747,20 +747,21 @@ x_2 &amp; \geq 0
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new model</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Paint"</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variables</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>p_exterior <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"exterior"</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>p_interior <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"interior"</span>)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>m.setObjective(<span class="dv">5</span> <span class="op">*</span> p_exterior <span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> p_interior, GRB.MAXIMIZE)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">6</span> <span class="op">*</span> p_exterior <span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> p_interior <span class="op">&lt;=</span> <span class="dv">24</span>, <span class="st">"Solvent"</span>)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">1</span> <span class="op">*</span> p_exterior <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> p_interior <span class="op">&lt;=</span> <span class="dv">6</span>, <span class="st">"Dye"</span>)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">2</span> <span class="op">*</span> p_exterior <span class="op">+</span> <span class="dv">7</span> <span class="op">*</span> p_interior <span class="op">&lt;=</span> <span class="dv">4</span>, <span class="st">"Resin"</span>)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Optimal solution: p_exterior = </span><span class="sc">{</span>p_exterior<span class="sc">.</span>x<span class="sc">}</span><span class="ss">, p_interior = </span><span class="sc">{</span>p_interior<span class="sc">.</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>m.Params.LogToConsole <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variables</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>p_exterior <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"exterior"</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>p_interior <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"interior"</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>m.setObjective(<span class="dv">5</span> <span class="op">*</span> p_exterior <span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> p_interior, GRB.MAXIMIZE)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">6</span> <span class="op">*</span> p_exterior <span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> p_interior <span class="op">&lt;=</span> <span class="dv">24</span>, <span class="st">"Solvent"</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">1</span> <span class="op">*</span> p_exterior <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> p_interior <span class="op">&lt;=</span> <span class="dv">6</span>, <span class="st">"Dye"</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">2</span> <span class="op">*</span> p_exterior <span class="op">+</span> <span class="dv">7</span> <span class="op">*</span> p_interior <span class="op">&lt;=</span> <span class="dv">4</span>, <span class="st">"Resin"</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Optimal solution: p_exterior = </span><span class="sc">{</span>p_exterior<span class="sc">.</span>x<span class="sc">}</span><span class="ss">, p_interior = </span><span class="sc">{</span>p_interior<span class="sc">.</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Gurobi Optimizer version 11.0.0 build v11.0.0rc2 (linux64 - "Ubuntu 22.04.4 LTS")
@@ -923,41 +924,42 @@ y_{\text{кокос}} &amp; \leq 1 \cdot 1000 \text{ (кокосови орех�
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new model</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Cereals"</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>x_A <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"x_A"</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>x_B <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"x_B"</span>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>x_C <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"x_C"</span>)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>revenue <span class="op">=</span> (<span class="fl">2.0</span> <span class="op">*</span> x_A <span class="op">+</span> <span class="fl">2.5</span> <span class="op">*</span> x_B <span class="op">+</span> <span class="fl">3.0</span> <span class="op">*</span> x_C) <span class="op">/</span> <span class="fl">2.0</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># For the costs we define the raw materials</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>y_oats <span class="op">=</span> (<span class="dv">50</span> <span class="op">/</span> <span class="dv">57</span>) <span class="op">*</span> x_A <span class="op">+</span> (<span class="dv">60</span><span class="op">/</span><span class="dv">65</span>) <span class="op">*</span> x_B <span class="op">+</span> (<span class="dv">60</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>y_raisins <span class="op">=</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">57</span>) <span class="op">*</span> x_A <span class="op">+</span> (<span class="dv">3</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C </span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>y_coconuts <span class="op">=</span> (<span class="dv">2</span> <span class="op">/</span> <span class="dv">65</span>) <span class="op">*</span> x_B <span class="op">+</span> (<span class="dv">4</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>y_almonds <span class="op">=</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">57</span>) <span class="op">*</span> x_A <span class="op">+</span> (<span class="dv">3</span> <span class="op">/</span> <span class="dv">65</span>) <span class="op">*</span> x_B <span class="op">+</span> (<span class="dv">2</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>costs <span class="op">=</span> (<span class="dv">100</span> <span class="op">*</span> y_oats <span class="op">+</span> <span class="dv">120</span> <span class="op">*</span> y_raisins <span class="op">+</span> <span class="dv">110</span> <span class="op">*</span> y_coconuts <span class="op">+</span> <span class="dv">200</span> <span class="op">*</span> y_almonds) <span class="op">/</span> <span class="dv">1000</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the objective function</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>m.setObjective(revenue <span class="op">-</span> costs, GRB.MAXIMIZE)</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Minimum production constraints</span></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_A <span class="op">&gt;=</span> <span class="dv">500</span> <span class="op">*</span> <span class="dv">2</span>, <span class="st">"MinA"</span>)</span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_B <span class="op">&gt;=</span> <span class="dv">600</span> <span class="op">*</span> <span class="dv">2</span>, <span class="st">"MinB"</span>)</span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_C <span class="op">&gt;=</span> <span class="dv">400</span> <span class="op">*</span> <span class="dv">2</span>, <span class="st">"MinC"</span>)</span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Raw materials constraints</span></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_oats <span class="op">&lt;=</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Oats"</span>)</span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_raisins <span class="op">&lt;=</span> <span class="dv">2</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Raisins"</span>)</span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_coconuts <span class="op">&lt;=</span> <span class="dv">1</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Coconuts"</span>)</span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_almonds <span class="op">&lt;=</span> <span class="dv">1</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Almonds"</span>)</span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Optimal solution: x_A = </span><span class="sc">{</span>x_A<span class="sc">.</span>x<span class="sc">}</span><span class="ss">, x_B = </span><span class="sc">{</span>x_B<span class="sc">.</span>x<span class="sc">}</span><span class="ss">, x_C = </span><span class="sc">{</span>x_C<span class="sc">.</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>m.Params.LogToConsole <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>x_A <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"x_A"</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>x_B <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"x_B"</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>x_C <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"x_C"</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>revenue <span class="op">=</span> (<span class="fl">2.0</span> <span class="op">*</span> x_A <span class="op">+</span> <span class="fl">2.5</span> <span class="op">*</span> x_B <span class="op">+</span> <span class="fl">3.0</span> <span class="op">*</span> x_C) <span class="op">/</span> <span class="fl">2.0</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># For the costs we define the raw materials</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>y_oats <span class="op">=</span> (<span class="dv">50</span> <span class="op">/</span> <span class="dv">57</span>) <span class="op">*</span> x_A <span class="op">+</span> (<span class="dv">60</span><span class="op">/</span><span class="dv">65</span>) <span class="op">*</span> x_B <span class="op">+</span> (<span class="dv">60</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>y_raisins <span class="op">=</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">57</span>) <span class="op">*</span> x_A <span class="op">+</span> (<span class="dv">3</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C </span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>y_coconuts <span class="op">=</span> (<span class="dv">2</span> <span class="op">/</span> <span class="dv">65</span>) <span class="op">*</span> x_B <span class="op">+</span> (<span class="dv">4</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>y_almonds <span class="op">=</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">57</span>) <span class="op">*</span> x_A <span class="op">+</span> (<span class="dv">3</span> <span class="op">/</span> <span class="dv">65</span>) <span class="op">*</span> x_B <span class="op">+</span> (<span class="dv">2</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>costs <span class="op">=</span> (<span class="dv">100</span> <span class="op">*</span> y_oats <span class="op">+</span> <span class="dv">120</span> <span class="op">*</span> y_raisins <span class="op">+</span> <span class="dv">110</span> <span class="op">*</span> y_coconuts <span class="op">+</span> <span class="dv">200</span> <span class="op">*</span> y_almonds) <span class="op">/</span> <span class="dv">1000</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the objective function</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>m.setObjective(revenue <span class="op">-</span> costs, GRB.MAXIMIZE)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Minimum production constraints</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_A <span class="op">&gt;=</span> <span class="dv">500</span> <span class="op">*</span> <span class="dv">2</span>, <span class="st">"MinA"</span>)</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_B <span class="op">&gt;=</span> <span class="dv">600</span> <span class="op">*</span> <span class="dv">2</span>, <span class="st">"MinB"</span>)</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_C <span class="op">&gt;=</span> <span class="dv">400</span> <span class="op">*</span> <span class="dv">2</span>, <span class="st">"MinC"</span>)</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Raw materials constraints</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_oats <span class="op">&lt;=</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Oats"</span>)</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_raisins <span class="op">&lt;=</span> <span class="dv">2</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Raisins"</span>)</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_coconuts <span class="op">&lt;=</span> <span class="dv">1</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Coconuts"</span>)</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_almonds <span class="op">&lt;=</span> <span class="dv">1</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Almonds"</span>)</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Optimal solution: x_A = </span><span class="sc">{</span>x_A<span class="sc">.</span>x<span class="sc">}</span><span class="ss">, x_B = </span><span class="sc">{</span>x_B<span class="sc">.</span>x<span class="sc">}</span><span class="ss">, x_C = </span><span class="sc">{</span>x_C<span class="sc">.</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Gurobi Optimizer version 11.0.0 build v11.0.0rc2 (linux64 - "Ubuntu 20.04.6 LTS")
