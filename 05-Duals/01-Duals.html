@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Въведение в математическата оптимизация - 4&nbsp; Симплекс метод</title>
+<title>Въведение в математическата оптимизация - 6&nbsp; Дуални задачи</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../00-Assignments/assignments.html" rel="next">
-<link href="../03-Graphical-Method/02-Sensitivity.html" rel="prev">
+<link href="../05-Duals/02-Sensitivity.html" rel="next">
+<link href="../04-Simplex/02-Simplex-Method.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -124,7 +124,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Включи/скрий страничната навигация" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../04-Simplex/01-Simplex.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Симплекс метод</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../05-Duals/01-Duals.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Дуални задачи</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Включи/скрий страничната навигация" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -175,14 +175,32 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04-Simplex/01-Simplex.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Симплекс метод</span></span></a>
+  <a href="../04-Simplex/01-Canonical-Representation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Каноничен вид на задачата за линейно програмиране</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-Simplex/02-Simplex-Method.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Симплекс алгоритъм</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-Duals/01-Duals.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Дуални задачи</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-Duals/02-Sensitivity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Анализ на чувствителността (2)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../00-Assignments/assignments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Задачи</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Задачи</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -207,7 +225,7 @@ window.Quarto = {
     <h2 id="toc-title">Съдържание</h2>
    
   <ul>
-  <li><a href="#каноничен-вид-на-задачата-за-линейно-програмиране" id="toc-каноничен-вид-на-задачата-за-линейно-програмиране" class="nav-link active" data-scroll-target="#каноничен-вид-на-задачата-за-линейно-програмиране"><span class="header-section-number">4.1</span> Каноничен вид на задачата за линейно програмиране</a></li>
+  <li><a href="#връзка-между-решенията-на-първичната-и-дуалната-задача" id="toc-връзка-между-решенията-на-първичната-и-дуалната-задача" class="nav-link active" data-scroll-target="#връзка-между-решенията-на-първичната-и-дуалната-задача"><span class="header-section-number">6.1</span> Връзка между решенията на първичната и дуалната задача</a></li>
   </ul>
 </nav>
     </div>
@@ -216,7 +234,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Симплекс метод</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Дуални задачи</span></h1>
 </div>
 
 
@@ -233,26 +251,105 @@ window.Quarto = {
 </header>
 
 
-<section id="каноничен-вид-на-задачата-за-линейно-програмиране" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="каноничен-вид-на-задачата-за-линейно-програмиране"><span class="header-section-number">4.1</span> Каноничен вид на задачата за линейно програмиране</h2>
-<p>Задачата за линейно програмиране в каноничен вид трябва да включва само равенства и неотрицателни променливи. Конвенцията в този курс е, че в каноничния вид се търси максимума на целевата функция.</p>
-<p>Трансформацията от произволна задача за линейно програмиране към каноничен вид се извършва по следния начин:</p>
-<ul>
-<li>В случай на минимизационна задача, целевата функция се умножава с -1 и се търси максимума на новата целева функция.</li>
-<li>Неравенствата от типа <span class="math inline">\leq</span> се преобразуват до равенства чрез добавяне на неотрицателни променливи.</li>
-<li>Неравенствата от типа <span class="math inline">\geq</span> се преобразуват до равенства чрез изваждане на неотрицателна променлива.</li>
-<li>Равенствата се запазват.</li>
-<li>Променливи, които се допускат да бъдат отрицателни, се представят като разлика на две неотрицателни променливи. Например печалбата от продажба на даден продукт (която може да е отрицателна, т.е. загуба) може да се представи като разлика на две неотрицателни променливи: приходи и разходи.</li>
-</ul>
-<div id="exr-canonical-form-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Упражнение 4.1</strong></span> Каква е каноничната форма на следната оптимизационна задача?</p>
-<p><span class="math display">\begin{align*}
-&amp; \min z = x_1 - x_2 + 3x_3\\
-&amp; 2x_1 - x_2 + 3x_3 \leq 5\\
-&amp; x_1 + 2x_3 = 8 \\
-&amp; -x_1 - 2x_2 \geq 1 \\
-&amp; x_1, x_2, x_3 \geq 0
-\end{align*}</span></p>
+<p>Да разгледаме следната задача:</p>
+<p><span id="eq-duals-proof-ex"><span class="math display">
+\begin{align*}
+\max z = 5x_1 + 7x_2\\
+x_1 + 2x_2 \leq 10 \\
+2x_1 + x_2 \leq 8 \\
+x_1 , x_2 \geq 0
+\end{align*}
+\tag{6.1}</span></span></p>
+<p>Оптимумът в тази задача се постига при <span class="math inline">x_1 = 2, x_2 = 4</span> със стойност на целевата функция <span class="math inline">z^* = 38</span>. Искаме да използваме неравенствата в <a href="#eq-duals-proof-ex" class="quarto-xref"><span>6.1</span></a>, за да докажем, че това е възможно най-голямата стойност на целевата функция.</p>
+<table class="table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 10%">
+<col style="width: 18%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Последна таблица</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td><span class="math inline">C_j</span></td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>Базисни пр.</td>
+<td><span class="math inline">C_B</span></td>
+<td><span class="math inline">X_B</span></td>
+<td><span class="math inline">x_1</span></td>
+<td><span class="math inline">x_2</span></td>
+<td><span class="math inline">s_1</span></td>
+<td><span class="math inline">s_2</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">x_2</span></td>
+<td>7</td>
+<td>4</td>
+<td>0</td>
+<td>1</td>
+<td>2/3</td>
+<td>-1/3</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">x_1</span></td>
+<td>5</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>-1/3</td>
+<td>2/3</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">Z</span></td>
+<td></td>
+<td><span class="math inline">Z_j</span></td>
+<td>5</td>
+<td>7</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><span class="math inline">\Delta_j</span></td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Въпрос: възможно ли е да намерим най-малката горна граница на целевата функция без да налучкваме коефициентите, с които да комбинираме уравненията?</p>
+<div id="exr-duals-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Упражнение 6.1 (Дуална задача)</strong></span> Намерете дуалната задача за следната първична задача:</p>
+<p><span class="math display">
+\begin{align*}
+&amp; \max 5 x_1 + 12 x_2 + 4 x_33 \\
+&amp; x_1 + 2x_2 + x_3 \leq 10 \\
+&amp; 2x_1 - x_2 + 3x_3 \leq 8 \\
+&amp; x_1, x_2, x_3  \geq 0
+\end{align*}
+</span></p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -266,27 +363,82 @@ window.Quarto = {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>Каноничен вид на задачата:</p>
+<p><span class="math display">
+\max 5 x_1 + 12 x_2 + 4 x_33 + 0 s_1 + 0 s_2\\
+</span></p>
 <p><span class="math display">
 \begin{align*}
-&amp; \max z = -x_1 + x_2 - 3x_3\\
-&amp; 2x_1 - x_2 + 3x_3 + s_1 = 5\\
-&amp; x_1 + 2 x_2 = 8\\
-&amp; -x_1 - 2x_2 -s_3 = 1\\
-&amp; x_1, x_2, x_3, s_1, s_2 \geq 0
+x_1 + 2x_2 + x_3 + s_1&amp; = 10 \quad \text{дуална променлива } y_1 \\
+2x_1 - x_2 + 3x_3 + s_2 &amp; = 8 \quad \text{дуална променлива } y_2\\
+x_1, x_2, x_3, s_1, s_2 &amp; \geq 0
 \end{align*}
+</span></p>
+<p>Дуалната задача ще има 2 целеви променливи <span class="math inline">y_1</span> и <span class="math inline">y_2</span>, по една за всяко ограничение.</p>
+<p>Ограничения на дуалната задача</p>
+<p><span class="math display">
+\begin{align*}
+&amp; y_1 + 2 y_2 \geq 5 \\
+&amp; 2y_1 - y_2 \geq 12 \\
+&amp; y_1 + 3 y_2 \geq 4 \\
+&amp; y_1 + 0 y_2 \geq 0 \\
+&amp; 0y_1 + y_2 \geq 0
+\end{align*}
+</span></p>
+<p>Целева функция на дуалната задача:</p>
+<p><span class="math display">
+\min 10 y_1 + 8 y_2
+</span></p>
+<p>Същото представяне можем да получим чрез транспониране на матрицата от коефициентите на каноничната задача.</p>
+<p>Ограничения на каноничната задача:</p>
+<p><span class="math display">
+\underbrace{\begin{pmatrix}
+1 &amp;  2 &amp; 1 &amp; 1 &amp; 0 \\
+2 &amp; -1 &amp; 3 &amp; 0 &amp; 1
+\end{pmatrix}}_{A}
+\begin{pmatrix}
+x_1 \\ x_2 \\ x_3 \\ s_1 \\ s_2
+\end{pmatrix} =
+\begin{pmatrix}
+10 \\ 8
+\end{pmatrix}
+</span></p>
+<p><span class="math display">
+А^T = \begin{pmatrix}
+1 &amp; 2 \\
+2 &amp; -1 \\
+1 &amp; 3 \\
+1 &amp; 0 \\
+0 &amp; 1 \\
+\end{pmatrix}
+</span></p>
+<p><span class="math display">
+\begin{pmatrix}
+1 &amp; 2 \\
+2 &amp; -1 \\
+1 &amp; 3 \\
+1 &amp; 0 \\
+0 &amp; 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+y_1 \\ y_2
+\end{pmatrix}
+\geq
+\begin{pmatrix}
+5 \\ 12 \\ 4 \\ 0 \\ 0
+\end{pmatrix}
 </span></p>
 </div>
 </div>
 </div>
-<div id="exr-canonical-form-2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Упражнение 4.2</strong></span> Каква е каноничната форма на следната оптимизационна задача?</p>
+<div id="exr-duals-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Упражнение 6.2 (Дуална задача)</strong></span> Намерете дуалната задача за следната първична задача:</p>
 <p><span class="math display">
 \begin{align*}
-&amp; \max z = 2x_1 + 3x_2 - x_3\\
-&amp; x_1 - 2x_2 + x_3 \geq 4\\
-&amp; x_1 + x2 - 3x_3 \leq 9 \\
-&amp; x_1 + 3x2 + 2x_3 = 10 \\
-&amp; x_1, x_3 \geq 0
+&amp; \max z = 5x_1 + 12x_2 + 4x_3\\
+&amp; x_1 + 2x_2 + x_3 \leq 10 \\
+&amp; 2x_1 - x_2 + 3x_3 = 8 \\
+&amp; x_1 , x_2 , x_3 \geq 0
 \end{align*}
 </span></p>
 </div>
@@ -302,22 +454,217 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Променливата <span class="math inline">x_2</span> е свободна, следователно я представяме като разлика на две неотрицателни променливи:</p>
+<p>Каноничен вид:</p>
 <p><span class="math display">
-x_2 = x_2^{+} - x_{2}^{-}
+\begin{align*}
+&amp; \max z = 5x_1 + 12x_2 + 4x_3 + 0s_1 \\
+&amp; x_1 + 2x_2 + x_3 + s_1 = 10 \\
+&amp; 2x_1 - x_2 + 3x_3 = 8 \\
+&amp; x_1 , x_2 , x_3 \geq 0
+\end{align*}
+</span></p>
+<p>Ограничения на дуалната задача</p>
+<p><span class="math display">
+\begin{align*}
+&amp; y_1 + 2y_2 \geq 5 \\
+&amp; 2 y_1 - y_2 \geq 12 \\
+&amp; y_1 + 3y_2 \geq 4 \\
+&amp; y_1 + 0 y_2 \geq 0 \\
+&amp; y_2 \text{ неограничена}
+\end{align*}
+</span></p>
+<p>Целева функция на дуалната задача</p>
+<p><span class="math display">
+\min 10 y_1 + 8 y_2
+</span></p>
+</div>
+</div>
+</div>
+<div id="exr-duals-3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Упражнение 6.3 (Дуална задача)</strong></span> Намерете дуалната задача за следната първична задача:</p>
+<p><span class="math display">
+\begin{align*}
+&amp; \max z = 15x_1 + 12x_2\\
+&amp; x_1 + 2x_2 \leq 3 \\
+&amp; 2x_1 - 4x_2 \geq 5 \\
+&amp; x_1, x_2 \geq 0
+\end{align*}
+</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Решение
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Каноничен вид на задачата <span class="math display">
+\begin{align*}
+&amp; \max z = 15x_1 + 12x_2 + 0s_1 + 0s_2\\
+&amp; x_1 + 2x_2 - s_1 = 3 \\
+&amp; 2x_1 - 4x_2 + s_2 = 5 \\
+&amp; x_1, x_2, s_1, s_2 \geq 0
+\end{align*}
+</span></p>
+<p>Ограничения на дуалната задача</p>
+<p><span class="math display">
+\begin{align*}
+&amp; y_1 + 2y_2 \geq 15 \\
+&amp; 2 y_1 + 4 y_2 \geq 12 \\
+&amp; -y_1 + 0y_2 \geq 0 \implies y_1 \leq 0 \\
+&amp; 0y_1 + y_2 \geq 0 \implies y_2 \geq 0
+\end{align*}
+</span></p>
+<p>Целева функция на дуалната задача:</p>
+<p><span class="math display">
+\min 3 y_1 + 5 y_2
+</span></p>
+</div>
+</div>
+</div>
+<div id="exr-duals-4" class="theorem exercise">
+<p><span class="theorem-title"><strong>Упражнение 6.4 (Дуална задача)</strong></span> Намерете дуалната задача за следната първична задача:</p>
+<p><span class="math display">
+\begin{align*}
+&amp; \max z = 5x_1 + 6x_2\\
+&amp; x_1 + 2x_2 = 5 \\
+&amp; -x_1 + 5x_2 \geq 3 \\
+&amp; 4x_1 + 7x_2 \leq 8 \\
+&amp; x_1 \text{ неограничена}, x_2 \geq 0
+\end{align*}
+</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Решение
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">
+\begin{align*}
+&amp; \max z = 5x_1^{-} - 5 x_1^{+} + 6x_2 + 0s_1 + 0s_2\\
+&amp; x_1^{-} - x_1^{+} + 2x_2 = 5 \\
+&amp; -x_1^{-} + x_1^{+} + 5x_2 - s_1 = 3 \\
+&amp; 4x_1^{-} - 4 x_1^{+} + 7x_2 + s_2 = 8 \\
+&amp; x_1^{-}, x_{1}^{+}, x_2, s_1, s_2 \geq 0
+\end{align*}
+</span></p>
+<p>Ограничения на дуалната задача:</p>
+<p><span class="math display">
+\begin{align*}
+&amp; y_1 - y_2 + 4y_3 \geq 5\\
+&amp; -y_1 + y_2 - 4y_3 \geq -5 \\
+&amp; 2y_1 + 5 y_2 + 7 y_3 \geq 6 \\
+&amp; 0 y_1 + 0y_2 + 0 y_3 \geq 0 \\
+&amp; -y_1 + 0y_2 + 0 y_3 \geq 0 \implies y_1 \leq 0 \\
+&amp; 0y_1 - y_2 + 0 y_3 \geq 0 \implies y_2 \geq 0
+\end{align*}
 </span></p>
 <p><span class="math display">
 \begin{align*}
-&amp; \max z = 2x_1 + 3(x_2^{+} - x_{2}^{-}) - x_3\\
-&amp; x_1 - 2(x_2^{+} - x_{2}^{-}) + x_3 - s_1 = 4\\
-&amp; x_1 + (x_2^{+} - x_{2}^{-}) - 3x_3 + s_2 = 9 \\
-&amp; x_1 + 3(x_2^{+} - x_{2}^{-}) + 2x_3 = 10 \\
-&amp; x_1, x_2^{+}, x_{2}^{-}, x_3, s_1, s_2 \geq 0
+&amp; y_1 - y_2 + 4y_3 = 5\\
+&amp; 2y_1 + 5 y_2 + 7 y_3 \geq 6 \\
+&amp; 0 y_1 + 0y_2 + 0 y_3 \geq 0 \\
+&amp; y_1 \leq 0 \\
+&amp; y_2 \geq 0
 \end{align*}
 </span></p>
 </div>
 </div>
 </div>
+<div id="exr-duals-5" class="theorem exercise">
+<p><span class="theorem-title"><strong>Упражнение 6.5 (Дуална задача)</strong></span> Дадена е следната първична задача:</p>
+<p><span class="math display">
+\begin{align*}
+&amp; \max 5x_1 + 4x_2\\
+&amp; 6x_1 + 4x_2 \leq 24 \quad \text{ресурс 1}\\
+&amp; x_1 + 2x_2 \leq 6 \quad \text{ресурс 2} \\
+&amp; -x_1 + x_2 \leq 1 \quad \text{ресурс 3} \\
+&amp; x_2 \leq 2 \quad \text{ресурс 4}
+\end{align*}
+</span></p>
+<p>Оптимумът се постига при <span class="math inline">x_1 = 3, x_2 = 1.5</span> и стойност на целевата функция <span class="math inline">z = 21</span>. Проверете дали <span class="math inline">y_1 = 0.75, y_2 = 0.5, y_3 = y_4 = 0</span> е оптимум на дуалната задача.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Решение
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Целевата функция на дуалната задача е</p>
+<p><span class="math display">
+g = 24 y_1 + 6 y_2 + y_3 + 2 y_4
+</span></p>
+<p>Стойността й за <span class="math inline">y_1 = 0.75, y_2 = 0.5, y_3 = y_4 = 0</span> е:</p>
+<p><span class="math display">g = 24 \cdot 0.75 + 6 \cdot 0.5 + 0 + 2 \cdot 0 = 21</span></p>
+<p>Това е и оптимум на дуалната задача, тъй като стойностите на първичната и на целевата функция съвпадат.</p>
+</div>
+</div>
+</div>
+<div id="exr-duals-6" class="theorem exercise">
+<p><span class="theorem-title"><strong>Упражнение 6.6 (Дуална задача)</strong></span> Предприятие произвежда три вида детски играчки: влакчета (<span class="math inline">x_1</span> на брой), камиончета (<span class="math inline">x_2</span> на брой) и коли (<span class="math inline">x_3</span> на брой). Целевата функция при оптимизацията е прогнозираната печалба (в лв.) от продажбата на тези играчки.</p>
+<p><span class="math display">
+\begin{align*}
+&amp; \max z = 3x_1 + 2x_2 + 5x_3 \\
+&amp; x_1 + 2x_2 + x_3 \leq 430 \quad \text{Персонал} \\
+&amp; 3x_1 + 2x_3 \leq 460 \quad \text{Пластмаса} \\
+&amp; x_1 + 4x_2 \leq 420 \quad \text{Метал} \\
+&amp; x_1, x_2, x_3 \geq 0
+\end{align*}
+</span></p>
+<p>Оптималния производствен план се постига при <span class="math inline">x_1 = 0, x_2 = 100, x_3 = 230, z = 1350</span>. Оптималното решение на дуалната задача е <span class="math inline">y_1 = 1, y_2 = 2, y_3 = 0</span>.</p>
+<ol type="1">
+<li>Кои са дефицитните ресурси в оптималното решение?</li>
+<li>В оптималното решение предприятието не произвежда влакчета. С колко лева би намаляла печалбата на предприятието, ако то реши да произведе една единица от този продукт?</li>
+<li>Управителният съвет на предприятието обмисля да продаде десет единици от третия ресурс (метал) за 2 лв./единица. Изгоден ли е този ход за предприятието?</li>
+<li>Управителният съвет обмисля производството на нов продукт с прогнозна печалба на единица от 3 лв. За производството му са нужни една единица персонал и две единици метал. Преценете дали този ход ще е изгоден за предприятието.</li>
+</ol>
+</div>
+<section id="връзка-между-решенията-на-първичната-и-дуалната-задача" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="връзка-между-решенията-на-първичната-и-дуалната-задача"><span class="header-section-number">6.1</span> Връзка между решенията на първичната и дуалната задача</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Първична задача</th>
+<th>Дуална задача</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Множество решения</td>
+<td>Изродено решение</td>
+</tr>
+<tr class="even">
+<td>Едно неизродено решение</td>
+<td>Едно неизродено решение</td>
+</tr>
+<tr class="odd">
+<td>Множество неизродени решения</td>
+<td>Едно изродено решение</td>
+</tr>
+<tr class="even">
+<td>Едно изродено решение</td>
+<td>Множество решения</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
@@ -734,13 +1081,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../03-Graphical-Method/02-Sensitivity.html" class="pagination-link" aria-label="Анализ на чувствителността на решението">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Анализ на чувствителността на решението</span></span>
+      <a href="../04-Simplex/02-Simplex-Method.html" class="pagination-link" aria-label="Симплекс алгоритъм">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Симплекс алгоритъм</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../00-Assignments/assignments.html" class="pagination-link" aria-label="Задачи">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Задачи</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../05-Duals/02-Sensitivity.html" class="pagination-link" aria-label="Анализ на чувствителността (2)">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Анализ на чувствителността (2)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

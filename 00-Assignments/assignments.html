@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Въведение в математическата оптимизация - 5&nbsp; Задачи</title>
+<title>Въведение в математическата оптимизация - 8&nbsp; Задачи</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../Literature.html" rel="next">
-<link href="../04-Simplex/01-Simplex.html" rel="prev">
+<link href="../05-Duals/02-Sensitivity.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -164,7 +164,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Включи/скрий страничната навигация" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../00-Assignments/assignments.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Задачи</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../00-Assignments/assignments.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Задачи</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Включи/скрий страничната навигация" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -215,14 +215,32 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04-Simplex/01-Simplex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Симплекс метод</span></span></a>
+  <a href="../04-Simplex/01-Canonical-Representation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Каноничен вид на задачата за линейно програмиране</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-Simplex/02-Simplex-Method.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Симплекс алгоритъм</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-Duals/01-Duals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Дуални задачи</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-Duals/02-Sensitivity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Анализ на чувствителността (2)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../00-Assignments/assignments.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Задачи</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Задачи</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -247,13 +265,13 @@ window.Quarto = {
     <h2 id="toc-title">Съдържание</h2>
    
   <ul>
-  <li><a href="#банкови-заеми" id="toc-банкови-заеми" class="nav-link active" data-scroll-target="#банкови-заеми"><span class="header-section-number">5.1</span> Банкови заеми</a></li>
-  <li><a href="#планиране-на-градско-строителство" id="toc-планиране-на-градско-строителство" class="nav-link" data-scroll-target="#планиране-на-градско-строителство"><span class="header-section-number">5.2</span> Планиране на градско строителство</a></li>
-  <li><a href="#производство-и-склад-1" id="toc-производство-и-склад-1" class="nav-link" data-scroll-target="#производство-и-склад-1"><span class="header-section-number">5.3</span> Производство и склад (1)</a></li>
-  <li><a href="#производство-и-склад-2" id="toc-производство-и-склад-2" class="nav-link" data-scroll-target="#производство-и-склад-2"><span class="header-section-number">5.4</span> Производство и склад (2)</a></li>
-  <li><a href="#производство-и-персонал-1" id="toc-производство-и-персонал-1" class="nav-link" data-scroll-target="#производство-и-персонал-1"><span class="header-section-number">5.5</span> Производство и персонал (1)</a></li>
-  <li><a href="#производство-и-персонал-2" id="toc-производство-и-персонал-2" class="nav-link" data-scroll-target="#производство-и-персонал-2"><span class="header-section-number">5.6</span> Производство и персонал (2)</a></li>
-  <li><a href="#оптимизация-на-производство-рафинерия" id="toc-оптимизация-на-производство-рафинерия" class="nav-link" data-scroll-target="#оптимизация-на-производство-рафинерия"><span class="header-section-number">5.7</span> Оптимизация на производство (рафинерия)</a></li>
+  <li><a href="#банкови-заеми" id="toc-банкови-заеми" class="nav-link active" data-scroll-target="#банкови-заеми"><span class="header-section-number">8.1</span> Банкови заеми</a></li>
+  <li><a href="#планиране-на-градско-строителство" id="toc-планиране-на-градско-строителство" class="nav-link" data-scroll-target="#планиране-на-градско-строителство"><span class="header-section-number">8.2</span> Планиране на градско строителство</a></li>
+  <li><a href="#производство-и-склад-1" id="toc-производство-и-склад-1" class="nav-link" data-scroll-target="#производство-и-склад-1"><span class="header-section-number">8.3</span> Производство и склад (1)</a></li>
+  <li><a href="#производство-и-склад-2" id="toc-производство-и-склад-2" class="nav-link" data-scroll-target="#производство-и-склад-2"><span class="header-section-number">8.4</span> Производство и склад (2)</a></li>
+  <li><a href="#производство-и-персонал-1" id="toc-производство-и-персонал-1" class="nav-link" data-scroll-target="#производство-и-персонал-1"><span class="header-section-number">8.5</span> Производство и персонал (1)</a></li>
+  <li><a href="#производство-и-персонал-2" id="toc-производство-и-персонал-2" class="nav-link" data-scroll-target="#производство-и-персонал-2"><span class="header-section-number">8.6</span> Производство и персонал (2)</a></li>
+  <li><a href="#оптимизация-на-производство-рафинерия" id="toc-оптимизация-на-производство-рафинерия" class="nav-link" data-scroll-target="#оптимизация-на-производство-рафинерия"><span class="header-section-number">8.7</span> Оптимизация на производство (рафинерия)</a></li>
   </ul>
 </nav>
     </div>
@@ -262,7 +280,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Задачи</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Задачи</span></h1>
 </div>
 
 
@@ -287,8 +305,8 @@ window.Quarto = {
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="банкови-заеми" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="банкови-заеми"><span class="header-section-number">5.1</span> Банкови заеми</h2>
+<section id="банкови-заеми" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="банкови-заеми"><span class="header-section-number">8.1</span> Банкови заеми</h2>
 <p>Банка е в процеса на определяне на кредитната си политика за пет различни сектора с характеристики дадени в следната таблица:</p>
 <table class="table">
 <thead>
@@ -399,8 +417,8 @@ x_{т} &amp; : \text{търговски кредити в млн. лв.}
 </div>
 </div>
 </section>
-<section id="планиране-на-градско-строителство" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="планиране-на-градско-строителство"><span class="header-section-number">5.2</span> Планиране на градско строителство</h2>
+<section id="планиране-на-градско-строителство" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="планиране-на-градско-строителство"><span class="header-section-number">8.2</span> Планиране на градско строителство</h2>
 <p>Да приемем, че София е изправена пред дефицит в местния бюджет и общинският съвет обмисля как да увеличи приходите от данък сгради чрез преустройства на общински имоти. Проектът се състои от две части – разчистване на занемарени и повредени постройки и построяване на нови жилища.</p>
 <ol type="1">
 <li>В момента на планиране общината притежава 300 занемарени постройки, които могат да бъдат съборени. Всяка от тях освобождава 1000 кв. метра и събарянето й струва 3 000 лв. на постройка. 15 процента от освободеното пространство е предвидено за улици, тротоари и свободни пространства.</li>
@@ -581,8 +599,8 @@ Objective: 314.3115942028985</code></pre>
 </div>
 </div>
 </section>
-<section id="производство-и-склад-1" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="производство-и-склад-1"><span class="header-section-number">5.3</span> Производство и склад (1)</h2>
+<section id="производство-и-склад-1" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="производство-и-склад-1"><span class="header-section-number">8.3</span> Производство и склад (1)</h2>
 <p>Малък шивашки цех се опитва да определи производствения си план за следващия сезон. Цехът произвежда четири продукта: якета, шапки, ръкавици и панталони, които се произвеждат в четири отделения: рязане, уплътняване, шиене и пакетиране.</p>
 <table class="table">
 <colgroup>
@@ -881,8 +899,8 @@ s_{jackets}, s_{hats}, s_{gloves}, s_{pants} \geq 0
 </div>
 </div>
 </section>
-<section id="производство-и-склад-2" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="производство-и-склад-2"><span class="header-section-number">5.4</span> Производство и склад (2)</h2>
+<section id="производство-и-склад-2" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="производство-и-склад-2"><span class="header-section-number">8.4</span> Производство и склад (2)</h2>
 <p>Компания за производство на дограма има договор за доставка на дървени дограми за следващите 6 месеца. За същия период компанията очаква разходите за производство (труд и материали) да варират. Компанията може да се възползва от по-ниски производствени разходи в даден период и да произведе повече дограми от необходимото, като разходите за складиране на продуктите са 8 лв. на месец на брой. В момента на планиране фирмата няма готови дограми на склад. В края на периода за планиране компанията изисква да няма дограми на склад.</p>
 <table class="table">
 <colgroup>
@@ -1036,8 +1054,8 @@ y_{jan}, y_{feb}, y_{mar}, y_{apr}, y_{may}, y_{jun} &amp; \geq 0
 </details>
 </div>
 </section>
-<section id="производство-и-персонал-1" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="производство-и-персонал-1"><span class="header-section-number">5.5</span> Производство и персонал (1)</h2>
+<section id="производство-и-персонал-1" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="производство-и-персонал-1"><span class="header-section-number">8.5</span> Производство и персонал (1)</h2>
 <p>Компания за производство на дограма има договор за доставка на дървени дограми за следващата година. Компанията разполага с 10 опитни сътрудника, назначени на трудови договори. Всеки от тях произвежда по 12 дограми на тримесечие. Компанията може да отговори на флуктуациите в търсенето на своите продукти, като назначава и уволнява сътрудници на срочни договори. Временно заетите произвеждат по 3 дограми на месец. Разходите за назначаване/уволняване на временни сътрудници са съответно 200 лв. и 400 лв. за тримесечие. Компанията може да складира непродадени единици на цена 50 лв. на месец на единица.</p>
 <table class="table">
 <colgroup>
@@ -1068,8 +1086,8 @@ y_{jan}, y_{feb}, y_{mar}, y_{apr}, y_{may}, y_{jun} &amp; \geq 0
 </table>
 <p>Формулирайте оптимизационна задача, която да намери оптималния план за назначаване/уволняване на временно заетите работници.</p>
 </section>
-<section id="производство-и-персонал-2" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="производство-и-персонал-2"><span class="header-section-number">5.6</span> Производство и персонал (2)</h2>
+<section id="производство-и-персонал-2" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="производство-и-персонал-2"><span class="header-section-number">8.6</span> Производство и персонал (2)</h2>
 <p>Фирма, специализирана в производство на зимни палта се опитва да посрещне търсенето на нейните стоки с възможно най-малки разходи. Всеки работник, нает в началото на сезона работи през целия сезон, произвежда 80 палта и получава 6000 лв. заплата. В началото на годината фирмата разполага с 30 работника.</p>
 <p>Търсенето на палта има силни сезонни колебания и фирмата има три опции, за да отговори на тези вариации:</p>
 <ul>
@@ -1127,8 +1145,8 @@ y_{jan}, y_{feb}, y_{mar}, y_{apr}, y_{may}, y_{jun} &amp; \geq 0
 </details>
 </div>
 </section>
-<section id="оптимизация-на-производство-рафинерия" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="оптимизация-на-производство-рафинерия"><span class="header-section-number">5.7</span> Оптимизация на производство (рафинерия)</h2>
+<section id="оптимизация-на-производство-рафинерия" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="оптимизация-на-производство-рафинерия"><span class="header-section-number">8.7</span> Оптимизация на производство (рафинерия)</h2>
 <p>Рафинерия произвежда три вида безоловен бензин, които се различават по октановото си число (ON): обикновен (<span class="math inline">ON \geq 87</span>), премиум (<span class="math inline">ON \geq 89</span>) и супер (<span class="math inline">ON \geq 92</span>). Преработката на суровия петрол обхваща три компонента.</p>
 <ol type="1">
 <li>В първият компонент суровият петрол се дестилира до петролна суровина (feedstock) с октаново число ON = 82. За производството на един барел суровина са нужни 5 барела суров петрол. Капацитетът на дестилационните съоръжения е 1 500 хиляди барела на ден.</li>
@@ -1138,7 +1156,7 @@ y_{jan}, y_{feb}, y_{mar}, y_{apr}, y_{may}, y_{jun} &amp; \geq 0
 <li>Рафинерията оценява печалбата от барел бензин на съответно 6, 7 и 8 долара за трите вида бензин, които продава.</li>
 </ol>
 <p>Съставете математически модел, на базата на който да препоръчате оптимален (най-висока печалба) производствен план на рафинерията.</p>
-<p>Виж <a href="#fig-refinery" class="quarto-xref">Фигура&nbsp;<span>5.1</span></a> за производствената схема на рафинерията.</p>
+<p>Виж <a href="#fig-refinery" class="quarto-xref">Фигура&nbsp;<span>8.1</span></a> за производствената схема на рафинерията.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div id="fig-refinery" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -1156,7 +1174,7 @@ y_{jan}, y_{feb}, y_{mar}, y_{apr}, y_{may}, y_{jun} &amp; \geq 0
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-refinery-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Фигура&nbsp;5.1: Производствена схема на рафинерията
+Фигура&nbsp;8.1: Производствена схема на рафинерията
 </figcaption>
 </figure>
 </div>
@@ -1781,8 +1799,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../04-Simplex/01-Simplex.html" class="pagination-link" aria-label="Симплекс метод">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Симплекс метод</span></span>
+      <a href="../05-Duals/02-Sensitivity.html" class="pagination-link" aria-label="Анализ на чувствителността (2)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Анализ на чувствителността (2)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
