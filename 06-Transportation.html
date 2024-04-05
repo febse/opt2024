@@ -272,11 +272,6 @@ window.Quarto = {
   <li><a href="#първоначален-опорен-план-северозападен-ъгъл" id="toc-първоначален-опорен-план-северозападен-ъгъл" class="nav-link" data-scroll-target="#първоначален-опорен-план-северозападен-ъгъл"><span class="header-section-number">8.5</span> Първоначален опорен план (северозападен ъгъл)</a></li>
   <li><a href="#първоначален-опорен-план-най-ниски-разходи" id="toc-първоначален-опорен-план-най-ниски-разходи" class="nav-link" data-scroll-target="#първоначален-опорен-план-най-ниски-разходи"><span class="header-section-number">8.6</span> Първоначален опорен план (най-ниски разходи)</a></li>
   <li><a href="#изроден-първоначален-план" id="toc-изроден-първоначален-план" class="nav-link" data-scroll-target="#изроден-първоначален-план"><span class="header-section-number">8.7</span> Изроден първоначален план</a></li>
-  <li><a href="#задача-1-1" id="toc-задача-1-1" class="nav-link" data-scroll-target="#задача-1-1"><span class="header-section-number">8.8</span> Задача 1</a></li>
-  <li><a href="#задача-2-1" id="toc-задача-2-1" class="nav-link" data-scroll-target="#задача-2-1"><span class="header-section-number">8.9</span> Задача 2</a></li>
-  <li><a href="#първоначален-опорен-план-северозападен-ъгъл-1" id="toc-първоначален-опорен-план-северозападен-ъгъл-1" class="nav-link" data-scroll-target="#първоначален-опорен-план-северозападен-ъгъл-1"><span class="header-section-number">8.10</span> Първоначален опорен план (северозападен ъгъл)</a></li>
-  <li><a href="#първоначален-опорен-план-най-ниски-разходи-1" id="toc-първоначален-опорен-план-най-ниски-разходи-1" class="nav-link" data-scroll-target="#първоначален-опорен-план-най-ниски-разходи-1"><span class="header-section-number">8.11</span> Първоначален опорен план (най-ниски разходи)</a></li>
-  <li><a href="#изроден-първоначален-план-1" id="toc-изроден-първоначален-план-1" class="nav-link" data-scroll-target="#изроден-първоначален-план-1"><span class="header-section-number">8.12</span> Изроден първоначален план</a></li>
   </ul>
 </nav>
     </div>
@@ -826,10 +821,90 @@ Objective: 11200</code></pre>
 </div>
 </div>
 <p>Кои източници не успяват да доставят цялата си наличност? Поглеждаме кои източници доставят на фиктивния потребител <span class="math inline">j = 5</span>. В настоящото решение това са <span class="math inline">S_1</span> и <span class="math inline">S_3</span>. Ако по някаква причина искаме оптимум при условие, че първият източник доставя цялата си наличност можем да поставим висока цена на доставка към фиктивната дестинация. Следващото решение показва оптимумът, когато цената за доставка от <span class="math inline">S_1</span> към <span class="math inline">D_5</span> e 100.</p>
+<div id="cell-5" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Покажи кода</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creates a list of all the supply nodes</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>sources <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>destinations <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Creates a dictionary for the number of units of supply for each supply node</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>supply <span class="op">=</span> {</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: <span class="dv">250</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>: <span class="dv">200</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>: <span class="dv">500</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>demand <span class="op">=</span> {</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: <span class="dv">200</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>: <span class="dv">225</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>: <span class="dv">275</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span>: <span class="dv">150</span>,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="dv">5</span>: <span class="dv">100</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>transp_costs <span class="op">=</span> {</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span>, <span class="dv">1</span>): <span class="dv">18</span>,</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span>, <span class="dv">2</span>): <span class="dv">13</span>,</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span>, <span class="dv">3</span>): <span class="dv">17</span>,</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span>, <span class="dv">4</span>): <span class="dv">14</span>,</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">2</span>, <span class="dv">1</span>): <span class="dv">16</span>,</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">2</span>, <span class="dv">2</span>): <span class="dv">18</span>,</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">2</span>, <span class="dv">3</span>): <span class="dv">14</span>,</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">2</span>, <span class="dv">4</span>): <span class="dv">10</span>,</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">3</span>, <span class="dv">1</span>): <span class="dv">21</span>,</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">3</span>, <span class="dv">2</span>): <span class="dv">24</span>,</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">3</span>, <span class="dv">3</span>): <span class="dv">13</span>,</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">3</span>, <span class="dv">4</span>): <span class="dv">10</span>,</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span>, <span class="dv">5</span>): <span class="dv">100</span>,</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">2</span>, <span class="dv">5</span>): <span class="dv">0</span>,</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">3</span>, <span class="dv">5</span>): <span class="dv">0</span>    </span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> gp.Model(<span class="st">"Transportation problem (excess supply)"</span>)</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>mod2.Params.LogToConsole <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>routes <span class="op">=</span> mod2.addVars(transp_costs.keys(), name<span class="op">=</span><span class="st">"route"</span>, vtype<span class="op">=</span>GRB.CONTINUOUS, lb<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>mod2.setObjective(gp.quicksum(transp_costs[i,j]<span class="op">*</span>routes[i,j] <span class="cf">for</span> i,j <span class="kw">in</span> transp_costs.keys()), GRB.MINIMIZE)</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>mod2.addConstrs((routes.<span class="bu">sum</span>(i,<span class="st">'*'</span>) <span class="op">==</span> supply[i] <span class="cf">for</span> i <span class="kw">in</span> sources), name<span class="op">=</span><span class="st">'supply'</span>)</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>mod2.addConstrs((routes.<span class="bu">sum</span>(<span class="st">'*'</span>,j) <span class="op">==</span> demand[j] <span class="cf">for</span> j <span class="kw">in</span> destinations), name<span class="op">=</span><span class="st">'demand'</span>)</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>mod2.ModelSense <span class="op">=</span> GRB.MINIMIZE</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>mod2.optimize()</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> mod2.getVars():</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'</span><span class="sc">%s</span><span class="st"> = </span><span class="sc">%g</span><span class="st">'</span> <span class="op">%</span> (v.varName, v.x))</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Objective: </span><span class="sc">%g</span><span class="st">'</span> <span class="op">%</span> mod2.objVal)</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>route[1,1] = 25
+route[1,2] = 225
+route[1,3] = 0
+route[1,4] = 0
+route[2,1] = 175
+route[2,2] = 0
+route[2,3] = 0
+route[2,4] = 0
+route[3,1] = 0
+route[3,2] = 0
+route[3,3] = 275
+route[3,4] = 150
+route[1,5] = 0
+route[2,5] = 25
+route[3,5] = 75
+Objective: 11250</code></pre>
+</div>
+</div>
 </section>
 <section id="задача-1" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="задача-1"><span class="header-section-number">8.3</span> Задача 1</h2>
-<p>Autoparts AG разполага с три завода в Мюнхен, Хамбург и Бремен и с два големи центъра за дистрибуция в Берлин и в Хановер. Тримесечният капацитет на трите завода е 1000, 1500 и 500 автомобила, а търсенето в двата дистрибуторски центъра за същия период е 2300 и 1400 автомобила. Диаграмата на разстоянията между заводите и разпределителните центрове е дадена в <a href="#tbl-transportation-problem-1-dist" class="quarto-xref">Таблица&nbsp;<span>8.4</span></a>.</p>
+<p>Autoparts AG разполага с три завода в Мюнхен, Хамбурт и Бремен и с два големи центъра за дистрибуция в Берлин и в Хановер. Тримесечният капацитет на трите завода е 1000, 1500 и 500 автомобила, а търсенето в двата дистрибуторски центъра за същия период е 2300 и 1400 автомобила. Диаграмата на разстоянията между заводите и разпределителните центрове е дадена в <a href="#tbl-transportation-problem-1-dist" class="quarto-xref">Таблица&nbsp;<span>8.3</span></a>.</p>
 <div id="tbl-transportation-problem-1-dist" class="quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-transportation-problem-1-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1473,860 +1548,6 @@ Objective: 11200</code></pre>
 </section>
 <section id="изроден-първоначален-план" class="level2" data-number="8.7">
 <h2 data-number="8.7" class="anchored" data-anchor-id="изроден-първоначален-план"><span class="header-section-number">8.7</span> Изроден първоначален план</h2>
-<table class="table">
-<colgroup>
-<col style="width: 22%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 10%">
-<col style="width: 12%">
-<col style="width: 30%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th><span class="math inline">D_1</span></th>
-<th><span class="math inline">D_2</span></th>
-<th><span class="math inline">D_3</span></th>
-<th><span class="math inline">D_4</span></th>
-<th>Предлагане</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">S_1</span></td>
-<td>2 (10)</td>
-<td>5 (50)</td>
-<td>1</td>
-<td>2</td>
-<td>60</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">S_2</span></td>
-<td>8</td>
-<td>1</td>
-<td>2 (30)</td>
-<td>4</td>
-<td>30</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">S_3</span></td>
-<td>6</td>
-<td>2 (400)</td>
-<td>2</td>
-<td>9 (10)</td>
-<td>10</td>
-</tr>
-<tr class="even">
-<td>Търсене</td>
-<td>10</td>
-<td>50</td>
-<td>30</td>
-<td>10</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<colgroup>
-<col style="width: 22%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 10%">
-<col style="width: 12%">
-<col style="width: 30%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th><span class="math inline">D_1</span></th>
-<th><span class="math inline">D_2</span></th>
-<th><span class="math inline">D_3</span></th>
-<th><span class="math inline">D_4</span></th>
-<th>Предлагане</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">S_1</span></td>
-<td>2 (10)</td>
-<td>5 (50)</td>
-<td>1</td>
-<td>2</td>
-<td>60</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">S_2</span></td>
-<td>8 (0)</td>
-<td>1</td>
-<td>2 (30)</td>
-<td>4</td>
-<td>30</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">S_3</span></td>
-<td>6</td>
-<td>2 (400)</td>
-<td>2 (0)</td>
-<td>9 (10)</td>
-<td>10</td>
-</tr>
-<tr class="even">
-<td>Търсене</td>
-<td>10</td>
-<td>50</td>
-<td>30</td>
-<td>10</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<!-- Първоначалното решение по метода на северозападния ъгъл е: -->
-<!-- |                    | $D_1$                              | $D_2$                                | $D_3$                               | $D_4$                             |       | Предлагане    | -->
-<!-- |--------------------|---------------------------------|---------------------------------|-------------------------------|-------------------------------|---  |--------   | -->
-<!-- | $S_1$                 | 11 [(200)]{color="firebrick"}     | 13 [(50)]{color="firebrick"}      | 17                               | 14                            |       | 250       | -->
-<!-- | $S_2$              | 16                                | 18 [175]{color="firebrick"}        | 14 [25]{color="firebrick"}      | 10                               |       | 200       | -->
-<!-- | $S_3$              | 21                                | 24                                | 13 [250]{color="firebrick"}      | 10 [150]{color="firebrick"}   |      | 400       | -->
-<!-- | $S_{d}$     | 0                                | 0                                 | 0                               | 0 [100]{color="firebrick"}     |      | 100       | -->
-<!-- |                    |                                    |                                   |                                 |                               |      |           | -->
-<!-- | Търсене               | 200                                | 225                               | 275                             | 250                           |       |           | -->
-<!-- След първата итерация получаваме: -->
-<!-- Първоначалното решение по метода на северозападния ъгъл е: -->
-<!-- |                    | $D_1$                              | $D_2$                             | $D_3$                            | $D_4$                           |       | Supply    | -->
-<!-- |--------------------|---------------------------------|---------------------------------|--------------------------------|------------------------------|---  |--------   | -->
-<!-- | $S_1$                 | 11 [(200)]{color="firebrick"}     | 13 [(50)]{color="firebrick"}      | 17                                | 14                              |    | 250       | -->
-<!-- | $S_2$              | 16                                | 18 [75]{color="firebrick"}      | 14 [125]{color="firebrick"}    | 10                              |    | 200       | -->
-<!-- | $S_3$              | 21                                | 24                                | 13 [150]{color="firebrick"}       | 10 [250]{color="firebrick"}      |      | 400       | -->
-<!-- | $S_{d}$     | 0                                | 0             [100]{color="firebrick"}                 | 0                               | 0     |      | 100       | -->
-<!-- |                    |                                    |                                   |                                  |                                 |       |           | -->
-<!-- | Demand                | 200                                | 225                               | 275                              | 250                             |    |           | -->
-<div id="cell-6" class="cell" data-execution_count="7">
-<details class="code-fold">
-<summary>Покажи кода</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creates a list of all the supply nodes</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>sources <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>destinations <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Creates a dictionary for the number of units of supply for each supply node</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>supply <span class="op">=</span> {</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: <span class="dv">250</span>,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>: <span class="dv">200</span>,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>: <span class="dv">500</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>demand <span class="op">=</span> {</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: <span class="dv">200</span>,</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>: <span class="dv">225</span>,</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>: <span class="dv">275</span>,</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span>: <span class="dv">150</span>,</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="dv">5</span>: <span class="dv">100</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>transp_costs <span class="op">=</span> {</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span>, <span class="dv">1</span>): <span class="dv">18</span>,</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span>, <span class="dv">2</span>): <span class="dv">13</span>,</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span>, <span class="dv">3</span>): <span class="dv">17</span>,</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span>, <span class="dv">4</span>): <span class="dv">14</span>,</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">2</span>, <span class="dv">1</span>): <span class="dv">16</span>,</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">2</span>, <span class="dv">2</span>): <span class="dv">18</span>,</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">2</span>, <span class="dv">3</span>): <span class="dv">14</span>,</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">2</span>, <span class="dv">4</span>): <span class="dv">10</span>,</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">3</span>, <span class="dv">1</span>): <span class="dv">21</span>,</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">3</span>, <span class="dv">2</span>): <span class="dv">24</span>,</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">3</span>, <span class="dv">3</span>): <span class="dv">13</span>,</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">3</span>, <span class="dv">4</span>): <span class="dv">10</span>,</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span>, <span class="dv">5</span>): <span class="dv">100</span>,</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">2</span>, <span class="dv">5</span>): <span class="dv">0</span>,</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">3</span>, <span class="dv">5</span>): <span class="dv">0</span>    </span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> gp.Model(<span class="st">"Transportation problem (excess supply)"</span>)</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>mod2.Params.LogToConsole <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>routes <span class="op">=</span> mod2.addVars(transp_costs.keys(), name<span class="op">=</span><span class="st">"route"</span>, vtype<span class="op">=</span>GRB.CONTINUOUS, lb<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>mod2.setObjective(gp.quicksum(transp_costs[i,j]<span class="op">*</span>routes[i,j] <span class="cf">for</span> i,j <span class="kw">in</span> transp_costs.keys()), GRB.MINIMIZE)</span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>mod2.addConstrs((routes.<span class="bu">sum</span>(i,<span class="st">'*'</span>) <span class="op">==</span> supply[i] <span class="cf">for</span> i <span class="kw">in</span> sources), name<span class="op">=</span><span class="st">'supply'</span>)</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>mod2.addConstrs((routes.<span class="bu">sum</span>(<span class="st">'*'</span>,j) <span class="op">==</span> demand[j] <span class="cf">for</span> j <span class="kw">in</span> destinations), name<span class="op">=</span><span class="st">'demand'</span>)</span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>mod2.ModelSense <span class="op">=</span> GRB.MINIMIZE</span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>mod2.optimize()</span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> mod2.getVars():</span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'</span><span class="sc">%s</span><span class="st"> = </span><span class="sc">%g</span><span class="st">'</span> <span class="op">%</span> (v.varName, v.x))</span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Objective: </span><span class="sc">%g</span><span class="st">'</span> <span class="op">%</span> mod2.objVal)</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>route[1,1] = 25
-route[1,2] = 225
-route[1,3] = 0
-route[1,4] = 0
-route[2,1] = 175
-route[2,2] = 0
-route[2,3] = 0
-route[2,4] = 0
-route[3,1] = 0
-route[3,2] = 0
-route[3,3] = 275
-route[3,4] = 150
-route[1,5] = 0
-route[2,5] = 25
-route[3,5] = 75
-Objective: 11250</code></pre>
-</div>
-</div>
-</section>
-<section id="задача-1-1" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="задача-1-1"><span class="header-section-number">8.8</span> Задача 1</h2>
-<p>Autoparts AG разполага с три завода в Мюнхен, Хамбурт и Бремен и с два големи центъра за дистрибуция в Берлин и в Хановер. Тримесечният капацитет на трите завода е 1000, 1500 и 500 автомобила, а търсенето в двата дистрибуторски центъра за същия период е 2300 и 1400 автомобила. Диаграмата на разстоянията между заводите и разпределителните центрове е дадена в <a href="#tbl-transportation-problem-1-dist" class="quarto-xref">Таблица&nbsp;<span>8.4</span></a>.</p>
-<div id="tbl-transportation-problem-1-dist" class="quarto-float anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-transportation-problem-1-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Таблица&nbsp;8.4: Разстояния между заводи и дистрибуторски центрове
-</figcaption>
-<div aria-describedby="tbl-transportation-problem-1-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="table">
-<thead>
-<tr class="header">
-<th></th>
-<th>Берлин</th>
-<th>Хановер</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Мюнхен</td>
-<td>500</td>
-<td>480</td>
-</tr>
-<tr class="even">
-<td>Хамбург</td>
-<td>250</td>
-<td>130</td>
-</tr>
-<tr class="odd">
-<td>Бремен</td>
-<td>200</td>
-<td>100</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-<p>Транспортните разходи между заводите и дистрибуторските центрове са 8 евроцента на автомобил и километър. Формулирайте целевата функция в евро, както и ограниченията на транспортната задача.</p>
-<p>Формулирайте транспортна задача, която да намери този оптимум.</p>
-</section>
-<section id="задача-2-1" class="level2" data-number="8.9">
-<h2 data-number="8.9" class="anchored" data-anchor-id="задача-2-1"><span class="header-section-number">8.9</span> Задача 2</h2>
-<p>Предприятие произвежда туристически раници. Търсенето на нейния продукт през пиковия период от март до юни всяка година е съответно 100, 200, 180 и 300 единици. Дружеството използва работници на непълно работно време, за да посрещне колебанията в търсенето. Знаем, че, предприятието може да произведе 50, 180, 280 и 270 единици в периода от март до юни. Търсенето през текущия месец може да бъде посрещнато по един от три начина:</p>
-<ol type="1">
-<li>Производството за текущия месец на цена от 40 USD на раница</li>
-<li>Излишък на продукция през по-ранен месец при допълнителни разходи за складиране от $0.50 на раница на месец.</li>
-<li>Излишък на продукция през по-късен месец (обратно поръчване) при допълнителни наказателни разходи от $2.00 на раница на месец.</li>
-</ol>
-<p>Предприятието търси да определи оптималния производствен график за четирите месеца. Формулирайте транспортна задача, която да намери този оптимум.</p>
-</section>
-<section id="първоначален-опорен-план-северозападен-ъгъл-1" class="level2" data-number="8.10">
-<h2 data-number="8.10" class="anchored" data-anchor-id="първоначален-опорен-план-северозападен-ъгъл-1"><span class="header-section-number">8.10</span> Първоначален опорен план (северозападен ъгъл)</h2>
-<table class="table">
-<thead>
-<tr class="header">
-<th></th>
-<th><span class="math inline">D_1</span></th>
-<th><span class="math inline">D_2</span></th>
-<th><span class="math inline">D_3</span></th>
-<th><span class="math inline">D_4</span></th>
-<th>Предлагане</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">S_1</span></td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>300</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">S_2</span></td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>500</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">S_3</span></td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>400</td>
-</tr>
-<tr class="even">
-<td>Търсене</td>
-<td>100</td>
-<td>700</td>
-<td>50</td>
-<td>350</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<thead>
-<tr class="header">
-<th></th>
-<th><span class="math inline">D_1</span></th>
-<th><span class="math inline">D_2</span></th>
-<th><span class="math inline">D_3</span></th>
-<th><span class="math inline">D_4</span></th>
-<th>Предлагане</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">S_1</span></td>
-<td>100</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>200</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">S_2</span></td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>500</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">S_3</span></td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>400</td>
-</tr>
-<tr class="even">
-<td>Търсене</td>
-<td>0</td>
-<td>700</td>
-<td>50</td>
-<td>350</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<thead>
-<tr class="header">
-<th></th>
-<th><span class="math inline">D_1</span></th>
-<th><span class="math inline">D_2</span></th>
-<th><span class="math inline">D_3</span></th>
-<th><span class="math inline">D_4</span></th>
-<th>Предлагане</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">S_1</span></td>
-<td>100</td>
-<td>200</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">S_2</span></td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>500</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">S_3</span></td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>400</td>
-</tr>
-<tr class="even">
-<td>Търсене</td>
-<td>0</td>
-<td>500</td>
-<td>50</td>
-<td>350</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<thead>
-<tr class="header">
-<th></th>
-<th><span class="math inline">D_1</span></th>
-<th><span class="math inline">D_2</span></th>
-<th><span class="math inline">D_3</span></th>
-<th><span class="math inline">D_4</span></th>
-<th>Предлагане</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">S_1</span></td>
-<td>100</td>
-<td>200</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">S_2</span></td>
-<td>0</td>
-<td>500</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">S_3</span></td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>400</td>
-</tr>
-<tr class="even">
-<td>Търсене</td>
-<td>0</td>
-<td>0</td>
-<td>50</td>
-<td>350</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<thead>
-<tr class="header">
-<th></th>
-<th><span class="math inline">D_1</span></th>
-<th><span class="math inline">D_2</span></th>
-<th><span class="math inline">D_3</span></th>
-<th><span class="math inline">D_4</span></th>
-<th>Предлагане</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">S_1</span></td>
-<td>100</td>
-<td>200</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">S_2</span></td>
-<td>0</td>
-<td>500</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">S_3</span></td>
-<td>0</td>
-<td>0</td>
-<td>500</td>
-<td>0</td>
-<td>350</td>
-</tr>
-<tr class="even">
-<td>Търсене</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>350</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<thead>
-<tr class="header">
-<th></th>
-<th><span class="math inline">D_1</span></th>
-<th><span class="math inline">D_2</span></th>
-<th><span class="math inline">D_3</span></th>
-<th><span class="math inline">D_4</span></th>
-<th>Предлагане</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">S_1</span></td>
-<td>100</td>
-<td>200</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">S_2</span></td>
-<td>0</td>
-<td>500</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">S_3</span></td>
-<td>0</td>
-<td>0 (0)</td>
-<td>500</td>
-<td>350</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>Търсене</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="първоначален-опорен-план-най-ниски-разходи-1" class="level2" data-number="8.11">
-<h2 data-number="8.11" class="anchored" data-anchor-id="първоначален-опорен-план-най-ниски-разходи-1"><span class="header-section-number">8.11</span> Първоначален опорен план (най-ниски разходи)</h2>
-<table class="table">
-<thead>
-<tr class="header">
-<th></th>
-<th><span class="math inline">D_1</span></th>
-<th><span class="math inline">D_2</span></th>
-<th><span class="math inline">D_3</span></th>
-<th><span class="math inline">D_4</span></th>
-<th>Предлагане</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">S_1</span></td>
-<td>3</td>
-<td>8</td>
-<td>7</td>
-<td>12</td>
-<td>300</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">S_2</span></td>
-<td>13</td>
-<td>10</td>
-<td>5</td>
-<td>9</td>
-<td>500</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">S_3</span></td>
-<td>2</td>
-<td>1</td>
-<td>14</td>
-<td>15</td>
-<td>400</td>
-</tr>
-<tr class="even">
-<td>Търсене</td>
-<td>100</td>
-<td>700</td>
-<td>50</td>
-<td>350</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>Най-ниските транспортни разходи намираме в маршрута <span class="math inline">S_3 \to D_2</span>. Най-голямото количество, което можем да превозим по този маршрут е дадено от минимума между търсене и предлагане: <span class="math inline">\min(400, 700) = 400</span>.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th></th>
-<th><span class="math inline">D_1</span></th>
-<th><span class="math inline">D_2</span></th>
-<th><span class="math inline">D_3</span></th>
-<th><span class="math inline">D_4</span></th>
-<th>Предлагане</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">S_1</span></td>
-<td>3</td>
-<td>8</td>
-<td>7</td>
-<td>12</td>
-<td>300</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">S_2</span></td>
-<td>13</td>
-<td>10</td>
-<td>5</td>
-<td>9</td>
-<td>500</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">S_3</span></td>
-<td>2</td>
-<td>1 (400)</td>
-<td>14</td>
-<td>15</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>Търсене</td>
-<td>100</td>
-<td>300</td>
-<td>50</td>
-<td>350</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>Следващият маршрут с най-ниски разходи е <span class="math inline">S_1 \to D_1</span> (маршрутът <span class="math inline">S_3 \ to D_1</span> има по-ниски транспортни разходи, но предлагането от третия източник е изчерпано). Най-голямото количество, което можем да превозим по този маршрут е <span class="math inline">\min(300, 100) = 100</span></p>
-<table class="table">
-<colgroup>
-<col style="width: 22%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 10%">
-<col style="width: 12%">
-<col style="width: 30%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th><span class="math inline">D_1</span></th>
-<th><span class="math inline">D_2</span></th>
-<th><span class="math inline">D_3</span></th>
-<th><span class="math inline">D_4</span></th>
-<th>Предлагане</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">S_1</span></td>
-<td>3 (100)</td>
-<td>8</td>
-<td>7</td>
-<td>12</td>
-<td>200</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">S_2</span></td>
-<td>13</td>
-<td>10</td>
-<td>5</td>
-<td>9</td>
-<td>500</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">S_3</span></td>
-<td>2</td>
-<td>1 (400)</td>
-<td>14</td>
-<td>15</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>Търсене</td>
-<td>0</td>
-<td>300</td>
-<td>50</td>
-<td>350</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>Следващият маршрут с най-ниски разходи е <span class="math inline">S_2 \to D_3</span>. Най-голямото количество, което можем да превозим по този маршрут е <span class="math inline">\min(500, 50) = 50</span></p>
-<table class="table">
-<colgroup>
-<col style="width: 22%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 10%">
-<col style="width: 12%">
-<col style="width: 30%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th><span class="math inline">D_1</span></th>
-<th><span class="math inline">D_2</span></th>
-<th><span class="math inline">D_3</span></th>
-<th><span class="math inline">D_4</span></th>
-<th>Предлагане</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">S_1</span></td>
-<td>3 (100)</td>
-<td>8</td>
-<td>7</td>
-<td>12</td>
-<td>200</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">S_2</span></td>
-<td>13</td>
-<td>10</td>
-<td>5 (50)</td>
-<td>9</td>
-<td>450</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">S_3</span></td>
-<td>2</td>
-<td>1 (400)</td>
-<td>14</td>
-<td>15</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>Търсене</td>
-<td>0</td>
-<td>300</td>
-<td>0</td>
-<td>350</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<colgroup>
-<col style="width: 22%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 10%">
-<col style="width: 12%">
-<col style="width: 30%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th><span class="math inline">D_1</span></th>
-<th><span class="math inline">D_2</span></th>
-<th><span class="math inline">D_3</span></th>
-<th><span class="math inline">D_4</span></th>
-<th>Предлагане</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">S_1</span></td>
-<td>3 (100)</td>
-<td>8 (200)</td>
-<td>7</td>
-<td>12</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">S_2</span></td>
-<td>13</td>
-<td>10</td>
-<td>5 (50)</td>
-<td>9 (350)</td>
-<td>150</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">S_3</span></td>
-<td>2</td>
-<td>1 (400)</td>
-<td>14</td>
-<td>15</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>Търсене</td>
-<td>0</td>
-<td>100</td>
-<td>0</td>
-<td>0</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<colgroup>
-<col style="width: 22%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 10%">
-<col style="width: 12%">
-<col style="width: 30%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th><span class="math inline">D_1</span></th>
-<th><span class="math inline">D_2</span></th>
-<th><span class="math inline">D_3</span></th>
-<th><span class="math inline">D_4</span></th>
-<th>Предлагане</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">S_1</span></td>
-<td>3 (100)</td>
-<td>8 (200)</td>
-<td>7</td>
-<td>12</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">S_2</span></td>
-<td>13</td>
-<td>10 (100)</td>
-<td>5 (50)</td>
-<td>9 (350)</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">S_3</span></td>
-<td>2</td>
-<td>1 (400)</td>
-<td>14</td>
-<td>15</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>Търсене</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="изроден-първоначален-план-1" class="level2" data-number="8.12">
-<h2 data-number="8.12" class="anchored" data-anchor-id="изроден-първоначален-план-1"><span class="header-section-number">8.12</span> Изроден първоначален план</h2>
 <table class="table">
 <colgroup>
 <col style="width: 22%">
