@@ -267,11 +267,12 @@ window.Quarto = {
   <ul>
   <li><a href="#балансирана-задача" id="toc-балансирана-задача" class="nav-link active" data-scroll-target="#балансирана-задача"><span class="header-section-number">8.1</span> Балансирана задача</a></li>
   <li><a href="#предлагане-надвишаващо-търсенето" id="toc-предлагане-надвишаващо-търсенето" class="nav-link" data-scroll-target="#предлагане-надвишаващо-търсенето"><span class="header-section-number">8.2</span> Предлагане надвишаващо търсенето</a></li>
-  <li><a href="#задача-1" id="toc-задача-1" class="nav-link" data-scroll-target="#задача-1"><span class="header-section-number">8.3</span> Задача 1</a></li>
-  <li><a href="#задача-2" id="toc-задача-2" class="nav-link" data-scroll-target="#задача-2"><span class="header-section-number">8.4</span> Задача 2</a></li>
-  <li><a href="#първоначален-опорен-план-северозападен-ъгъл" id="toc-първоначален-опорен-план-северозападен-ъгъл" class="nav-link" data-scroll-target="#първоначален-опорен-план-северозападен-ъгъл"><span class="header-section-number">8.5</span> Първоначален опорен план (северозападен ъгъл)</a></li>
-  <li><a href="#първоначален-опорен-план-най-ниски-разходи" id="toc-първоначален-опорен-план-най-ниски-разходи" class="nav-link" data-scroll-target="#първоначален-опорен-план-най-ниски-разходи"><span class="header-section-number">8.6</span> Първоначален опорен план (най-ниски разходи)</a></li>
-  <li><a href="#изроден-първоначален-план" id="toc-изроден-първоначален-план" class="nav-link" data-scroll-target="#изроден-първоначален-план"><span class="header-section-number">8.7</span> Изроден първоначален план</a></li>
+  <li><a href="#първоначален-опорен-план" id="toc-първоначален-опорен-план" class="nav-link" data-scroll-target="#първоначален-опорен-план"><span class="header-section-number">8.3</span> Първоначален опорен план</a>
+  <ul class="collapse">
+  <li><a href="#метод-на-северозападния-ъгъл" id="toc-метод-на-северозападния-ъгъл" class="nav-link" data-scroll-target="#метод-на-северозападния-ъгъл"><span class="header-section-number">8.3.1</span> Метод на северозападния ъгъл</a></li>
+  <li><a href="#най-ниски-разходи" id="toc-най-ниски-разходи" class="nav-link" data-scroll-target="#най-ниски-разходи"><span class="header-section-number">8.3.2</span> Най-ниски разходи</a></li>
+  </ul></li>
+  <li><a href="#изроден-първоначален-план" id="toc-изроден-първоначален-план" class="nav-link" data-scroll-target="#изроден-първоначален-план"><span class="header-section-number">8.4</span> Изроден първоначален план</a></li>
   </ul>
 </nav>
     </div>
@@ -901,10 +902,8 @@ route[3,5] = 75
 Objective: 11250</code></pre>
 </div>
 </div>
-</section>
-<section id="задача-1" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="задача-1"><span class="header-section-number">8.3</span> Задача 1</h2>
-<p>Autoparts AG разполага с три завода в Мюнхен, Хамбурт и Бремен и с два големи центъра за дистрибуция в Берлин и в Хановер. Тримесечният капацитет на трите завода е 1000, 1500 и 500 автомобила, а търсенето в двата дистрибуторски центъра за същия период е 2300 и 1400 автомобила. Диаграмата на разстоянията между заводите и разпределителните центрове е дадена в <a href="#tbl-transportation-problem-1-dist" class="quarto-xref">Таблица&nbsp;<span>8.3</span></a>.</p>
+<div id="exr-transportation-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Упражнение 8.1 (Транспортна задача)</strong></span> Autoparts AG разполага с три завода в Мюнхен, Хамбурт и Бремен и с два големи центъра за дистрибуция в Берлин и в Хановер. Тримесечният капацитет на трите завода е 1000, 1500 и 500 автомобила, а търсенето в двата дистрибуторски центъра за същия период е 2300 и 1400 автомобила. Диаграмата на разстоянията между заводите и разпределителните центрове е дадена в <a href="#tbl-transportation-problem-1-dist" class="quarto-xref">Таблица&nbsp;<span>8.3</span></a>.</p>
 <div id="tbl-transportation-problem-1-dist" class="quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-transportation-problem-1-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -941,20 +940,22 @@ Objective: 11250</code></pre>
 </figure>
 </div>
 <p>Транспортните разходи между заводите и дистрибуторските центрове са 8 евроцента на автомобил и километър. Формулирайте целевата функция в евро, както и ограниченията на транспортната задача.</p>
-<p>Формулирайте транспортна задача, която да намери този оптимум.</p>
-</section>
-<section id="задача-2" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="задача-2"><span class="header-section-number">8.4</span> Задача 2</h2>
-<p>Предприятие произвежда туристически раници. Търсенето на нейния продукт през пиковия период от март до юни всяка година е съответно 100, 200, 180 и 300 единици. Дружеството използва работници на непълно работно време, за да посрещне колебанията в търсенето. Знаем, че, предприятието може да произведе 50, 180, 280 и 270 единици в периода от март до юни. Търсенето през текущия месец може да бъде посрещнато по един от три начина:</p>
+<p>Формулирайте математически модел, която да намери този оптимум.</p>
+</div>
+<div id="exr-transportation-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Упражнение 8.2 (Транспортна задача)</strong></span> Предприятие произвежда туристически раници. Търсенето на нейния продукт през пиковия период от март до юни всяка година е съответно 100, 200, 180 и 300 единици. Дружеството използва работници на непълно работно време, за да посрещне колебанията в търсенето. Знаем, че, предприятието може да произведе 50, 180, 280 и 270 единици в периода от март до юни. Търсенето през текущия месец може да бъде посрещнато по един от три начина:</p>
 <ol type="1">
 <li>Производството за текущия месец на цена от 40 USD на раница</li>
 <li>Излишък на продукция през по-ранен месец при допълнителни разходи за складиране от $0.50 на раница на месец.</li>
 <li>Излишък на продукция през по-късен месец (обратно поръчване) при допълнителни наказателни разходи от $2.00 на раница на месец.</li>
 </ol>
 <p>Предприятието търси да определи оптималния производствен график за четирите месеца. Формулирайте транспортна задача, която да намери този оптимум.</p>
+</div>
 </section>
-<section id="първоначален-опорен-план-северозападен-ъгъл" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="първоначален-опорен-план-северозападен-ъгъл"><span class="header-section-number">8.5</span> Първоначален опорен план (северозападен ъгъл)</h2>
+<section id="първоначален-опорен-план" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="първоначален-опорен-план"><span class="header-section-number">8.3</span> Първоначален опорен план</h2>
+<section id="метод-на-северозападния-ъгъл" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="метод-на-северозападния-ъгъл"><span class="header-section-number">8.3.1</span> Метод на северозападния ъгъл</h3>
 <table class="table">
 <thead>
 <tr class="header">
@@ -1232,8 +1233,8 @@ Objective: 11250</code></pre>
 </tbody>
 </table>
 </section>
-<section id="първоначален-опорен-план-най-ниски-разходи" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="първоначален-опорен-план-най-ниски-разходи"><span class="header-section-number">8.6</span> Първоначален опорен план (най-ниски разходи)</h2>
+<section id="най-ниски-разходи" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="най-ниски-разходи"><span class="header-section-number">8.3.2</span> Най-ниски разходи</h3>
 <table class="table">
 <thead>
 <tr class="header">
@@ -1546,8 +1547,9 @@ Objective: 11250</code></pre>
 </tbody>
 </table>
 </section>
-<section id="изроден-първоначален-план" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="изроден-първоначален-план"><span class="header-section-number">8.7</span> Изроден първоначален план</h2>
+</section>
+<section id="изроден-първоначален-план" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="изроден-първоначален-план"><span class="header-section-number">8.4</span> Изроден първоначален план</h2>
 <table class="table">
 <colgroup>
 <col style="width: 22%">
