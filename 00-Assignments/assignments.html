@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="bg" xml:lang="bg"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -278,6 +278,7 @@ window.Quarto = {
   <li><a href="#производство-и-персонал-1" id="toc-производство-и-персонал-1" class="nav-link" data-scroll-target="#производство-и-персонал-1"><span class="header-section-number">9.5</span> Производство и персонал (1)</a></li>
   <li><a href="#производство-и-персонал-2" id="toc-производство-и-персонал-2" class="nav-link" data-scroll-target="#производство-и-персонал-2"><span class="header-section-number">9.6</span> Производство и персонал (2)</a></li>
   <li><a href="#оптимизация-на-производство-рафинерия" id="toc-оптимизация-на-производство-рафинерия" class="nav-link" data-scroll-target="#оптимизация-на-производство-рафинерия"><span class="header-section-number">9.7</span> Оптимизация на производство (рафинерия)</a></li>
+  <li><a href="#планиране-на-работни-смени" id="toc-планиране-на-работни-смени" class="nav-link" data-scroll-target="#планиране-на-работни-смени"><span class="header-section-number">9.8</span> Планиране на работни смени</a></li>
   </ul>
 </nav>
     </div>
@@ -1386,6 +1387,45 @@ Objective: 875000.0</code></pre>
 </table>
 
 </div>
+</div>
+</div>
+</div>
+</section>
+<section id="планиране-на-работни-смени" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="планиране-на-работни-смени"><span class="header-section-number">9.8</span> Планиране на работни смени</h2>
+<p>Да си представим, че община София разработва разписанието на нова автобусна линия. Изследване на търсенето по маршрута на тази линия показва колко автобуси трябва да обслужват линията в 6 часови диапазона (<a href="#fig-bus-schedule-graph" class="quarto-xref">Фигура&nbsp;<span>9.2</span></a>). Всеки автобус може да започне смяна в 00:01, 04:01, 08:01, 12:01, 16:01 или в 20:01 обслужва линията в продължение на 8 часа. Намерете най-малкия брой автобуси, които са нужни за обслужването на линията.</p>
+<div id="cell-fig-bus-schedule-graph" class="cell" data-fold-code="true" data-execution_count="6">
+<details class="code-fold">
+<summary>Покажи кода</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create DataFrame</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>schedule_df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">'shift'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>],</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">'demand'</span>: [<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">7</span>, <span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">4</span>]</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>plt.step(schedule_df[<span class="st">'shift'</span>], schedule_df[<span class="st">'demand'</span>])</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>, <span class="dv">13</span>)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>plt.xticks(ticks <span class="op">=</span> schedule_df[<span class="st">'shift'</span>], labels <span class="op">=</span> [<span class="st">"00:00"</span>, <span class="st">"04:00"</span>, <span class="st">"08:00"</span>, <span class="st">"12:00"</span>, <span class="st">"16:00"</span>, <span class="st">"20:00"</span>, <span class="st">"00:00"</span>])</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Час'</span>)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Брой автобуси'</span>)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, txt <span class="kw">in</span> <span class="bu">enumerate</span>(schedule_df[<span class="st">'demand'</span>]):</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    plt.annotate(txt, (schedule_df[<span class="st">'shift'</span>][i], schedule_df[<span class="st">'demand'</span>][i]), textcoords<span class="op">=</span><span class="st">"offset points"</span>, xytext<span class="op">=</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>), ha<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-bus-schedule-graph" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bus-schedule-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="assignments_files/figure-html/fig-bus-schedule-graph-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bus-schedule-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Фигура&nbsp;9.2: График на натоварване на автобусите през деня
+</figcaption>
+</figure>
 </div>
 </div>
 </div>

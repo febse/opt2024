@@ -550,6 +550,16 @@
     ]
   },
   {
+    "objectID": "00-Assignments/assignments.html#планиране-на-работни-смени",
+    "href": "00-Assignments/assignments.html#планиране-на-работни-смени",
+    "title": "9  Задачи",
+    "section": "9.8 Планиране на работни смени",
+    "text": "9.8 Планиране на работни смени\nДа си представим, че община София разработва разписанието на нова автобусна линия. Изследване на търсенето по маршрута на тази линия показва колко автобуси трябва да обслужват линията в 6 часови диапазона (Фигура 9.2). Всеки автобус може да започне смяна в 00:01, 04:01, 08:01, 12:01, 16:01 или в 20:01 обслужва линията в продължение на 8 часа. Намерете най-малкия брой автобуси, които са нужни за обслужването на линията.\n\n\nПокажи кода\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Create DataFrame\nschedule_df = pd.DataFrame({\n  'shift': [1, 2, 3, 4, 5, 6, 7],\n  'demand': [4, 8, 10, 7, 12, 5, 4]\n})\n\n# Plot\nplt.step(schedule_df['shift'], schedule_df['demand'])\nplt.ylim(0, 13)\nplt.xticks(ticks = schedule_df['shift'], labels = [\"00:00\", \"04:00\", \"08:00\", \"12:00\", \"16:00\", \"20:00\", \"00:00\"])\nplt.xlabel('Час')\nplt.ylabel('Брой автобуси')\nfor i, txt in enumerate(schedule_df['demand']):\n    plt.annotate(txt, (schedule_df['shift'][i], schedule_df['demand'][i]), textcoords=\"offset points\", xytext=(-10,10), ha='center')\nplt.show()\n\n\n\n\n\n\n\n\nФигура 9.2: График на натоварване на автобусите през деня",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Задачи</span>"
+    ]
+  },
+  {
     "objectID": "Literature.html",
     "href": "Literature.html",
     "title": "Литература",
