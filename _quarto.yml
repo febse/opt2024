@@ -43,6 +43,6 @@ format:
     theme: cosmo
     html-math-method: katex
     code-fold: true
-    code-summary: "Покажи кода"
+    code-summary: "Покажи"
 
 editor: visual
