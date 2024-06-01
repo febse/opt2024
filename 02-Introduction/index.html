@@ -469,7 +469,7 @@ x_1 + x_2 = 48
 <p>По същия начин можем да намерим и две точки от правата на третото ограничение (бюджет): (0, 300 / 5) и (300 / 9, 0).</p>
 <div id="927b7083" class="cell" data-execution_count="1">
 <details class="code-fold">
-<summary>Покажи кода</summary>
+<summary>Покажи</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
@@ -494,7 +494,7 @@ x_1 + x_2 = 48
 </div>
 <div id="initial_id" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2024-01-22T21:22:16.553405813Z&quot;,&quot;start_time&quot;:&quot;2024-01-22T21:22:16.236304076Z&quot;}" data-execution_count="2">
 <details class="code-fold">
-<summary>Покажи кода</summary>
+<summary>Покажи</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polytope <span class="im">as</span> pc</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -521,7 +521,7 @@ will use `scipy.optimize.linprog`</code></pre>
 <p>Допустимото множество се състои от всички точки в полигона (0, 0), (32, 0), (20, 24), (15, 33), (0, 48). Изчислението на пресечните точки (20, 24) и (15, 33).</p>
 <div id="32ea0aef43589b4e" class="cell" data-execution_count="3">
 <details class="code-fold">
-<summary>Покажи кода</summary>
+<summary>Покажи</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.plot(P_extr[:, <span class="dv">0</span>], P_extr[:, <span class="dv">1</span>], <span class="st">'-o'</span>)</span>
@@ -539,7 +539,7 @@ will use `scipy.optimize.linprog`</code></pre>
 </div>
 <div id="dcf3824008f58b10" class="cell" data-execution_count="4">
 <details class="code-fold">
-<summary>Покажи кода</summary>
+<summary>Покажи</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> z(x1, x2):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">3</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> x2</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -578,7 +578,7 @@ z(0, 48) =  96</code></pre>
 <p>където <span class="math inline">n</span> е броят на променливите, а <span class="math inline">k</span> е броят на ограниченията. Можем да пресметнем горната граница за броя на върховете на допустимото за различни комбинации на <span class="math inline">n</span> и <span class="math inline">k</span>:</p>
 <div id="b219328f77a8df6f" class="cell" data-execution_count="5">
 <details class="code-fold">
-<summary>Покажи кода</summary>
+<summary>Покажи</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.special <span class="im">import</span> comb</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"n = 20, k = 15, Максимален брой върхове = "</span>, comb(<span class="dv">20</span>, <span class="dv">15</span>))</span>
@@ -594,7 +594,7 @@ n = 50, k = 25, Максимален брой върхове =  126410606437752.
 <p>Изчисляването на целевата функция за всички върхове е непостижимо дори за модерни компютри. Ако приемем, че компютърът може да обработи 1 милиард върха на секунда, за 80 променливи и 40 ограничения ще му трябва много време:</p>
 <div id="2712991ebc5be91a" class="cell" data-execution_count="6">
 <details class="code-fold">
-<summary>Покажи кода</summary>
+<summary>Покажи</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>comb_n <span class="op">=</span> comb(<span class="dv">80</span>, <span class="dv">45</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(comb_n <span class="op">/</span> (<span class="fl">1e9</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">*</span> <span class="dv">24</span> <span class="op">*</span> <span class="dv">365</span>), <span class="dv">1</span>), <span class="st">"години"</span>)</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -611,7 +611,7 @@ n = 50, k = 25, Максимален брой върхове =  126410606437752.
 <h2 data-number="1.8" class="anchored" data-anchor-id="решение-на-модела-с-gurobipy"><span class="header-section-number">1.8</span> Решение на модела с gurobipy</h2>
 <div id="f1e1f795ca3d09b1" class="cell" data-execution_count="6">
 <details class="code-fold">
-<summary>Покажи кода</summary>
+<summary>Покажи</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>

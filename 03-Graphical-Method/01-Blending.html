@@ -357,7 +357,7 @@ x_2 &amp; \geq 0
 </ul>
 <div id="cell-fig-coffее-restr" class="cell" data-execution_count="8">
 <details class="code-fold">
-<summary>Покажи кода</summary>
+<summary>Покажи</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
@@ -430,7 +430,7 @@ x_1 &amp; = 200.
 <p>Така получаваме върховете на допустимото множество: (0, 0), (240, 0), (200, 80), (95, 150), (0, 150) (<a href="#fig-coffee-feasible-set" class="quarto-xref">Фигура&nbsp;<span>2.2</span></a>).</p>
 <div id="cell-fig-coffee-feasible-set" class="cell" data-execution_count="9">
 <details class="code-fold">
-<summary>Покажи кода</summary>
+<summary>Покажи</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>vertices <span class="op">=</span> [</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>],</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">150</span>],</span>
@@ -474,7 +474,7 @@ x_1 &amp; = 200.
 <p>Целевата функция зависи от две променливи, което означава, че за да я изобразим графично ще трябва да използваме трето измерение. <a href="#fig-coffee-objective" class="quarto-xref">Фигура&nbsp;<span>2.3</span></a> показва графиката на целевата функция в тримерно пространство, както и нейната проекция в двумерно пространство.</p>
 <div id="cell-fig-coffee-objective" class="cell" data-execution_count="6">
 <details class="code-fold">
-<summary>Покажи кода</summary>
+<summary>Покажи</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mpl_toolkits.mplot3d <span class="im">import</span> Axes3D</span>
@@ -596,7 +596,7 @@ x_2
 </span></p>
 <div id="cell-7" class="cell" data-execution_count="1">
 <details class="code-fold">
-<summary>Покажи кода</summary>
+<summary>Покажи</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -631,7 +631,7 @@ x_2
 <p>Нека да начертаем тези прави на графиката на допустимото множество. <a href="#fig-coffee-solution" class="quarto-xref">Фигура&nbsp;<span>2.4</span></a> показва графиката на допустимото множество и правите на печалбата от 3000 лв., 50000 лв. и 12000 лв.</p>
 <div id="cell-fig-coffee-solution" class="cell" data-execution_count="109">
 <details class="code-fold">
-<summary>Покажи кода</summary>
+<summary>Покажи</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ax.fill(vertices_x, vertices_y, color<span class="op">=</span><span class="st">'grey'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
@@ -770,7 +770,7 @@ x_2 &amp; \geq 0
 </div>
 <div id="cell-12" class="cell" data-execution_count="1">
 <details class="code-fold">
-<summary>Покажи кода</summary>
+<summary>Покажи</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -927,7 +927,7 @@ y_{\text{кокос}} &amp; \leq 1 \cdot 1000 \text{ (кокосови орех�
 </div>
 <div id="cell-14" class="cell" data-execution_count="7">
 <details class="code-fold">
-<summary>Покажи кода</summary>
+<summary>Покажи</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
