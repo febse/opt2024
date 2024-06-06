@@ -282,12 +282,11 @@ window.Quarto = {
   <li><a href="#производство-и-неустойки" id="toc-производство-и-неустойки" class="nav-link" data-scroll-target="#производство-и-неустойки"><span class="header-section-number">9.3</span> Производство и неустойки</a></li>
   <li><a href="#производство-и-склад" id="toc-производство-и-склад" class="nav-link" data-scroll-target="#производство-и-склад"><span class="header-section-number">9.4</span> Производство и склад</a></li>
   <li><a href="#производство-и-персонал-1" id="toc-производство-и-персонал-1" class="nav-link" data-scroll-target="#производство-и-персонал-1"><span class="header-section-number">9.5</span> Производство и персонал (1)</a></li>
-  <li><a href="#производство-и-персонал-1-1" id="toc-производство-и-персонал-1-1" class="nav-link" data-scroll-target="#производство-и-персонал-1-1"><span class="header-section-number">9.6</span> Производство и персонал (1)</a></li>
-  <li><a href="#производство-и-персонал-2" id="toc-производство-и-персонал-2" class="nav-link" data-scroll-target="#производство-и-персонал-2"><span class="header-section-number">9.7</span> Производство и персонал (2)</a></li>
-  <li><a href="#оптимизация-на-производство-рафинерия" id="toc-оптимизация-на-производство-рафинерия" class="nav-link" data-scroll-target="#оптимизация-на-производство-рафинерия"><span class="header-section-number">9.8</span> Оптимизация на производство (рафинерия)</a></li>
-  <li><a href="#планиране-на-работни-смени" id="toc-планиране-на-работни-смени" class="nav-link" data-scroll-target="#планиране-на-работни-смени"><span class="header-section-number">9.9</span> Планиране на работни смени</a></li>
-  <li><a href="#планиране-на-производство" id="toc-планиране-на-производство" class="nav-link" data-scroll-target="#планиране-на-производство"><span class="header-section-number">9.10</span> Планиране на производство</a></li>
-  <li><a href="#радиотерапия" id="toc-радиотерапия" class="nav-link" data-scroll-target="#радиотерапия"><span class="header-section-number">9.11</span> Радиотерапия</a></li>
+  <li><a href="#производство-и-персонал-2" id="toc-производство-и-персонал-2" class="nav-link" data-scroll-target="#производство-и-персонал-2"><span class="header-section-number">9.6</span> Производство и персонал (2)</a></li>
+  <li><a href="#оптимизация-на-производство-рафинерия" id="toc-оптимизация-на-производство-рафинерия" class="nav-link" data-scroll-target="#оптимизация-на-производство-рафинерия"><span class="header-section-number">9.7</span> Оптимизация на производство (рафинерия)</a></li>
+  <li><a href="#планиране-на-работни-смени" id="toc-планиране-на-работни-смени" class="nav-link" data-scroll-target="#планиране-на-работни-смени"><span class="header-section-number">9.8</span> Планиране на работни смени</a></li>
+  <li><a href="#планиране-на-производство" id="toc-планиране-на-производство" class="nav-link" data-scroll-target="#планиране-на-производство"><span class="header-section-number">9.9</span> Планиране на производство</a></li>
+  <li><a href="#радиотерапия" id="toc-радиотерапия" class="nav-link" data-scroll-target="#радиотерапия"><span class="header-section-number">9.10</span> Радиотерапия</a></li>
   </ul>
 </nav>
     </div>
@@ -1152,15 +1151,35 @@ y_{jan}, y_{feb}, y_{mar}, y_{apr}, y_{may}, y_{jun} &amp; \geq 0
 <span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
 <span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="co"># for v in m.getVars():</span></span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="co">#     print(f"{v.varName} = {v.x}, RC = {v.RC}")</span></span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a><span class="co"># for c in m.getConstrs():</span></span>
-<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a><span class="co">#     print(f"{c.constrName} = {c.slack}, Shadow price = {c.Pi}, Lower= {c.SARHSLow}, Upper = {c.SARHSUp}")</span></span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>var_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Variable'</span>, <span class="st">'Value'</span>, <span class="st">'RC'</span>], data<span class="op">=</span>[(v.VarName, v.X, v.RC) <span class="cf">for</span> v <span class="kw">in</span> m.getVars()])</span>
-<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>constr_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Constraint'</span>, <span class="st">'Shadow Price'</span>, <span class="st">'Lower'</span>, <span class="st">'Upper'</span>], data<span class="op">=</span>[(c.ConstrName, c.Pi, c.SARHSLow, c.SARHSUp) <span class="cf">for</span> c <span class="kw">in</span> m.getConstrs()])</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>var_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Variable'</span>, <span class="st">'Value'</span>, <span class="st">'RC'</span>], data<span class="op">=</span>[(v.VarName, v.X, v.RC) <span class="cf">for</span> v <span class="kw">in</span> m.getVars()])</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>constr_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Constraint'</span>, <span class="st">'Shadow Price'</span>, <span class="st">'Lower'</span>, <span class="st">'Upper'</span>], data<span class="op">=</span>[(c.ConstrName, c.Pi, c.SARHSLow, c.SARHSUp) <span class="cf">for</span> c <span class="kw">in</span> m.getConstrs()])</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+</div>
+<div id="tbl-production-storage-variables" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-production-storage-variables-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Таблица&nbsp;9.1: Стойности на променливите в оптимума
+</figcaption>
+<div aria-describedby="tbl-production-storage-variables-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<details class="code-fold">
+<summary>Покажи</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>var_df</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</figure>
+</div>
+<div id="tbl-production-storage-constraints" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-production-storage-constraints-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Таблица&nbsp;9.2: Ограничения за производство и склад в оптимума
+</figcaption>
+<div aria-describedby="tbl-production-storage-constraints-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<details class="code-fold">
+<summary>Покажи</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>constr_df</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</figure>
 </div>
 </section>
 <section id="производство-и-персонал-1" class="level2" data-number="9.5">
@@ -1194,51 +1213,6 @@ y_{jan}, y_{feb}, y_{mar}, y_{apr}, y_{may}, y_{jun} &amp; \geq 0
 </tbody>
 </table>
 <p>Формулирайте оптимизационна задача, която да намери оптималния план за назначаване/уволняване на временно заетите работници.</p>
-</section>
-<section id="производство-и-персонал-1-1" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="производство-и-персонал-1-1"><span class="header-section-number">9.6</span> Производство и персонал (1)</h2>
-<p>Компания за производство на дограма има договор за доставка на дървени дограми за следващата година. Компанията разполага с 10 опитни сътрудника, назначени на трудови договори. Всеки от тях произвежда по 12 дограми на тримесечие. Компанията може да отговори на флуктуациите в търсенето на своите продукти, като назначава и уволнява сътрудници на срочни договори. Временно заетите произвеждат по 3 дограми на месец. Разходите за назначаване/уволняване на временни сътрудници са съответно 200 лв. и 400 лв. за тримесечие. Компанията може да складира непродадени единици на цена 50 лв. на месец на единица.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 21%">
-<col style="width: 17%">
-<col style="width: 14%">
-<col style="width: 20%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: right;">Януари-Март</th>
-<th style="text-align: right;">Април-Юни</th>
-<th style="text-align: right;">Юли-Септември</th>
-<th style="text-align: right;">Октомври-Декември</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Поръчки (брой)</td>
-<td style="text-align: right;">520</td>
-<td style="text-align: right;">720</td>
-<td style="text-align: right;">520</td>
-<td style="text-align: right;">620</td>
-</tr>
-</tbody>
-</table>
-<p>Формулирайте оптимизационна задача, която да намери оптималния план за назначаване/уволняване на временно заетите работници.</p>
-</section>
-<section id="производство-и-персонал-2" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="производство-и-персонал-2"><span class="header-section-number">9.7</span> Производство и персонал (2)</h2>
-<p>Фирма, специализирана в производство на зимни палта се опитва да посрещне търсенето на нейните стоки с възможно най-малки разходи. Всеки работник, нает в началото на сезона работи през целия сезон, произвежда 80 палта и получава 6000 лв. заплата. В началото на годината фирмата разполага с 30 работника.</p>
-<p>Търсенето на палта има силни сезонни колебания и фирмата има три опции, за да отговори на тези вариации:</p>
-<ul>
-<li>работниците могат да работят и по-продължително, но допълнителният труд се заплаща 50% по-скъпо и работниците могат да работят не повече от 20% повече от нормалното работно време.</li>
-<li>Произведени в предишния период палта могат да се складират на цена от 12 лв. на сезон за всяко палто.</li>
-<li>Фирмата може да назначава и освобождава служители. За назначаване на един нов служител цената е 500 лв. За освобождаване на служител разходите възлизат на 420 лв.</li>
-<li>Фирмата няма начални запаси от готови палта.</li>
-</ul>
-<p>Маркетинговият отдел на предприятието оценява, че през следващите четири сезона търсенето ще възлиза на съответно 5000, 2000, 500 и 1500 палта.</p>
-<p>Изгответе математически модел с който да намерите оптималния план (в смисъл на най-ниски разходи) за тази фирма.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1250,6 +1224,41 @@ y_{jan}, y_{feb}, y_{mar}, y_{apr}, y_{may}, y_{jun} &amp; \geq 0
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">
+\begin{align*}
+x_{i} &amp; : \text{брой временни работници през период след освобождаване/наемане } i \\
+S_{i} &amp; : \text{брой наети/освободени работници в началото на период } i \\
+I_{i} &amp; : \text{брой единици на склад в края на период } i \\
+\end{align*}
+</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="производство-и-персонал-2" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="производство-и-персонал-2"><span class="header-section-number">9.6</span> Производство и персонал (2)</h2>
+<p>Фирма, специализирана в производство на зимни палта се опитва да посрещне търсенето на нейните стоки с възможно най-малки разходи. Всеки работник, нает в началото на сезона работи през целия сезон, произвежда 80 палта и получава 6000 лв. заплата. В началото на годината фирмата разполага с 30 работника.</p>
+<p>Търсенето на палта има силни сезонни колебания и фирмата има три опции, за да отговори на тези вариации:</p>
+<ul>
+<li>работниците могат да работят и по-продължително, но допълнителният труд се заплаща 50% по-скъпо и работниците могат да работят не повече от 20% повече от нормалното работно време.</li>
+<li>Произведени в предишния период палта могат да се складират на цена от 12 лв. на сезон за всяко палто.</li>
+<li>Фирмата може да назначава и освобождава служители. За назначаване на един нов служител цената е 500 лв. За освобождаване на служител разходите възлизат на 420 лв.</li>
+<li>Фирмата няма начални запаси от готови палта.</li>
+</ul>
+<p>Маркетинговият отдел на предприятието оценява, че през следващите четири сезона търсенето ще възлиза на съответно 5000, 2000, 500 и 1500 палта.</p>
+<p>Изгответе математически модел с който да намерите оптималния план (в смисъл на най-ниски разходи) за тази фирма.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Математически модел
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math display">\begin{align*}
 &amp; w_i: \text{работници в сезон } i\\
@@ -1273,10 +1282,10 @@ y_{jan}, y_{feb}, y_{mar}, y_{apr}, y_{may}, y_{jun} &amp; \geq 0
 </div>
 </div>
 </div>
-<div id="cell-17" class="cell" data-execution_count="34">
+<div id="cell-19" class="cell" data-execution_count="34">
 <details class="code-fold">
 <summary>Покажи</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>var_df</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>var_df</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <div>
@@ -1370,10 +1379,10 @@ y_{jan}, y_{feb}, y_{mar}, y_{apr}, y_{may}, y_{jun} &amp; \geq 0
 </div>
 </div>
 </div>
-<div id="cell-18" class="cell" data-execution_count="35">
+<div id="cell-20" class="cell" data-execution_count="35">
 <details class="code-fold">
 <summary>Покажи</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>constr_df</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>constr_df</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <div>
@@ -1453,8 +1462,8 @@ y_{jan}, y_{feb}, y_{mar}, y_{apr}, y_{may}, y_{jun} &amp; \geq 0
 </div>
 </div>
 </section>
-<section id="оптимизация-на-производство-рафинерия" class="level2" data-number="9.8">
-<h2 data-number="9.8" class="anchored" data-anchor-id="оптимизация-на-производство-рафинерия"><span class="header-section-number">9.8</span> Оптимизация на производство (рафинерия)</h2>
+<section id="оптимизация-на-производство-рафинерия" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="оптимизация-на-производство-рафинерия"><span class="header-section-number">9.7</span> Оптимизация на производство (рафинерия)</h2>
 <p>Рафинерия произвежда три вида безоловен бензин, които се различават по октановото си число (ON): обикновен (<span class="math inline">ON \geq 87</span>), премиум (<span class="math inline">ON \geq 89</span>) и супер (<span class="math inline">ON \geq 92</span>). Преработката на суровия петрол обхваща три компонента.</p>
 <ol type="1">
 <li>В първият компонент суровият петрол се дестилира до петролна суровина (feedstock) с октаново число ON = 82. За производството на един барел суровина са нужни 5 барела суров петрол. Капацитетът на дестилационните съоръжения е 1 500 хиляди барела на ден.</li>
@@ -1488,66 +1497,66 @@ y_{jan}, y_{feb}, y_{mar}, y_{apr}, y_{may}, y_{jun} &amp; \geq 0
 </div>
 </div>
 </div>
-<div id="cell-20" class="cell" data-execution_count="13">
+<div id="cell-22" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Покажи</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new model</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Oil Refinery"</span>)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>m.Params.LogToConsole <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variables</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>s1_dist <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S1 Distillation"</span>)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>s2_dist <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S2 Distillation"</span>)</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>s3_dist <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S3 Distillation"</span>)</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>s1_crack <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S1 Cracking"</span>)</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>s2_crack <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S2 Cracking"</span>)</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>s3_crack <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S3 Cracking"</span>)</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Set objective</span></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>m.setObjective(<span class="fl">6.7</span> <span class="op">*</span> (s1_dist <span class="op">+</span> s1_crack) <span class="op">+</span> <span class="fl">7.2</span> <span class="op">*</span> (s2_dist <span class="op">+</span> s2_crack) <span class="op">+</span> <span class="fl">8.1</span> <span class="op">*</span> (s3_dist <span class="op">+</span> s3_crack), GRB.MAXIMIZE)</span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Constraints</span></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="co">## Octane numbers of products</span></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">82</span> <span class="op">*</span> s1_dist <span class="op">+</span> <span class="dv">98</span> <span class="op">*</span> s1_crack <span class="op">&gt;=</span> <span class="dv">87</span> <span class="op">*</span> (s1_dist <span class="op">+</span> s1_crack), <span class="st">"ON of gasoline 1"</span>)</span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">82</span> <span class="op">*</span> s2_dist <span class="op">+</span> <span class="dv">98</span> <span class="op">*</span> s2_crack <span class="op">&gt;=</span> <span class="dv">89</span> <span class="op">*</span> (s2_dist <span class="op">+</span> s2_crack), <span class="st">"ON of gasoline 2"</span>)</span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">82</span> <span class="op">*</span> s3_dist <span class="op">+</span> <span class="dv">98</span> <span class="op">*</span> s3_crack <span class="op">&gt;=</span> <span class="dv">93</span> <span class="op">*</span> (s3_dist <span class="op">+</span> s3_crack), <span class="st">"ON of gasoline 3"</span>)</span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="co">## Input capacities</span></span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">2</span> <span class="op">*</span> (s1_crack <span class="op">+</span> s2_crack <span class="op">+</span> s3_crack) <span class="op">&lt;=</span> <span class="fl">200e3</span>, <span class="st">"Cracker"</span>)</span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">5</span> <span class="op">*</span> (s1_dist <span class="op">+</span> s2_dist <span class="op">+</span> s3_dist) <span class="op">+</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">2</span> <span class="op">*</span> (s1_crack <span class="op">+</span> s2_crack <span class="op">+</span> s3_crack) <span class="op">&lt;=</span> <span class="fl">1.5e6</span>, <span class="st">"Distillation"</span>)</span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Demand constraints</span></span>
-<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>m.addConstr(s1_dist <span class="op">+</span> s1_crack <span class="op">&lt;=</span> <span class="fl">50e3</span>, <span class="st">"Demand of gasoline 1"</span>)</span>
-<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>m.addConstr(s2_dist <span class="op">+</span> s2_crack <span class="op">&lt;=</span> <span class="fl">30e3</span>, <span class="st">"Demand of gasoline 2"</span>)</span>
-<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>m.addConstr(s3_dist <span class="op">+</span> s3_crack <span class="op">&lt;=</span> <span class="fl">40e3</span>, <span class="st">"Demand of gasoline 3"</span>)</span>
-<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
-<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>vars_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Variable'</span>, <span class="st">'Value'</span>, <span class="st">'RC'</span>], data<span class="op">=</span>[(v.VarName, v.X, v.RC) <span class="cf">for</span> v <span class="kw">in</span> m.getVars()])</span>
-<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>constr_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Constraint'</span>, <span class="st">'Shadow Price'</span>, <span class="st">'Lower'</span>, <span class="st">'Upper'</span>], data<span class="op">=</span>[(c.ConstrName, c.Pi, c.SARHSLow, c.SARHSUp) <span class="cf">for</span> c <span class="kw">in</span> m.getConstrs()])</span>
-<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Model Status:'</span>, m.status)</span>
-<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Objective:'</span>, m.objVal)</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new model</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Oil Refinery"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>m.Params.LogToConsole <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variables</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>s1_dist <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S1 Distillation"</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>s2_dist <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S2 Distillation"</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>s3_dist <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S3 Distillation"</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>s1_crack <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S1 Cracking"</span>)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>s2_crack <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S2 Cracking"</span>)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>s3_crack <span class="op">=</span> m.addVar(vtype<span class="op">=</span>GRB.CONTINUOUS, name<span class="op">=</span><span class="st">"S3 Cracking"</span>)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Set objective</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>m.setObjective(<span class="fl">6.7</span> <span class="op">*</span> (s1_dist <span class="op">+</span> s1_crack) <span class="op">+</span> <span class="fl">7.2</span> <span class="op">*</span> (s2_dist <span class="op">+</span> s2_crack) <span class="op">+</span> <span class="fl">8.1</span> <span class="op">*</span> (s3_dist <span class="op">+</span> s3_crack), GRB.MAXIMIZE)</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Constraints</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="co">## Octane numbers of products</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">82</span> <span class="op">*</span> s1_dist <span class="op">+</span> <span class="dv">98</span> <span class="op">*</span> s1_crack <span class="op">&gt;=</span> <span class="dv">87</span> <span class="op">*</span> (s1_dist <span class="op">+</span> s1_crack), <span class="st">"ON of gasoline 1"</span>)</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">82</span> <span class="op">*</span> s2_dist <span class="op">+</span> <span class="dv">98</span> <span class="op">*</span> s2_crack <span class="op">&gt;=</span> <span class="dv">89</span> <span class="op">*</span> (s2_dist <span class="op">+</span> s2_crack), <span class="st">"ON of gasoline 2"</span>)</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">82</span> <span class="op">*</span> s3_dist <span class="op">+</span> <span class="dv">98</span> <span class="op">*</span> s3_crack <span class="op">&gt;=</span> <span class="dv">93</span> <span class="op">*</span> (s3_dist <span class="op">+</span> s3_crack), <span class="st">"ON of gasoline 3"</span>)</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a><span class="co">## Input capacities</span></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">2</span> <span class="op">*</span> (s1_crack <span class="op">+</span> s2_crack <span class="op">+</span> s3_crack) <span class="op">&lt;=</span> <span class="fl">200e3</span>, <span class="st">"Cracker"</span>)</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>m.addConstr(<span class="dv">5</span> <span class="op">*</span> (s1_dist <span class="op">+</span> s2_dist <span class="op">+</span> s3_dist) <span class="op">+</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">2</span> <span class="op">*</span> (s1_crack <span class="op">+</span> s2_crack <span class="op">+</span> s3_crack) <span class="op">&lt;=</span> <span class="fl">1.5e6</span>, <span class="st">"Distillation"</span>)</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Demand constraints</span></span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>m.addConstr(s1_dist <span class="op">+</span> s1_crack <span class="op">&lt;=</span> <span class="fl">50e3</span>, <span class="st">"Demand of gasoline 1"</span>)</span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>m.addConstr(s2_dist <span class="op">+</span> s2_crack <span class="op">&lt;=</span> <span class="fl">30e3</span>, <span class="st">"Demand of gasoline 2"</span>)</span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>m.addConstr(s3_dist <span class="op">+</span> s3_crack <span class="op">&lt;=</span> <span class="fl">40e3</span>, <span class="st">"Demand of gasoline 3"</span>)</span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a>vars_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Variable'</span>, <span class="st">'Value'</span>, <span class="st">'RC'</span>], data<span class="op">=</span>[(v.VarName, v.X, v.RC) <span class="cf">for</span> v <span class="kw">in</span> m.getVars()])</span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>constr_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Constraint'</span>, <span class="st">'Shadow Price'</span>, <span class="st">'Lower'</span>, <span class="st">'Upper'</span>], data<span class="op">=</span>[(c.ConstrName, c.Pi, c.SARHSLow, c.SARHSUp) <span class="cf">for</span> c <span class="kw">in</span> m.getConstrs()])</span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Model Status:'</span>, m.status)</span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Objective:'</span>, m.objVal)</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Model Status: 2
 Objective: 875000.0</code></pre>
 </div>
 </div>
-<div id="cell-21" class="cell" data-execution_count="14">
+<div id="cell-23" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Покажи</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>vars_df</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>vars_df</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <div>
@@ -1605,10 +1614,10 @@ Objective: 875000.0</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-22" class="cell" data-execution_count="15">
+<div id="cell-24" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Покажи</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>constr_df</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>constr_df</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <div>
@@ -1688,33 +1697,33 @@ Objective: 875000.0</code></pre>
 </div>
 </div>
 </section>
-<section id="планиране-на-работни-смени" class="level2" data-number="9.9">
-<h2 data-number="9.9" class="anchored" data-anchor-id="планиране-на-работни-смени"><span class="header-section-number">9.9</span> Планиране на работни смени</h2>
+<section id="планиране-на-работни-смени" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="планиране-на-работни-смени"><span class="header-section-number">9.8</span> Планиране на работни смени</h2>
 <p>Да си представим, че община София разработва разписанието на нова автобусна линия. Изследване на търсенето по маршрута на тази линия показва колко автобуси трябва да обслужват линията в 6 часови диапазона (<a href="#fig-bus-schedule-graph" class="quarto-xref">Фигура&nbsp;<span>9.2</span></a>). Всеки автобус може да започне смяна в 00:01, 04:01, 08:01, 12:01, 16:01 или в 20:01 обслужва линията в продължение на 8 часа. Намерете най-малкия брой автобуси, които са нужни за обслужването на линията.</p>
 <div id="cell-fig-bus-schedule-graph" class="cell" data-fold-code="true" data-execution_count="16">
 <details class="code-fold">
 <summary>Покажи</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create DataFrame</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>schedule_df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">'shift'</span>: [<span class="st">"00:01"</span>, <span class="st">"04:01"</span>, <span class="st">"08:01"</span>, <span class="st">"12:01"</span>, <span class="st">"16:01"</span>, <span class="st">"20:01"</span>, <span class="st">"00:00"</span>],</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">'demand'</span>: [<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">7</span>, <span class="dv">12</span>, <span class="dv">4</span>, <span class="dv">4</span>]</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>plt.step(schedule_df[<span class="st">'shift'</span>], schedule_df[<span class="st">'demand'</span>], where<span class="op">=</span><span class="st">'post'</span>)</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>, <span class="dv">15</span>)</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Час'</span>)</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Брой автобуси'</span>)</span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, txt <span class="kw">in</span> <span class="bu">enumerate</span>(schedule_df[<span class="st">'demand'</span>]):</span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="bu">len</span>(schedule_df) <span class="op">-</span> <span class="dv">1</span>:</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>      <span class="cf">continue</span></span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    plt.annotate(txt, (schedule_df[<span class="st">'shift'</span>][i], schedule_df[<span class="st">'demand'</span>][i]), textcoords<span class="op">=</span><span class="st">"offset points"</span>, xytext<span class="op">=</span>(<span class="dv">25</span>,<span class="dv">5</span>), ha<span class="op">=</span><span class="st">'center'</span>)</span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create DataFrame</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>schedule_df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">'shift'</span>: [<span class="st">"00:01"</span>, <span class="st">"04:01"</span>, <span class="st">"08:01"</span>, <span class="st">"12:01"</span>, <span class="st">"16:01"</span>, <span class="st">"20:01"</span>, <span class="st">"00:00"</span>],</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">'demand'</span>: [<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">7</span>, <span class="dv">12</span>, <span class="dv">4</span>, <span class="dv">4</span>]</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>plt.step(schedule_df[<span class="st">'shift'</span>], schedule_df[<span class="st">'demand'</span>], where<span class="op">=</span><span class="st">'post'</span>)</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>, <span class="dv">15</span>)</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Час'</span>)</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Брой автобуси'</span>)</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, txt <span class="kw">in</span> <span class="bu">enumerate</span>(schedule_df[<span class="st">'demand'</span>]):</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="bu">len</span>(schedule_df) <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>      <span class="cf">continue</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>    plt.annotate(txt, (schedule_df[<span class="st">'shift'</span>][i], schedule_df[<span class="st">'demand'</span>][i]), textcoords<span class="op">=</span><span class="st">"offset points"</span>, xytext<span class="op">=</span>(<span class="dv">25</span>,<span class="dv">5</span>), ha<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-bus-schedule-graph" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -1730,7 +1739,7 @@ Objective: 875000.0</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1739,7 +1748,7 @@ Objective: 875000.0</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Променливи:</p>
 <p><span class="math display">
@@ -1794,39 +1803,39 @@ x_{16} + x_{20} \geq 4
 </div>
 </div>
 </div>
-<div id="cell-26" class="cell" data-execution_count="23">
+<div id="cell-28" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Покажи</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop the last row as it is the same as the first one</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sdf <span class="op">=</span> schedule_df[:<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>sdf.set_index(<span class="st">'shift'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>sdf</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Bus Schedule"</span>)</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># m.Params.LogToConsole = 0</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variables</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>shifts <span class="op">=</span> m.addVars(sdf.index, name<span class="op">=</span><span class="st">"Shifts"</span>, vtype<span class="op">=</span>GRB.INTEGER)</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Set objective</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>m.setObjective(shifts.<span class="bu">sum</span>(), GRB.MINIMIZE)</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Set constraints</span></span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>m.addConstrs(</span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>    (</span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>        shifts[idx] <span class="op">+</span> shifts[sdf.index[i <span class="op">-</span> <span class="dv">1</span>]] <span class="op">&gt;=</span> sdf.loc[idx, <span class="st">"demand"</span>] <span class="cf">for</span> i, idx <span class="kw">in</span> <span class="bu">enumerate</span>(sdf.index)</span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="st">"Demand"</span></span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>m.write(<span class="st">"bus_schedule.lp"</span>)</span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>vars_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Variable'</span>, <span class="st">'Value'</span>], data<span class="op">=</span>[(v.VarName, v.X) <span class="cf">for</span> v <span class="kw">in</span> m.getVars()])</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop the last row as it is the same as the first one</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>sdf <span class="op">=</span> schedule_df[:<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>sdf.set_index(<span class="st">'shift'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>sdf</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Bus Schedule"</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># m.Params.LogToConsole = 0</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variables</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>shifts <span class="op">=</span> m.addVars(sdf.index, name<span class="op">=</span><span class="st">"Shifts"</span>, vtype<span class="op">=</span>GRB.INTEGER)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Set objective</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>m.setObjective(shifts.<span class="bu">sum</span>(), GRB.MINIMIZE)</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Set constraints</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>m.addConstrs(</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>    (</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>        shifts[idx] <span class="op">+</span> shifts[sdf.index[i <span class="op">-</span> <span class="dv">1</span>]] <span class="op">&gt;=</span> sdf.loc[idx, <span class="st">"demand"</span>] <span class="cf">for</span> i, idx <span class="kw">in</span> <span class="bu">enumerate</span>(sdf.index)</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="st">"Demand"</span></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>m.write(<span class="st">"bus_schedule.lp"</span>)</span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>vars_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Variable'</span>, <span class="st">'Value'</span>], data<span class="op">=</span>[(v.VarName, v.X) <span class="cf">for</span> v <span class="kw">in</span> m.getVars()])</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Gurobi Optimizer version 11.0.0 build v11.0.0rc2 (linux64 - "Ubuntu 20.04.6 LTS")
@@ -1866,10 +1875,10 @@ Warning: constraint name "Demand[0,00:01]" has a colon
 Warning: to let Gurobi read it back, use rlp format</code></pre>
 </div>
 </div>
-<div id="cell-27" class="cell" data-execution_count="24">
+<div id="cell-29" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Покажи</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>vars_df</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>vars_df</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <div>
@@ -1921,8 +1930,8 @@ Warning: to let Gurobi read it back, use rlp format</code></pre>
 </div>
 </div>
 </section>
-<section id="планиране-на-производство" class="level2" data-number="9.10">
-<h2 data-number="9.10" class="anchored" data-anchor-id="планиране-на-производство"><span class="header-section-number">9.10</span> Планиране на производство</h2>
+<section id="планиране-на-производство" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="планиране-на-производство"><span class="header-section-number">9.9</span> Планиране на производство</h2>
 <p>Компания произвежда три вида зърнени закуски: A, B и C. Закуските се произвеждат от четири съставки: овесени ядки, стафиди, настъргани кокосови орехи и нарязани бадеми.</p>
 <ul>
 <li>Продукт А е смес от овесени ядки, стафиди и бадеми в съотношение 50:5:2.</li>
@@ -1935,7 +1944,7 @@ Warning: to let Gurobi read it back, use rlp format</code></pre>
 </ul>
 <p>Съставете математически модел с който да препоръчате оптимален производствен план за тази компания. Целта на модела е да намери производствен план с най-висока стойност на печалбата на компанията.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1944,18 +1953,18 @@ Warning: to let Gurobi read it back, use rlp format</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Към задачата можем да подходим по поне два начина в зависимост от избора на променливи.</p>
 <p>И при двата подхода искаме да намерим максимума на печалбата, която е разликата от приходите, реализирани от продажба да продуктите и разходите за суровини (овесени ядки, стафиди и т.н.).</p>
 <ol type="1">
 <li>Нека <span class="math inline">x_A, x_B, x_C</span> са произведените количества от продуктите A, B и C в кг. Тогава целевата функция.</li>
 </ol>
-<p>От описанието на съставките на трите продукта можем да изразим пропорциите на съставките в проценти от общото количество на продукта (<a href="#tbl-cereals-composition" class="quarto-xref">Таблица&nbsp;<span>9.1</span></a>).</p>
+<p>От описанието на съставките на трите продукта можем да изразим пропорциите на съставките в проценти от общото количество на продукта (<a href="#tbl-cereals-composition" class="quarto-xref">Таблица&nbsp;<span>9.3</span></a>).</p>
 <div id="tbl-cereals-composition" class="quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cereals-composition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Таблица&nbsp;9.1: Състав на продуктите A, B и C
+Таблица&nbsp;9.3: Състав на продуктите A, B и C
 </figcaption>
 <div aria-describedby="tbl-cereals-composition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -2004,7 +2013,7 @@ Warning: to let Gurobi read it back, use rlp format</code></pre>
 </div>
 <p>При производството на един килограм от продукт A са необходими <span class="math inline">\frac{50}{57}</span> кг. овесени ядки, <span class="math inline">\frac{5}{57}</span> кг. стафиди и <span class="math inline">\frac{2}{57}</span> кг. бадеми. При производството на един килограм от продукт B са необходими <span class="math inline">\frac{60}{65}</span> кг. овесени ядки, <span class="math inline">\frac{2}{65}</span> кг. кокосови орехи и <span class="math inline">\frac{3}{65}</span> кг. бадеми. При производството на един килограм от продукт C са необходими <span class="math inline">\frac{60}{69}</span> кг. овесени ядки, <span class="math inline">\frac{3}{69}</span> кг. стафиди, <span class="math inline">\frac{4}{69}</span> кг. кокосови орехи и <span class="math inline">\frac{2}{69}</span> кг. бадеми.</p>
 <p>Нека <span class="math inline">y_{\text{овес}}, y_{\text{стафиди}}, y_{\text{кокос}}, y_{\text{бадеми}}</span> са общо изразходваните количества на съставките в килограми.</p>
-<p>От <a href="#tbl-cereals-composition" class="quarto-xref">Таблица&nbsp;<span>9.1</span></a> можем да изведем използваните количества суровини при производството на <span class="math inline">x_A, x_B</span> и <span class="math inline">x_C</span> от продуктите.</p>
+<p>От <a href="#tbl-cereals-composition" class="quarto-xref">Таблица&nbsp;<span>9.3</span></a> можем да изведем използваните количества суровини при производството на <span class="math inline">x_A, x_B</span> и <span class="math inline">x_C</span> от продуктите.</p>
 <p><span class="math display">
 \begin{align*}
 y_{\text{овес}} &amp; = \frac{50}{57} x_{A} + \frac{60}{65} x_{B} + \frac{60}{69} x_{C} \\
@@ -2050,7 +2059,7 @@ y_{\text{кокос}} &amp; \leq 1 \cdot 1000 \text{ (кокосови орех�
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2059,7 +2068,7 @@ y_{\text{кокос}} &amp; \leq 1 \cdot 1000 \text{ (кокосови орех�
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Възможен е и друг подход към задачата, който използва променливи за съставките на продуктите и изразява количествата произведени чрез тях.</p>
 <p>Нека <span class="math inline">x_{Aо}, x_{Aс}, x_{Aк}, x_{Aб}, x_{Bо}, x_{Bк}, x_{Bб}, x_{Cо}, x_{Cс}, x_{Cк}, x_{Cб}</span> са количествата на съставките в килограми, които са използвани за производството на продуктите A, B и C.</p>
@@ -2110,56 +2119,56 @@ x_{Cо} = (60/2) x_{Cб} \\
 </div>
 </div>
 </div>
-<div id="cell-30" class="cell">
+<div id="cell-32" class="cell">
 <details class="code-fold">
 <summary>Покажи</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new model</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Cereals"</span>)</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>m.Params.LogToConsole <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>x_A <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"x_A"</span>)</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>x_B <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"x_B"</span>)</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>x_C <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"x_C"</span>)</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>revenue <span class="op">=</span> (<span class="fl">2.0</span> <span class="op">*</span> x_A <span class="op">+</span> <span class="fl">2.5</span> <span class="op">*</span> x_B <span class="op">+</span> <span class="fl">3.0</span> <span class="op">*</span> x_C) <span class="op">/</span> <span class="fl">2.0</span></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="co"># For the costs we define the raw materials</span></span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>y_oats <span class="op">=</span> (<span class="dv">50</span> <span class="op">/</span> <span class="dv">57</span>) <span class="op">*</span> x_A <span class="op">+</span> (<span class="dv">60</span><span class="op">/</span><span class="dv">65</span>) <span class="op">*</span> x_B <span class="op">+</span> (<span class="dv">60</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C</span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>y_raisins <span class="op">=</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">57</span>) <span class="op">*</span> x_A <span class="op">+</span> (<span class="dv">3</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C </span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>y_coconuts <span class="op">=</span> (<span class="dv">2</span> <span class="op">/</span> <span class="dv">65</span>) <span class="op">*</span> x_B <span class="op">+</span> (<span class="dv">4</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C</span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>y_almonds <span class="op">=</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">57</span>) <span class="op">*</span> x_A <span class="op">+</span> (<span class="dv">3</span> <span class="op">/</span> <span class="dv">65</span>) <span class="op">*</span> x_B <span class="op">+</span> (<span class="dv">2</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C</span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>costs <span class="op">=</span> (<span class="dv">100</span> <span class="op">*</span> y_oats <span class="op">+</span> <span class="dv">120</span> <span class="op">*</span> y_raisins <span class="op">+</span> <span class="dv">110</span> <span class="op">*</span> y_coconuts <span class="op">+</span> <span class="dv">200</span> <span class="op">*</span> y_almonds) <span class="op">/</span> <span class="dv">1000</span></span>
-<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the objective function</span></span>
-<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>m.setObjective(revenue <span class="op">-</span> costs, GRB.MAXIMIZE)</span>
-<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Minimum production constraints</span></span>
-<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_A <span class="op">&gt;=</span> <span class="dv">500</span> <span class="op">*</span> <span class="dv">2</span>, <span class="st">"MinA"</span>)</span>
-<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_B <span class="op">&gt;=</span> <span class="dv">600</span> <span class="op">*</span> <span class="dv">2</span>, <span class="st">"MinB"</span>)</span>
-<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_C <span class="op">&gt;=</span> <span class="dv">400</span> <span class="op">*</span> <span class="dv">2</span>, <span class="st">"MinC"</span>)</span>
-<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Raw materials constraints</span></span>
-<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_oats <span class="op">&lt;=</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Oats"</span>)</span>
-<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_raisins <span class="op">&lt;=</span> <span class="dv">2</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Raisins"</span>)</span>
-<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_coconuts <span class="op">&lt;=</span> <span class="dv">1</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Coconuts"</span>)</span>
-<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_almonds <span class="op">&lt;=</span> <span class="dv">1</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Almonds"</span>)</span>
-<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
-<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Оптимална стойност на целевата функция: "</span>, m.objVal)</span>
-<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Оптимален план: продукт A = </span><span class="sc">{</span>x_A<span class="sc">.</span>x<span class="sc">:5.2f}</span><span class="ss"> кг., продукт B = </span><span class="sc">{</span>x_B<span class="sc">.</span>x<span class="sc">:5.2f}</span><span class="ss"> кг., продукт C = </span><span class="sc">{</span>x_C<span class="sc">.</span>x<span class="sc">:5.2f}</span><span class="ss"> кг."</span>)</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> gp</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new model</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> gp.Model(<span class="st">"Cereals"</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>m.Params.LogToConsole <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>x_A <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"x_A"</span>)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>x_B <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"x_B"</span>)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>x_C <span class="op">=</span> m.addVar(lb<span class="op">=</span><span class="dv">0</span>, name<span class="op">=</span><span class="st">"x_C"</span>)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>revenue <span class="op">=</span> (<span class="fl">2.0</span> <span class="op">*</span> x_A <span class="op">+</span> <span class="fl">2.5</span> <span class="op">*</span> x_B <span class="op">+</span> <span class="fl">3.0</span> <span class="op">*</span> x_C) <span class="op">/</span> <span class="fl">2.0</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="co"># For the costs we define the raw materials</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>y_oats <span class="op">=</span> (<span class="dv">50</span> <span class="op">/</span> <span class="dv">57</span>) <span class="op">*</span> x_A <span class="op">+</span> (<span class="dv">60</span><span class="op">/</span><span class="dv">65</span>) <span class="op">*</span> x_B <span class="op">+</span> (<span class="dv">60</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>y_raisins <span class="op">=</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">57</span>) <span class="op">*</span> x_A <span class="op">+</span> (<span class="dv">3</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C </span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>y_coconuts <span class="op">=</span> (<span class="dv">2</span> <span class="op">/</span> <span class="dv">65</span>) <span class="op">*</span> x_B <span class="op">+</span> (<span class="dv">4</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>y_almonds <span class="op">=</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">57</span>) <span class="op">*</span> x_A <span class="op">+</span> (<span class="dv">3</span> <span class="op">/</span> <span class="dv">65</span>) <span class="op">*</span> x_B <span class="op">+</span> (<span class="dv">2</span> <span class="op">/</span> <span class="dv">69</span>) <span class="op">*</span> x_C</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>costs <span class="op">=</span> (<span class="dv">100</span> <span class="op">*</span> y_oats <span class="op">+</span> <span class="dv">120</span> <span class="op">*</span> y_raisins <span class="op">+</span> <span class="dv">110</span> <span class="op">*</span> y_coconuts <span class="op">+</span> <span class="dv">200</span> <span class="op">*</span> y_almonds) <span class="op">/</span> <span class="dv">1000</span></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the objective function</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>m.setObjective(revenue <span class="op">-</span> costs, GRB.MAXIMIZE)</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Minimum production constraints</span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_A <span class="op">&gt;=</span> <span class="dv">500</span> <span class="op">*</span> <span class="dv">2</span>, <span class="st">"MinA"</span>)</span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_B <span class="op">&gt;=</span> <span class="dv">600</span> <span class="op">*</span> <span class="dv">2</span>, <span class="st">"MinB"</span>)</span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>m.addConstr(x_C <span class="op">&gt;=</span> <span class="dv">400</span> <span class="op">*</span> <span class="dv">2</span>, <span class="st">"MinC"</span>)</span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Raw materials constraints</span></span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_oats <span class="op">&lt;=</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Oats"</span>)</span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_raisins <span class="op">&lt;=</span> <span class="dv">2</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Raisins"</span>)</span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_coconuts <span class="op">&lt;=</span> <span class="dv">1</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Coconuts"</span>)</span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a>m.addConstr(y_almonds <span class="op">&lt;=</span> <span class="dv">1</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="st">"Almonds"</span>)</span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a>m.optimize()</span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Оптимална стойност на целевата функция: "</span>, m.objVal)</span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Оптимален план: продукт A = </span><span class="sc">{</span>x_A<span class="sc">.</span>x<span class="sc">:5.2f}</span><span class="ss"> кг., продукт B = </span><span class="sc">{</span>x_B<span class="sc">.</span>x<span class="sc">:5.2f}</span><span class="ss"> кг., продукт C = </span><span class="sc">{</span>x_C<span class="sc">.</span>x<span class="sc">:5.2f}</span><span class="ss"> кг."</span>)</span></code><button title="Копирай" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
-<section id="радиотерапия" class="level2" data-number="9.11">
-<h2 data-number="9.11" class="anchored" data-anchor-id="радиотерапия"><span class="header-section-number">9.11</span> Радиотерапия</h2>
+<section id="радиотерапия" class="level2" data-number="9.10">
+<h2 data-number="9.10" class="anchored" data-anchor-id="радиотерапия"><span class="header-section-number">9.10</span> Радиотерапия</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 7%">
@@ -2198,7 +2207,7 @@ x_{Cо} = (60/2) x_{Cб} \\
 </table>
 <p>Целта е здравите тъкани (в зелено) да получат възможно най-малка доза радиация, докато в същото време болните тъкани трябва да получат поне 7Gy (Грей), за да бъдат унищожени. Тъканта на гръбначния мозък (в синьо) е особено чувствителна и не трябва да бъде изложена на радиация повече от 5Gy.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2207,7 +2216,7 @@ x_{Cо} = (60/2) x_{Cб} \\
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math display">
 \begin{align*}
