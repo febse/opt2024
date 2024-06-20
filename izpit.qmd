@@ -11,4 +11,3 @@
 
 - [Задача 1](https://firebasestorage.googleapis.com/v0/b/uni-sofia.appspot.com/o/lit%2Fizpit%2Fcase3.pdf?alt=media&token=7f53e193-4910-443c-8d1a-cab33945f9d1)
 - [Задача 2](https://firebasestorage.googleapis.com/v0/b/uni-sofia.appspot.com/o/lit%2Fizpit%2Fcase4.pdf?alt=media&token=96bbc32f-3146-437c-b643-ac34813f1b2d)
-
