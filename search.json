@@ -590,6 +590,36 @@
     ]
   },
   {
+    "objectID": "izpit.html",
+    "href": "izpit.html",
+    "title": "10  Изпит",
+    "section": "",
+    "text": "10.1 Вариант 1",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Изпит</span>"
+    ]
+  },
+  {
+    "objectID": "izpit.html#вариант-1",
+    "href": "izpit.html#вариант-1",
+    "title": "10  Изпит",
+    "section": "",
+    "text": "Задача 1\nЗадача 2",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Изпит</span>"
+    ]
+  },
+  {
+    "objectID": "izpit.html#вариант-2",
+    "href": "izpit.html#вариант-2",
+    "title": "10  Изпит",
+    "section": "10.2 Вариант 2",
+    "text": "10.2 Вариант 2\n\nЗадача 1\nЗадача 2",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Изпит</span>"
+    ]
+  },
+  {
     "objectID": "references.html",
     "href": "references.html",
     "title": "Библиография",
