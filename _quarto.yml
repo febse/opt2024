@@ -34,6 +34,7 @@ book:
     # - 04-Simple-ANOVA.qmd
     # - 05-Hypothesis-Testing-and-CI.qmd
     - Literature.qmd
+    - izpit.qmd
     - references.qmd
 
 bibliography: references.bib
